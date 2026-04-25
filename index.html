@@ -1,0 +1,2028 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes">
+<title>AUREA Desarrollos Inmobiliarios</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; user-select: none; }
+
+  :root {
+    --gold: #D4AF37;
+    --gold-luminous: #FFD700;
+    --gold-dark: #B8902C;
+    --card-base-width: 140px;
+    --card-hover-width: 280px;
+    --card-height: 480px;
+  }
+
+  body { font-family: 'Inter', sans-serif; background: #0A0A0A; overflow: hidden; height: 100vh; width: 100vw; position: fixed; top: 0; left: 0; }
+
+  /* ========== HERO ========== */
+  .hero-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('assets/images/hero/hero-bg.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 1;
+    transition: filter 0.6s ease;
+    filter: brightness(1.2) contrast(1.05) blur(0px);
+  }
+  .hero-bg.desenfocado { filter: brightness(0.3) blur(12px); }
+
+  .global-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(2px);
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+  }
+  .global-overlay.visible { opacity: 1; }
+
+  /* ========== SLICE 00 - PANTALLA DE BIENVENIDA (capa negra 15%) ========== */
+  .banda-slice00 {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(2px);
+    z-index: 29;
+    transition: opacity 0.6s ease, visibility 0.6s ease;
+    pointer-events: auto;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .banda-slice00.hide { opacity: 0; visibility: hidden; pointer-events: none; }
+
+  .logo-area {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.8rem;
+    flex-wrap: wrap;
+    animation: fadeInUp 0.8s ease;
+  }
+  @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
+  .logo-img {
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+    filter: drop-shadow(0 4px 15px rgba(0,0,0,0.4));
+    animation: pulseGold 2s infinite;
+  }
+  @keyframes pulseGold {
+    0% { filter: drop-shadow(0 4px 15px rgba(0,0,0,0.4)) brightness(1); }
+    50% { filter: drop-shadow(0 4px 15px rgba(0,0,0,0.5)) brightness(1.2); }
+    100% { filter: drop-shadow(0 4px 15px rgba(0,0,0,0.4)) brightness(1); }
+  }
+
+  .logo-text h1 {
+    font-size: 3.8rem;
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    background: linear-gradient(135deg, #F0D87A 0%, #D4AF37 30%, #FFF8E7 50%, #D4AF37 70%, #B8902C 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: shimmer 3s linear infinite;
+    margin: 0;
+  }
+  .slogan {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.9rem;
+    letter-spacing: 0.25em;
+    color: var(--gold-luminous);
+    font-weight: 500;
+    text-transform: uppercase;
+    margin-top: 0.5rem;
+    text-align: center;
+  }
+  @keyframes shimmer { 0% { background-position: 0% 0%; } 100% { background-position: 200% 0%; } }
+
+  /* ========== TÍTULO FLOTANTE ========== */
+  .slide-title-area {
+    position: fixed;
+    top: -100px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    z-index: 25;
+    pointer-events: none;
+    transition: top 0.4s ease, opacity 0.4s ease;
+    opacity: 0;
+    visibility: hidden;
+  }
+  .slide-title-area.visible { top: 1.5rem; opacity: 1; visibility: visible; }
+  .current-slide-title {
+    display: inline-block;
+    color: var(--gold-luminous);
+    font-family: 'Playfair Display', serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    background: rgba(0,0,0,0.7);
+    backdrop-filter: blur(12px);
+    padding: 0.4rem 1.5rem;
+    border-radius: 60px;
+    border: 1px solid rgba(212,175,55,0.4);
+  }
+
+  /* ========== ESQUINAS ========== */
+  .back-corner {
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    z-index: 200;
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(8px);
+    border-radius: 40px;
+    padding: 0.5rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    transition: 0.3s;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+  .back-corner.visible {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+  .back-corner i { color: var(--gold-luminous); font-size: 0.9rem; }
+  .back-corner span { color: white; font-size: 0.8rem; }
+
+  .corner-logo {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 200;
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(8px);
+    border-radius: 40px;
+    padding: 0.3rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  .corner-logo-img { width: 30px; height: 30px; object-fit: contain; }
+  .corner-logo span { font-size: 0.8rem; color: var(--gold-luminous); font-weight: 600; }
+
+  /* ========== ESCRITORIO (min-width: 769px) ========== */
+  @media (min-width: 769px) {
+    .carousel-wrapper {
+      position: fixed;
+      bottom: 2rem;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      z-index: 20;
+      overflow-x: auto;
+      overflow-y: visible;
+      scroll-behavior: smooth;
+      padding: 1rem 0;
+      cursor: grab;
+      transform: translateX(100%);
+      transition: transform 0.6s ease;
+    }
+    .carousel-wrapper:active { cursor: grabbing; }
+    .carousel-wrapper.visible { transform: translateX(0); }
+    .carousel-wrapper::-webkit-scrollbar { height: 4px; }
+    .carousel-wrapper::-webkit-scrollbar-track { background: rgba(255,255,255,0.1); border-radius: 10px; }
+    .carousel-wrapper::-webkit-scrollbar-thumb { background: var(--gold-luminous); border-radius: 10px; }
+    
+    .carousel-track {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-end;
+      padding: 0 calc(50vw - 70px);
+    }
+    .carousel-card {
+      flex-shrink: 0;
+      width: var(--card-base-width);
+      height: var(--card-height);
+      border-radius: 20px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: width 0.4s ease, transform 0.4s ease, filter 0.3s ease;
+      filter: brightness(0.7) blur(2px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      position: relative;
+    }
+    .carousel-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.15);
+      z-index: 1;
+      pointer-events: none;
+      transition: background 0.3s ease;
+    }
+    .carousel-card:hover::before,
+    .carousel-card.selected::before { background: rgba(0, 0, 0, 0); }
+    .carousel-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: relative;
+      z-index: 0;
+    }
+    .carousel-card:hover,
+    .carousel-card.selected {
+      width: var(--card-hover-width);
+      filter: brightness(1) blur(0px);
+      box-shadow: 0 25px 50px rgba(0,0,0,0.6);
+      z-index: 10;
+    }
+    .carousel-card.push-left { transform: translateX(-30px); }
+    .carousel-card.push-right { transform: translateX(30px); }
+    
+    .contact-button-mobile { display: none; }
+    .instruction { bottom: 1.5rem; font-size: 0.7rem; }
+  }
+
+  /* ========== MÓVIL (max-width: 768px) ========== */
+  @media (max-width: 768px) {
+    .logo-img { width: 100px; height: 100px; }
+    .logo-text h1 { font-size: 2.2rem; }
+    .slogan { font-size: 0.6rem; letter-spacing: 0.15em; }
+    .slide-title-area.visible { top: 3rem; }
+    .current-slide-title { font-size: 0.6rem; padding: 0.3rem 1rem; letter-spacing: 0.15em; }
+
+    .carousel-wrapper {
+      position: fixed;
+      top: 6rem;
+      bottom: auto;
+      left: 0;
+      width: 100%;
+      height: calc(100vh - 7.5rem);
+      overflow-y: auto;
+      overflow-x: hidden;
+      padding: 0;
+      cursor: default;
+      z-index: 20;
+      transform: translateX(-100%);
+      transition: transform 0.6s ease;
+    }
+    .carousel-wrapper.visible { transform: translateX(0); }
+    .carousel-track {
+      display: flex;
+      flex-direction: row !important;
+      flex-wrap: wrap;
+      gap: 16px;
+      padding: 16px;
+      justify-content: center;
+    }
+    .carousel-card {
+      width: calc(50% - 16px) !important;
+      min-width: 150px;
+      height: auto !important;
+      min-height: 280px;
+      border-radius: 20px;
+      overflow: hidden;
+      cursor: pointer;
+      filter: brightness(0.7) blur(1px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      position: relative;
+    }
+    .carousel-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.15);
+      z-index: 1;
+      pointer-events: none;
+    }
+    .carousel-card.selected::before { background: rgba(0, 0, 0, 0); }
+    .carousel-card.selected {
+      border: 2px solid var(--gold-luminous);
+      filter: brightness(1) blur(0px);
+      transform: scale(1.01);
+    }
+    .carousel-card img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      position: relative;
+      z-index: 0;
+    }
+    .card-mobile-info {
+      padding: 0.6rem;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(12px);
+      text-align: center;
+      border-radius: 0 0 20px 20px;
+    }
+    .card-mobile-info h3 { font-family: 'Playfair Display', serif; color: var(--gold-luminous); font-size: 0.8rem; margin-bottom: 0.2rem; }
+    .card-mobile-info p { font-size: 0.6rem; color: rgba(255,255,255,0.8); }
+    
+    .contact-button-mobile {
+      position: fixed;
+      bottom: 2rem;
+      right: 1rem;
+      width: 56px;
+      height: 56px;
+      background: var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 30;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      transition: all 0.3s ease;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+    .contact-button-mobile.visible { opacity: 1; visibility: visible; pointer-events: auto; }
+    .contact-button-mobile i { font-size: 1.5rem; color: #1a1a1a; }
+    .instruction { bottom: 0.8rem; font-size: 0.6rem; }
+  }
+
+  /* ========== DETALLE GENERAL ========== */
+  .detail-screen {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(16px);
+    z-index: 100;
+    transform: translateX(100%);
+    transition: transform 0.5s ease;
+    overflow-y: auto;
+  }
+  .detail-screen.active { transform: translateX(0); }
+  .detail-content { padding: 2rem; max-width: 1400px; margin: 0 auto; padding-top: 5rem; }
+  .detail-header h2 { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--gold-luminous); border-left: 4px solid var(--gold); padding-left: 1rem; margin-bottom: 1rem; }
+  .detail-desc { font-size: 0.95rem; line-height: 1.6; color: rgba(255,255,255,0.9); background: rgba(0,0,0,0.5); padding: 1.5rem; border-radius: 24px; margin-bottom: 2rem; white-space: pre-line; }
+  .detail-gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-top: 1rem; }
+  .detail-gallery img { width: 100%; height: 220px; object-fit: cover; border-radius: 20px; cursor: pointer; transition: 0.3s; }
+
+  .instruction {
+    position: fixed;
+    bottom: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 25;
+    background: rgba(0,0,0,0.7);
+    color: white;
+    padding: 0.4rem 1.2rem;
+    border-radius: 60px;
+    font-size: 0.7rem;
+    backdrop-filter: blur(8px);
+    pointer-events: none;
+    white-space: nowrap;
+    transition: opacity 0.3s;
+  }
+  .instruction.hide { opacity: 0; visibility: hidden; }
+
+  .btn-close {
+    background: var(--gold-dark);
+    border: none;
+    padding: 0.6rem 1.8rem;
+    border-radius: 40px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 2rem;
+  }
+  .btn-close:hover { background: var(--gold); color: #1a1a1a; transform: translateY(-2px); }
+
+  /* ========== ESTILOS - SUBNAVEGACIÓN ========== */
+  .style-subnav {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    padding-bottom: 1rem;
+    justify-content: center;
+  }
+  .style-subnav button {
+    background: transparent;
+    border: none;
+    color: rgba(255,255,255,0.6);
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: 0.3s;
+  }
+  .style-subnav button.active { color: var(--gold-luminous); border-bottom: 2px solid var(--gold-luminous); }
+
+  /* ========== INTRODUCCIÓN ========== */
+  .style-intro-wrapper {
+    display: flex;
+    gap: 3rem;
+    flex-wrap: wrap;
+    align-items: flex-start;
+  }
+  .style-intro-text {
+    flex: 2;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: rgba(255,255,255,0.9);
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    background: linear-gradient(135deg, rgba(0,0,0,0.4), rgba(0,0,0,0.2));
+    padding: 2rem;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    border-left: 3px solid var(--gold-luminous);
+  }
+  .materials-grid {
+    flex: 3;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+  .material-card {
+    background: rgba(0,0,0,0.3);
+    border-radius: 20px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    border: 1px solid rgba(212,175,55,0.2);
+    backdrop-filter: blur(8px);
+  }
+  .material-card:hover { transform: translateY(-8px); border-color: var(--gold-luminous); background: rgba(0,0,0,0.5); }
+  .material-card img { width: 100%; height: 140px; object-fit: cover; }
+  .material-card p { padding: 0.8rem; text-align: center; color: var(--gold-luminous); font-size: 0.8rem; font-weight: 500; }
+
+  @media (max-width: 768px) {
+    .style-intro-wrapper { flex-direction: column; }
+    .materials-grid { grid-template-columns: repeat(2, 1fr); }
+    .material-card img { height: 100px; }
+  }
+
+  /* ========== EXTERIORES E INTERIORES ========== */
+  .exterior-interior-wrapper {
+    width: 100%;
+    height: 85vh;
+    display: flex;
+    flex-direction: column;
+  }
+  .exterior-interior-header {
+    margin-bottom: 1.5rem;
+  }
+  .exterior-interior-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    color: var(--gold-luminous);
+    border-left: 4px solid var(--gold-luminous);
+    padding-left: 1rem;
+    margin-bottom: 0.5rem;
+  }
+  .exterior-interior-header p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.8);
+    padding-left: 1rem;
+  }
+  .exterior-interior-carousel {
+    width: 100%;
+    flex: 1;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+    cursor: grab;
+    padding-bottom: 0.5rem;
+  }
+  .exterior-interior-carousel:active { cursor: grabbing; }
+  .exterior-interior-carousel::-webkit-scrollbar { height: 6px; }
+  .exterior-interior-carousel::-webkit-scrollbar-track { background: rgba(255,255,255,0.1); border-radius: 10px; }
+  .exterior-interior-carousel::-webkit-scrollbar-thumb { background: var(--gold-luminous); border-radius: 10px; }
+  .exterior-interior-track {
+    display: flex;
+    gap: 1.5rem;
+    padding: 0.5rem 0.5rem 0.5rem 0;
+    width: max-content;
+    height: 100%;
+    align-items: center;
+  }
+  .exterior-interior-card {
+    flex-shrink: 0;
+    width: 280px;
+    height: 480px;
+    border-radius: 20px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    filter: brightness(0.7) blur(1px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    position: relative;
+  }
+  .exterior-interior-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.15);
+    z-index: 1;
+    pointer-events: none;
+    transition: background 0.3s ease;
+  }
+  .exterior-interior-card:hover::before { background: rgba(0, 0, 0, 0); }
+  .exterior-interior-card:hover {
+    width: 380px;
+    filter: brightness(1) blur(0px);
+    z-index: 10;
+  }
+  .exterior-interior-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: relative;
+    z-index: 0;
+  }
+  .exterior-interior-card .exterior-interior-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+    padding: 1rem;
+    text-align: center;
+    z-index: 2;
+  }
+  .exterior-interior-card .exterior-interior-caption h4 {
+    font-family: 'Playfair Display', serif;
+    color: var(--gold-luminous);
+    font-size: 1rem;
+  }
+  .exterior-interior-card.push-left-exterior { transform: translateX(-30px); }
+  .exterior-interior-card.push-right-exterior { transform: translateX(30px); }
+
+  @media (max-width: 768px) {
+    .exterior-interior-card {
+      width: 220px;
+      height: 360px;
+    }
+    .exterior-interior-card:hover {
+      width: 220px;
+      transform: scale(1.02);
+    }
+    .exterior-interior-card.push-left-exterior,
+    .exterior-interior-card.push-right-exterior {
+      transform: translateX(0);
+    }
+    .exterior-interior-header h2 { font-size: 1.5rem; }
+    .exterior-interior-header p { font-size: 0.75rem; }
+  }
+
+  /* ========== IMAGEN DETALLE CON ZOOM ========== */
+  .image-detail-view-ratio {
+    display: flex;
+    gap: 2rem;
+    min-height: 85vh;
+    background: rgba(0,0,0,0.2);
+    backdrop-filter: blur(4px);
+    border-radius: 28px;
+    overflow: hidden;
+    margin: 1rem;
+  }
+  .image-text-panel-ratio {
+    flex: 1;
+    max-width: 25%;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(245,230,211,0.95) 0%, rgba(235,215,195,0.9) 100%);
+    border-radius: 24px 0 0 24px;
+    overflow-y: auto;
+  }
+  .image-text-panel-ratio h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: #2C2C2C;
+    border-left: 4px solid var(--gold-luminous);
+    padding-left: 1rem;
+    margin-bottom: 1rem;
+  }
+  .image-text-panel-ratio p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #3A3A3A;
+  }
+  .image-panel-ratio {
+    flex: 3;
+    max-width: 75%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    background: rgba(0,0,0,0.3);
+    min-height: 85vh;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .image-panel-ratio img {
+    width: 100%;
+    height: auto;
+    max-height: 85vh;
+    object-fit: contain;
+    border-radius: 20px;
+    cursor: zoom-in;
+    transition: transform 0.2s ease;
+  }
+  .image-panel-ratio img.zoomed {
+    cursor: zoom-out;
+    width: auto;
+    height: auto;
+    max-width: none;
+    max-height: none;
+    transform: scale(2);
+  }
+  .image-nav-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 768px) {
+    .image-detail-view-ratio {
+      flex-direction: column;
+      min-height: auto;
+    }
+    .image-text-panel-ratio {
+      max-width: 100%;
+      border-radius: 20px 20px 0 0;
+      min-height: auto;
+      padding: 1rem;
+    }
+    .image-panel-ratio {
+      max-width: 100%;
+      min-height: 60vh;
+      overflow: auto;
+    }
+    .image-panel-ratio img {
+      max-height: 60vh;
+      cursor: zoom-in;
+    }
+    .image-text-panel-ratio h2 {
+      font-size: 1.2rem;
+    }
+    .image-text-panel-ratio p {
+      font-size: 0.8rem;
+    }
+  }
+
+  /* ========== PROYECTO ========== */
+  .proyecto-layout {
+    display: flex;
+    gap: 3rem;
+    flex-wrap: wrap;
+    align-items: stretch;
+    height: 80vh;
+  }
+  .proyecto-texto {
+    flex: 1;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(0,0,0,0.4), rgba(0,0,0,0.2));
+    backdrop-filter: blur(8px);
+    border-radius: 24px;
+    padding: 2rem;
+    border-left: 3px solid var(--gold-luminous);
+  }
+  .proyecto-texto h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.8rem;
+    color: var(--gold-luminous);
+    margin-bottom: 0.5rem;
+  }
+  .proyecto-texto .subtitulo {
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    color: var(--gold-luminous);
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+  }
+  .proyecto-texto .descripcion {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.85);
+    margin-bottom: 1rem;
+    font-family: 'Playfair Display', serif;
+  }
+  .proyecto-texto .cita {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-style: italic;
+    color: var(--gold-luminous);
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(212,175,55,0.3);
+  }
+  .proyecto-estilos-wrapper {
+    flex: 1;
+    min-width: 280px;
+    background: rgba(0,0,0,0.2);
+    backdrop-filter: blur(4px);
+    border-radius: 24px;
+    padding: 1rem;
+  }
+  .proyecto-estilos-carousel {
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding: 1rem 0;
+  }
+  .proyecto-estilos-carousel::-webkit-scrollbar { height: 4px; }
+  .proyecto-estilo-card {
+    flex-shrink: 0;
+    width: 160px;
+    height: 380px;
+    border-radius: 16px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    filter: brightness(0.85);
+    position: relative;
+    border: 2px solid transparent;
+  }
+  .proyecto-estilo-card:hover {
+    width: 280px;
+    filter: brightness(1);
+    z-index: 10;
+    border-color: var(--gold-luminous);
+  }
+  .proyecto-estilo-card img { width: 100%; height: 100%; object-fit: cover; }
+  .proyecto-estilo-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+    padding: 1rem;
+    text-align: center;
+  }
+  .proyecto-estilo-caption h4 { color: var(--gold-luminous); font-size: 0.9rem; }
+  .proyecto-estilo-caption p { font-size: 0.7rem; color: rgba(255,255,255,0.7); }
+
+  @media (max-width: 768px) {
+    .proyecto-layout { flex-direction: column; height: auto; }
+    .proyecto-texto { text-align: center; }
+    .proyecto-texto h2 { font-size: 2rem; }
+    .proyecto-estilo-card { width: 130px; height: 300px; }
+    .proyecto-estilo-card:hover { width: 130px; transform: scale(1.02); }
+  }
+
+  /* ========== PROGRAMA ========== */
+  .programa-wrapper {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+  }
+  .programa-header {
+    background: linear-gradient(135deg, rgba(0,0,0,0.4), rgba(0,0,0,0.2));
+    backdrop-filter: blur(8px);
+    border-radius: 20px;
+    padding: 1.2rem;
+    margin-bottom: 1.5rem;
+    border-left: 3px solid var(--gold-luminous);
+  }
+  .programa-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    color: var(--gold-luminous);
+    margin-bottom: 0.5rem;
+  }
+  .programa-header p {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: rgba(255,255,255,0.85);
+  }
+
+  .programa-horizontal-carousel {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+    cursor: grab;
+    padding-bottom: 0.5rem;
+  }
+  .programa-horizontal-carousel:active { cursor: grabbing; }
+  .programa-horizontal-carousel::-webkit-scrollbar { height: 4px; }
+  .programa-horizontal-carousel::-webkit-scrollbar-track { background: rgba(255,255,255,0.1); border-radius: 10px; }
+  .programa-horizontal-carousel::-webkit-scrollbar-thumb { background: var(--gold-luminous); border-radius: 10px; }
+
+  .programa-horizontal-track {
+    display: flex;
+    gap: 1rem;
+    padding: 0.5rem 0.5rem 0.5rem 0;
+    width: max-content;
+  }
+  .programa-horizontal-card {
+    flex-shrink: 0;
+    width: 160px;
+    height: 340px;
+    border-radius: 16px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    filter: brightness(0.7) blur(1px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    position: relative;
+  }
+  .programa-horizontal-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.15);
+    z-index: 1;
+    pointer-events: none;
+    transition: background 0.3s ease;
+  }
+  .programa-horizontal-card:hover::before { background: rgba(0, 0, 0, 0); }
+  .programa-horizontal-card:hover {
+    width: 200px;
+    filter: brightness(1) blur(0px);
+    z-index: 10;
+  }
+  .programa-horizontal-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: relative;
+    z-index: 0;
+  }
+  .programa-horizontal-card .programa-horizontal-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+    padding: 0.8rem;
+    text-align: center;
+    z-index: 2;
+  }
+  .programa-horizontal-card .programa-horizontal-caption h3 {
+    font-family: 'Playfair Display', serif;
+    color: var(--gold-luminous);
+    font-size: 0.85rem;
+    margin-bottom: 0.2rem;
+  }
+  .programa-horizontal-card .programa-horizontal-caption p {
+    font-size: 0.6rem;
+    color: rgba(255,255,255,0.8);
+  }
+  .programa-horizontal-card.push-left-programa { transform: translateX(-15px); }
+  .programa-horizontal-card.push-right-programa { transform: translateX(15px); }
+
+  @media (max-width: 768px) {
+    .programa-horizontal-card {
+      width: 140px;
+      height: 280px;
+    }
+    .programa-horizontal-card:hover {
+      width: 140px;
+      transform: scale(1.02);
+    }
+    .programa-horizontal-card.push-left-programa,
+    .programa-horizontal-card.push-right-programa {
+      transform: translateX(0);
+    }
+    .programa-header h2 { font-size: 1.4rem; }
+    .programa-header p { font-size: 0.75rem; }
+  }
+
+  /* ========== ESTILOS ARQUITECTÓNICOS ========== */
+  .estilos-carousel-wrapper {
+    position: relative;
+    width: 100%;
+    height: 75vh;
+    overflow-x: auto;
+    overflow-y: visible;
+    scroll-behavior: smooth;
+    cursor: grab;
+    margin-top: 1rem;
+  }
+  .estilos-carousel-wrapper:active { cursor: grabbing; }
+  .estilos-carousel-wrapper::-webkit-scrollbar { height: 6px; }
+  .estilos-carousel-wrapper::-webkit-scrollbar-track { background: rgba(255,255,255,0.1); border-radius: 10px; }
+  .estilos-carousel-wrapper::-webkit-scrollbar-thumb { background: var(--gold-luminous); border-radius: 10px; }
+
+  .estilos-carousel-track {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    padding: 0 5vw;
+    height: 100%;
+    width: max-content;
+  }
+  .estilo-card {
+    flex-shrink: 0;
+    width: 180px;
+    height: 520px;
+    border-radius: 20px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: width 0.4s ease, transform 0.4s ease, filter 0.3s ease;
+    filter: brightness(0.7) blur(1px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    position: relative;
+  }
+  .estilo-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.15);
+    z-index: 1;
+    pointer-events: none;
+    transition: background 0.3s ease;
+  }
+  .estilo-card:hover::before { background: rgba(0, 0, 0, 0); }
+  .estilo-card:hover {
+    width: 280px;
+    filter: brightness(1) blur(0px);
+    z-index: 10;
+  }
+  .estilo-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: relative;
+    z-index: 0;
+  }
+  .estilo-card-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+    padding: 1.5rem;
+    text-align: center;
+    z-index: 2;
+  }
+  .estilo-card-caption h3 {
+    font-family: 'Playfair Display', serif;
+    color: var(--gold-luminous);
+    font-size: 1rem;
+  }
+  .estilo-card-caption p {
+    font-size: 0.7rem;
+    color: rgba(255,255,255,0.8);
+  }
+  .estilo-card.push-left-estilo { transform: translateX(-30px); }
+  .estilo-card.push-right-estilo { transform: translateX(30px); }
+
+  @media (max-width: 768px) {
+    .estilos-carousel-wrapper { height: 60vh; }
+    .estilos-carousel-track { padding: 0 16px; gap: 12px; }
+    .estilo-card { width: 140px; height: 380px; }
+    .estilo-card:hover { width: 140px; transform: scale(1.02); }
+    .estilo-card.push-left-estilo,
+    .estilo-card.push-right-estilo { transform: translateX(0); }
+  }
+
+  /* ========== TÉCNICA ========== */
+  .tecnica-layout {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    height: 80vh;
+  }
+  .tecnica-izquierda {
+    flex: 1;
+    min-width: 280px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  .tecnica-derecha {
+    flex: 1;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+  }
+  @media (max-width: 768px) {
+    .tecnica-layout { flex-direction: column; height: auto; }
+    .tecnica-izquierda { height: 50vh; }
+  }
+
+  .tecnica-estilos-carousel {
+    flex: 1;
+    overflow-x: auto;
+    overflow-y: visible;
+    scroll-behavior: smooth;
+    cursor: grab;
+    margin-top: 1rem;
+  }
+  .tecnica-estilos-carousel:active { cursor: grabbing; }
+  .tecnica-estilos-carousel::-webkit-scrollbar { height: 6px; }
+  .tecnica-estilos-carousel::-webkit-scrollbar-track { background: rgba(255,255,255,0.1); border-radius: 10px; }
+  .tecnica-estilos-carousel::-webkit-scrollbar-thumb { background: var(--gold-luminous); border-radius: 10px; }
+
+  .tecnica-estilos-track {
+    display: flex;
+    gap: 1rem;
+    padding: 0.5rem;
+    width: max-content;
+  }
+  .tecnica-estilo-card {
+    flex-shrink: 0;
+    width: 160px;
+    height: 380px;
+    border-radius: 16px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: width 0.4s ease, transform 0.4s ease, filter 0.3s ease;
+    filter: brightness(0.7) blur(1px);
+    position: relative;
+  }
+  .tecnica-estilo-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.15);
+    z-index: 1;
+    pointer-events: none;
+  }
+  .tecnica-estilo-card:hover { width: 240px; filter: brightness(1) blur(0px); z-index: 10; }
+  .tecnica-estilo-card.active { width: 240px; filter: brightness(1) blur(0px); border: 2px solid var(--gold-luminous); }
+  .tecnica-estilo-card img { width: 100%; height: 100%; object-fit: cover; }
+  .tecnica-estilo-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+    padding: 0.8rem;
+    text-align: center;
+    z-index: 2;
+  }
+  .tecnica-estilo-caption h4 { color: var(--gold-luminous); font-size: 0.8rem; }
+
+  .tecnica-scroll-container {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    border-radius: 20px;
+    background: rgba(0,0,0,0.2);
+    backdrop-filter: blur(4px);
+    margin-top: 1rem;
+  }
+  .tecnica-scroll-container::-webkit-scrollbar { width: 6px; }
+  .tecnica-scroll-container::-webkit-scrollbar-track { background: rgba(255,255,255,0.1); border-radius: 10px; }
+  .tecnica-scroll-container::-webkit-scrollbar-thumb { background: var(--gold-luminous); border-radius: 10px; }
+
+  .tecnica-scroll-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .tecnica-imagen {
+    background: rgba(0,0,0,0.3);
+    border-radius: 20px;
+    overflow: hidden;
+    padding: 1rem;
+    width: 100%;
+  }
+  .tecnica-imagen h4 {
+    color: var(--gold-luminous);
+    margin-bottom: 0.5rem;
+    font-family: 'Playfair Display', serif;
+    text-align: center;
+  }
+  .tecnica-imagen img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    border-radius: 12px;
+  }
+
+  /* ========== CONTACTO ========== */
+  .info-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; margin-top: 1rem; }
+  .info-card { background: rgba(255,255,255,0.08); border-radius: 20px; overflow: hidden; }
+  .info-card img { width: 100%; height: 180px; object-fit: cover; }
+  .info-card-content { padding: 0.8rem; text-align: center; }
+  .info-card-content h4 { color: var(--gold-luminous); }
+</style>
+</head>
+<body>
+
+<div class="hero-bg" id="heroBg"></div>
+<div class="global-overlay" id="globalOverlay"></div>
+<div class="back-corner" id="backCorner"><i class="fas fa-arrow-left"></i><span>Volver</span></div>
+<div class="corner-logo" id="cornerLogo"><img src="assets/logo-aurea.png" alt="AUREA" class="corner-logo-img" onerror="this.style.display='none'"><span>AUREA</span></div>
+<div class="banda-slice00" id="welcomeScreen"><div class="logo-area"><img src="assets/logo-aurea.png" alt="AUREA Logo" class="logo-img" onerror="this.src='https://placehold.co/150x150?text=AUREA'"><div class="logo-text"><h1>AUREA</h1><div class="slogan">DESARROLLOS INMOBILIARIOS</div></div></div></div>
+<div class="slide-title-area" id="slideTitleArea"><div class="current-slide-title" id="currentTitle">COLECCIÓN PRINCIPAL</div></div>
+<div class="carousel-wrapper" id="mainCarousel"><div class="carousel-track" id="carouselTrack"></div></div>
+<div class="contact-button-mobile" id="contactButtonMobile"><i class="fas fa-envelope"></i></div>
+<div class="instruction" id="instructionMsg">✨ Toca para comenzar ✨</div>
+<div class="detail-screen" id="detailScreen"><div class="detail-content" id="detailContent"></div></div>
+
+<script>
+(function() {
+  const isMobile = window.innerWidth <= 768;
+  
+  // DATOS DE ESTILOS
+  const styleData = {
+    neoclasico: {
+      name: 'Neoclásico Contemporáneo',
+      introText: 'Elegancia atemporal con columnas, simetría y materiales nobles.',
+      materials: [
+        { name: 'Bronce', img: 'assets/images/estilos/neoclasico/intro/bronce.png' },
+        { name: 'Caliza', img: 'assets/images/estilos/neoclasico/intro/caliza.png' },
+        { name: 'Estuco', img: 'assets/images/estilos/neoclasico/intro/estuco.png' },
+        { name: 'Granito', img: 'assets/images/estilos/neoclasico/intro/granito.png' }
+      ],
+      exteriores: [
+        { img: 'assets/images/estilos/neoclasico/exteriores/01-vista-panoramica.png', title: 'Vista Panorámica', desc: 'Imponente fachada neoclásica.' },
+        { img: 'assets/images/estilos/neoclasico/exteriores/02-fachada-principal.png', title: 'Fachada Principal', desc: 'Columnas y frontón triangular.' },
+        { img: 'assets/images/estilos/neoclasico/exteriores/03-acceso-principal.png', title: 'Acceso Principal', desc: 'Puerta de doble hoja.' },
+        { img: 'assets/images/estilos/neoclasico/exteriores/04-jardin-privado.png', title: 'Jardín Privado', desc: 'Jardines franceses.' },
+        { img: 'assets/images/estilos/neoclasico/exteriores/05-contrafachada.png', title: 'Contrafachada', desc: 'Vista posterior.' }
+      ],
+      interiores: [
+        { img: 'assets/images/estilos/neoclasico/interiores/01-recibidor.png', title: 'Recibidor', desc: 'Doble altura con araña.' },
+        { img: 'assets/images/estilos/neoclasico/interiores/02-sala-estar.png', title: 'Sala de Estar', desc: 'Chimenea de mármol.' },
+        { img: 'assets/images/estilos/neoclasico/interiores/03-comedor.png', title: 'Comedor', desc: 'Comedor formal.' },
+        { img: 'assets/images/estilos/neoclasico/interiores/04-dormitorio-principal.png', title: 'Dormitorio Principal', desc: 'Suite principal.' },
+        { img: 'assets/images/estilos/neoclasico/interiores/05-sanitario.png', title: 'Baño', desc: 'Mármol y bronce.' },
+        { img: 'assets/images/estilos/neoclasico/interiores/06-vestidor.png', title: 'Vestidor', desc: 'Walk-in closet.' },
+        { img: 'assets/images/estilos/neoclasico/interiores/07-dormitorio.png', title: 'Dormitorio Secundario', desc: 'Habitación invitados.' }
+      ]
+    },
+    mediterraneo: {
+      name: 'Mediterráneo Contemporáneo',
+      introText: 'Calidez, luz natural y materiales orgánicos. Patios interiores y conexión con el exterior.',
+      materials: [
+        { name: 'Cerámica', img: 'assets/images/estilos/mediterraneo/intro/ceramica.png' },
+        { name: 'Madera', img: 'assets/images/estilos/mediterraneo/intro/madera.png' },
+        { name: 'Piedra', img: 'assets/images/estilos/mediterraneo/intro/piedra.png' },
+        { name: 'Terracota', img: 'assets/images/estilos/mediterraneo/intro/terracota.png' }
+      ],
+      exteriores: [
+        { img: 'assets/images/estilos/mediterraneo/exteriores/01-vista-panoramica.png', title: 'Vista Panorámica' },
+        { img: 'assets/images/estilos/mediterraneo/exteriores/02-fachada-principal.png', title: 'Fachada Principal' },
+        { img: 'assets/images/estilos/mediterraneo/exteriores/03-acceso-principal.png', title: 'Acceso Principal' },
+        { img: 'assets/images/estilos/mediterraneo/exteriores/04-jardin-privado.png', title: 'Jardín Privado' },
+        { img: 'assets/images/estilos/mediterraneo/exteriores/05-contrafachada.png', title: 'Contrafachada' }
+      ],
+      interiores: [
+        { img: 'assets/images/estilos/mediterraneo/interiores/01-recibidor.png', title: 'Recibidor' },
+        { img: 'assets/images/estilos/mediterraneo/interiores/02-sala-estar.png', title: 'Sala de Estar' },
+        { img: 'assets/images/estilos/mediterraneo/interiores/03-comedor.png', title: 'Comedor' },
+        { img: 'assets/images/estilos/mediterraneo/interiores/04-dormitorio-principal.png', title: 'Dormitorio Principal' },
+        { img: 'assets/images/estilos/mediterraneo/interiores/05-sanitario.png', title: 'Baño' },
+        { img: 'assets/images/estilos/mediterraneo/interiores/06-vestidor.png', title: 'Vestidor' },
+        { img: 'assets/images/estilos/mediterraneo/interiores/07-dormitorio.png', title: 'Dormitorio Secundario' }
+      ]
+    },
+    minimalista: {
+      name: 'Minimalista Cálido',
+      introText: 'Líneas puras, espacios despejados y luz como protagonista. Menos es más.',
+      materials: [
+        { name: 'Barro Cocido', img: 'assets/images/estilos/minimalista/intro/barro-cocido.png' },
+        { name: 'Lino', img: 'assets/images/estilos/minimalista/intro/lino.png' },
+        { name: 'Madera', img: 'assets/images/estilos/minimalista/intro/madera.png' },
+        { name: 'Piedra', img: 'assets/images/estilos/minimalista/intro/piedra.png' }
+      ],
+      exteriores: [
+        { img: 'assets/images/estilos/minimalista/exteriores/01-vista-panoramica.png', title: 'Vista Panorámica' },
+        { img: 'assets/images/estilos/minimalista/exteriores/02-fachada-principal.png', title: 'Fachada Principal' },
+        { img: 'assets/images/estilos/minimalista/exteriores/03-acceso-principal.png', title: 'Acceso Principal' },
+        { img: 'assets/images/estilos/minimalista/exteriores/04-jardin-privado.png', title: 'Jardín Privado' },
+        { img: 'assets/images/estilos/minimalista/exteriores/05-contrafachada.png', title: 'Contrafachada' }
+      ],
+      interiores: [
+        { img: 'assets/images/estilos/minimalista/interiores/01-recibidor.png', title: 'Recibidor' },
+        { img: 'assets/images/estilos/minimalista/interiores/02-sala-estar.png', title: 'Sala de Estar' },
+        { img: 'assets/images/estilos/minimalista/interiores/03-comedor.png', title: 'Comedor' },
+        { img: 'assets/images/estilos/minimalista/interiores/04-dormitorio-principal.png', title: 'Dormitorio Principal' },
+        { img: 'assets/images/estilos/minimalista/interiores/05-sanitario.png', title: 'Baño' },
+        { img: 'assets/images/estilos/minimalista/interiores/06-vestidor.png', title: 'Vestidor' },
+        { img: 'assets/images/estilos/minimalista/interiores/07-dormitorio.png', title: 'Dormitorio Secundario' }
+      ]
+    },
+    internacional: {
+      name: 'Contemporáneo Internacional',
+      introText: 'Vanguardia y funcionalidad. Grandes ventanales y materiales industriales.',
+      materials: [
+        { name: 'Acero', img: 'assets/images/estilos/internacional/intro/acero.png' },
+        { name: 'Hormigón', img: 'assets/images/estilos/internacional/intro/hormigon-visto.png' },
+        { name: 'Madera', img: 'assets/images/estilos/internacional/intro/madera.png' },
+        { name: 'Vidrio', img: 'assets/images/estilos/internacional/intro/vidrio.png' }
+      ],
+      exteriores: [
+        { img: 'assets/images/estilos/internacional/exteriores/01-vista-panoramica.png', title: 'Vista Panorámica' },
+        { img: 'assets/images/estilos/internacional/exteriores/02-fachada-principal.png', title: 'Fachada Principal' },
+        { img: 'assets/images/estilos/internacional/exteriores/03-acceso-principal.png', title: 'Acceso Principal' },
+        { img: 'assets/images/estilos/internacional/exteriores/04-jardin-privado.png', title: 'Terraza' },
+        { img: 'assets/images/estilos/internacional/exteriores/05-contrafachada.png', title: 'Jardín Vertical' }
+      ],
+      interiores: [
+        { img: 'assets/images/estilos/internacional/interiores/01-recibidor.png', title: 'Recibidor' },
+        { img: 'assets/images/estilos/internacional/interiores/02-sala-estar.png', title: 'Sala de Estar' },
+        { img: 'assets/images/estilos/internacional/interiores/03-comedor.png', title: 'Comedor' },
+        { img: 'assets/images/estilos/internacional/interiores/04-dormitorio-principal.png', title: 'Dormitorio Principal' },
+        { img: 'assets/images/estilos/internacional/interiores/05-sanitario.png', title: 'Baño' },
+        { img: 'assets/images/estilos/internacional/interiores/06-vestidor.png', title: 'Vestidor' },
+        { img: 'assets/images/estilos/internacional/interiores/07-dormitorio.png', title: 'Dormitorio Secundario' }
+      ]
+    }
+  };
+
+  const programaEtapas = [
+    { id: 1, nombre: 'El refugio de verano', img: 'assets/images/programa/etapa-1-cocina-comedor-piscina.png', descripcion: 'Cocina, comedor y piscina integrados para disfrutar del verano.' },
+    { id: 2, nombre: 'El arte de habitar', img: 'assets/images/programa/etapa-2-dormitorios-suite.png', descripcion: 'Dormitorios y baños en suite para máxima comodidad.' },
+    { id: 3, nombre: 'El corazón social', img: 'assets/images/programa/etapa-3-sala-estar-ingreso.png', descripcion: 'Sala de estar y acceso principal.' },
+    { id: 4, nombre: 'La máxima comodidad', img: 'assets/images/programa/etapa-4-principal-vestidor.png', descripcion: 'Dormitorio principal con vestidor.' },
+    { id: 5, nombre: 'La imagen completa', img: 'assets/images/programa/etapa-5-cochera-doble.png', descripcion: 'Cochera doble cubierta.' }
+  ];
+
+  const estilosLista = [
+    { id: 'neoclasico', name: 'Neoclásico', img: 'assets/images/proyecto/4-estilos/neoclasico.jpg', desc: 'Tradición refinada' },
+    { id: 'mediterraneo', name: 'Mediterráneo', img: 'assets/images/proyecto/4-estilos/mediterraneo.jpg', desc: 'Calidez y nobleza' },
+    { id: 'minimalista', name: 'Minimalista', img: 'assets/images/proyecto/4-estilos/minimalista.jpg', desc: 'Depuración formal' },
+    { id: 'internacional', name: 'Internacional', img: 'assets/images/proyecto/4-estilos/internacional.jpg', desc: 'Vanguardia global' }
+  ];
+
+  const secciones = [
+    { id: "proyecto", nombre: "PROYECTO", titulo: "El Proyecto", thumb: "assets/images/carrusel/proyecto.jpg" },
+    { id: "programa", nombre: "PROGRAMA", titulo: "El Programa", thumb: "assets/images/carrusel/programa.jpg" },
+    { id: "estilos", nombre: "ESTILOS", titulo: "Estilos Arquitectónicos", thumb: "assets/images/carrusel/estilos.jpg" },
+    { id: "tecnica", nombre: "TÉCNICA", titulo: "Documentación Técnica", thumb: "assets/images/carrusel/tecnica.jpg" },
+    { id: "contacto", nombre: "CONTACTO", titulo: "Oficina Central", thumb: "assets/images/carrusel/contacto.jpg" }
+  ];
+
+  const elements = {
+    welcome: document.getElementById('welcomeScreen'), heroBg: document.getElementById('heroBg'),
+    globalOverlay: document.getElementById('globalOverlay'),
+    carouselWrapper: document.getElementById('mainCarousel'), carouselTrack: document.getElementById('carouselTrack'),
+    detailScreen: document.getElementById('detailScreen'), detailContent: document.getElementById('detailContent'),
+    slideTitle: document.getElementById('slideTitleArea'),
+    currentTitle: document.getElementById('currentTitle'), instruction: document.getElementById('instructionMsg'),
+    cornerLogo: document.getElementById('cornerLogo'), contactMobile: document.getElementById('contactButtonMobile'),
+    backCorner: document.getElementById('backCorner')
+  };
+
+  let isExperienceActive = false, isTransitioning = false;
+  let currentSelectedId = null;
+  let scrollTimeout = null, activeHoverCard = null;
+  let navigationStack = [];
+
+  function escapeHtml(str) { return str.replace(/[&<>]/g, m => m === '&' ? '&amp;' : (m === '<' ? '&lt;' : '&gt;')); }
+
+  function applyAccordionEffect(card, isHovering) {
+    if (isMobile) return;
+    const cards = document.querySelectorAll('.carousel-card');
+    const index = Array.from(cards).indexOf(card);
+    cards.forEach((c, i) => {
+      c.classList.remove('push-left', 'push-right');
+      if (isHovering && i < index) c.classList.add('push-left');
+      else if (isHovering && i > index) c.classList.add('push-right');
+    });
+  }
+
+  function updateSelectedByScroll() {
+    if (!elements.carouselWrapper || !isExperienceActive) return;
+    const cards = document.querySelectorAll('.carousel-card');
+    if (cards.length === 0) return;
+    let bestCard = null, bestDist = Infinity;
+    if (!isMobile) {
+      const center = elements.carouselWrapper.scrollLeft + elements.carouselWrapper.clientWidth / 2;
+      cards.forEach(card => {
+        const rect = card.getBoundingClientRect();
+        const dist = Math.abs((rect.left + rect.width / 2) - center);
+        if (dist < bestDist) { bestDist = dist; bestCard = card; }
+      });
+    }
+    if (bestCard && !bestCard.classList.contains('selected')) {
+      cards.forEach(c => c.classList.remove('selected'));
+      bestCard.classList.add('selected');
+      const id = bestCard.getAttribute('data-id');
+      if (id) {
+        currentSelectedId = id;
+        const sec = secciones.find(s => s.id === id);
+        if (sec && elements.currentTitle) elements.currentTitle.innerText = sec.titulo;
+      }
+    }
+  }
+
+  function selectCard(card, updateTitle = true) {
+    if (!isExperienceActive) return;
+    document.querySelectorAll('.carousel-card').forEach(c => c.classList.remove('selected'));
+    card.classList.add('selected');
+    if (updateTitle && elements.currentTitle) {
+      const title = card.getAttribute('data-title');
+      if (title) elements.currentTitle.innerText = title;
+    }
+    if (isMobile && elements.carouselWrapper) {
+      const cardTop = card.offsetTop;
+      const containerHeight = elements.carouselWrapper.clientHeight;
+      const cardHeight = card.clientHeight;
+      elements.carouselWrapper.scrollTo({ top: cardTop - (containerHeight / 2) + (cardHeight / 2), behavior: 'smooth' });
+    }
+  }
+
+  function showImageDetail(imagesArray, index, styleId, section) {
+    navigationStack.push({ type: 'image', styleId: styleId, section: section, index: index });
+    let currentIndex = index;
+    const totalImages = imagesArray.length;
+    
+    function updateImage() {
+      const item = imagesArray[currentIndex];
+      const titleEl = document.getElementById('imageTitle');
+      const descEl = document.getElementById('imageDesc');
+      const mainImage = document.getElementById('mainDetailImage');
+      if (titleEl) titleEl.textContent = item.title || item.name;
+      if (descEl) descEl.textContent = item.desc || 'Detalle arquitectónico';
+      if (mainImage) {
+        mainImage.src = item.img;
+        mainImage.classList.remove('zoomed');
+        mainImage.style.transform = '';
+      }
+      const counter = document.getElementById('imageCounter');
+      if (counter) counter.textContent = `${currentIndex + 1} / ${totalImages}`;
+    }
+    
+    elements.detailContent.innerHTML = `
+      <div class="image-detail-view-ratio" id="imageDetailContainer">
+        <div class="image-text-panel-ratio">
+          <h2 id="imageTitle">${escapeHtml(imagesArray[currentIndex].title || imagesArray[currentIndex].name)}</h2>
+          <p id="imageDesc">${escapeHtml(imagesArray[currentIndex].desc || 'Detalle arquitectónico')}</p>
+        </div>
+        <div class="image-panel-ratio" id="imagePanel">
+          <img id="mainDetailImage" src="${imagesArray[currentIndex].img}" onerror="this.src='https://placehold.co/800x600?text=Imagen'">
+        </div>
+      </div>
+      <div class="image-nav-buttons">
+        <button class="btn-close" id="navPrevBtn"><i class="fas fa-chevron-left"></i> Anterior</button>
+        <button class="btn-close" id="navBackBtn"><i class="fas fa-arrow-left"></i> Volver</button>
+        <button class="btn-close" id="navNextBtn">Siguiente <i class="fas fa-chevron-right"></i></button>
+        <button class="btn-close" id="zoomResetBtn"><i class="fas fa-search-plus"></i> Reset Zoom</button>
+      </div>
+      <div id="imageCounter" style="text-align:center; margin-top:0.5rem; font-size:0.7rem; color:rgba(255,255,255,0.5);">${currentIndex + 1} / ${totalImages}</div>
+    `;
+    
+    const container = document.getElementById('imageDetailContainer');
+    const mainImage = document.getElementById('mainDetailImage');
+    
+    let initialDistance = 0;
+    let currentScale = 1;
+    
+    if (mainImage && isMobile) {
+      mainImage.addEventListener('touchstart', (e) => {
+        if (e.touches.length === 2) {
+          e.preventDefault();
+          const dx = e.touches[0].clientX - e.touches[1].clientX;
+          const dy = e.touches[0].clientY - e.touches[1].clientY;
+          initialDistance = Math.hypot(dx, dy);
+        }
+      });
+      
+      mainImage.addEventListener('touchmove', (e) => {
+        if (e.touches.length === 2 && initialDistance > 0) {
+          e.preventDefault();
+          const dx = e.touches[0].clientX - e.touches[1].clientX;
+          const dy = e.touches[0].clientY - e.touches[1].clientY;
+          const newDistance = Math.hypot(dx, dy);
+          const scale = newDistance / initialDistance;
+          currentScale = Math.min(Math.max(scale, 1), 3);
+          
+          if (currentScale > 1) {
+            mainImage.style.transform = `scale(${currentScale})`;
+            mainImage.style.transformOrigin = 'center center';
+            mainImage.classList.add('zoomed');
+          } else {
+            mainImage.style.transform = '';
+            mainImage.classList.remove('zoomed');
+          }
+        }
+      });
+      
+      mainImage.addEventListener('touchend', () => {
+        initialDistance = 0;
+      });
+      
+      let lastTap = 0;
+      mainImage.addEventListener('click', (e) => {
+        if (isMobile) {
+          const now = Date.now();
+          if (now - lastTap < 300) {
+            e.preventDefault();
+            if (mainImage.classList.contains('zoomed')) {
+              mainImage.style.transform = '';
+              mainImage.classList.remove('zoomed');
+              currentScale = 1;
+            } else {
+              mainImage.style.transform = 'scale(2)';
+              mainImage.classList.add('zoomed');
+              currentScale = 2;
+            }
+          }
+          lastTap = now;
+        }
+      });
+    }
+    
+    document.getElementById('zoomResetBtn')?.addEventListener('click', () => {
+      if (mainImage) {
+        mainImage.style.transform = '';
+        mainImage.classList.remove('zoomed');
+        currentScale = 1;
+      }
+    });
+    
+    const goPrev = () => { if (currentIndex > 0) { currentIndex--; updateImage(); } };
+    const goNext = () => { if (currentIndex < totalImages - 1) { currentIndex++; updateImage(); } };
+    
+    document.getElementById('navPrevBtn')?.addEventListener('click', goPrev);
+    document.getElementById('navNextBtn')?.addEventListener('click', goNext);
+    document.getElementById('navBackBtn')?.addEventListener('click', () => goBack());
+    
+    if (container && !isMobile) {
+      container.addEventListener('wheel', (e) => {
+        e.preventDefault();
+        if (e.deltaY > 0) goNext();
+        else goPrev();
+      }, { passive: false });
+    }
+  }
+
+  function openStyleDetail(styleId, section = 'intro') {
+    navigationStack.push({ type: 'style', styleId: styleId, section: section });
+    const style = styleData[styleId];
+    if (!style) return;
+    
+    const submenuHtml = `
+      <div class="style-subnav">
+        <button class="${section === 'intro' ? 'active' : ''}" data-section="intro">Introducción</button>
+        <button class="${section === 'exteriores' ? 'active' : ''}" data-section="exteriores">Exteriores</button>
+        <button class="${section === 'interiores' ? 'active' : ''}" data-section="interiores">Interiores</button>
+      </div>
+    `;
+    
+    let content = '';
+    
+    if (section === 'intro') {
+      content = `
+        <div class="style-intro-wrapper">
+          <div class="style-intro-text">${style.introText}</div>
+          <div class="materials-grid">
+            ${style.materials.map((m, idx) => `
+              <div class="material-card" data-index="${idx}">
+                <img src="${m.img}" onerror="this.src='https://placehold.co/400x300?text=${m.name}'">
+                <p>${m.name}</p>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `;
+    } else if (section === 'exteriores') {
+      content = `
+        <div class="exterior-interior-wrapper">
+          <div class="exterior-interior-header">
+            <h2>Exteriores</h2>
+            <p>Espacios abiertos que conectan con la naturaleza y definen el carácter arquitectónico.</p>
+          </div>
+          <div class="exterior-interior-carousel" id="exteriorCarousel">
+            <div class="exterior-interior-track" id="exteriorTrack">
+              ${style.exteriores.map((item, idx) => `
+                <div class="exterior-interior-card" data-index="${idx}">
+                  <img src="${item.img}" onerror="this.src='https://placehold.co/600x800?text=${item.title}'">
+                  <div class="exterior-interior-caption">
+                    <h4>${item.title}</h4>
+                    <p>${item.desc || 'Espacio exterior'}</p>
+                  </div>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        </div>
+      `;
+    } else {
+      content = `
+        <div class="exterior-interior-wrapper">
+          <div class="exterior-interior-header">
+            <h2>Interiores</h2>
+            <p>Espacios pensados para el bienestar, donde cada detalle cuenta una historia.</p>
+          </div>
+          <div class="exterior-interior-carousel" id="interiorCarousel">
+            <div class="exterior-interior-track" id="interiorTrack">
+              ${style.interiores.map((item, idx) => `
+                <div class="exterior-interior-card" data-index="${idx}">
+                  <img src="${item.img}" onerror="this.src='https://placehold.co/600x800?text=${item.title}'">
+                  <div class="exterior-interior-caption">
+                    <h4>${item.title}</h4>
+                    <p>${item.desc || 'Espacio interior'}</p>
+                  </div>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        </div>
+      `;
+    }
+    
+    elements.detailContent.innerHTML = `
+      <div class="detail-header"><h2>${escapeHtml(style.name)}</h2></div>
+      ${submenuHtml}
+      ${content}
+    `;
+    
+    document.querySelectorAll('.style-subnav button').forEach(btn => btn.addEventListener('click', () => openStyleDetail(styleId, btn.getAttribute('data-section'))));
+    
+    const imgArray = section === 'exteriores' ? style.exteriores : (section === 'interiores' ? style.interiores : style.materials);
+    document.querySelectorAll('.material-card, .exterior-interior-card').forEach(el => {
+      el.addEventListener('click', () => {
+        const idx = parseInt(el.getAttribute('data-index'));
+        if (!isNaN(idx) && imgArray[idx]) showImageDetail(imgArray, idx, styleId, section);
+      });
+    });
+    
+    setTimeout(() => {
+      const carouselId = section === 'exteriores' ? 'exteriorCarousel' : 'interiorCarousel';
+      const carousel = document.getElementById(carouselId);
+      const cards = document.querySelectorAll('.exterior-interior-card');
+      
+      function applyAccordion(card, isHovering) {
+        if (isMobile) return;
+        const allCards = document.querySelectorAll('.exterior-interior-card');
+        const index = Array.from(allCards).indexOf(card);
+        allCards.forEach((c, i) => {
+          c.classList.remove('push-left-exterior', 'push-right-exterior');
+          if (isHovering && i < index) c.classList.add('push-left-exterior');
+          else if (isHovering && i > index) c.classList.add('push-right-exterior');
+        });
+      }
+      
+      if (carousel) {
+        carousel.addEventListener('wheel', (e) => { e.preventDefault(); carousel.scrollLeft += e.deltaY; }, { passive: false });
+      }
+      
+      cards.forEach(card => {
+        card.addEventListener('mouseenter', () => { if (!isMobile) applyAccordion(card, true); });
+        card.addEventListener('mouseleave', () => { if (!isMobile) applyAccordion(card, false); });
+      });
+    }, 50);
+  }
+
+  function openProyectoDetail() {
+    navigationStack = [];
+    elements.detailContent.innerHTML = `
+      <div class="proyecto-layout">
+        <div class="proyecto-texto">
+          <h2>El Proyecto</h2>
+          <div class="subtitulo">AUREA · Desarrollos Inmobiliarios</div>
+          <div class="descripcion">Ícono residencial único ubicado en el corazón de la Llanura Pampeana. Un espacio donde la arquitectura dialoga con la naturaleza, creando un entorno de lujo y serenidad.</div>
+          <div class="descripcion"><strong>Cuatro visiones del habitar.</strong> Cuatro lenguajes arquitectónicos que armonizan en un paisaje bucólico de la Llanura Argentina. Cada vivienda comparte el mismo programa funcional pero expresa una identidad estética singular.</div>
+          <div class="cita">"Construimos no solo casas, sino formas de habitar que honran la tierra que las recibe"</div>
+        </div>
+        <div class="proyecto-estilos-wrapper">
+          <div class="proyecto-estilos-carousel" id="proyectoEstilosCarousel">
+            ${estilosLista.map(estilo => `
+              <div class="proyecto-estilo-card" data-style="${estilo.id}">
+                <img src="${estilo.img}" onerror="this.src='https://placehold.co/400x600?text=${estilo.name}'">
+                <div class="proyecto-estilo-caption">
+                  <h4>${estilo.name}</h4>
+                  <p>${estilo.desc}</p>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      </div>
+    `;
+    const carousel = document.getElementById('proyectoEstilosCarousel');
+    if (carousel) carousel.addEventListener('wheel', (e) => { e.preventDefault(); carousel.scrollLeft += e.deltaY; }, { passive: false });
+    document.querySelectorAll('.proyecto-estilo-card').forEach(el => el.addEventListener('click', () => openStyleDetail(el.getAttribute('data-style'), 'intro')));
+  }
+
+  function openProgramaDetail() {
+    navigationStack = [];
+    elements.detailContent.innerHTML = `
+      <div class="programa-wrapper">
+        <div class="programa-header">
+          <h2>El Programa</h2>
+          <p>Un recorrido por los espacios que conforman AUREA. Cada etapa arquitectónica revela una forma única de habitar, donde la funcionalidad se encuentra con la belleza.</p>
+        </div>
+        <div class="programa-horizontal-carousel" id="programaHorizontalCarousel">
+          <div class="programa-horizontal-track" id="programaHorizontalTrack">
+            ${programaEtapas.map((etapa, idx) => `
+              <div class="programa-horizontal-card" data-id="${etapa.id}" data-index="${idx}">
+                <img src="${etapa.img}" onerror="this.src='https://placehold.co/400x500?text=Etapa+${etapa.id}'">
+                <div class="programa-horizontal-caption">
+                  <h3>Etapa ${etapa.id}</h3>
+                  <p>${etapa.nombre}</p>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      </div>
+    `;
+    
+    const programaCarousel = document.getElementById('programaHorizontalCarousel');
+    const programaCards = document.querySelectorAll('.programa-horizontal-card');
+    
+    function applyProgramaAccordion(card, isHovering) {
+      if (isMobile) return;
+      const cards = document.querySelectorAll('.programa-horizontal-card');
+      const index = Array.from(cards).indexOf(card);
+      cards.forEach((c, i) => {
+        c.classList.remove('push-left-programa', 'push-right-programa');
+        if (isHovering && i < index) c.classList.add('push-left-programa');
+        else if (isHovering && i > index) c.classList.add('push-right-programa');
+      });
+    }
+    
+    if (programaCarousel) {
+      programaCarousel.addEventListener('wheel', (e) => { e.preventDefault(); programaCarousel.scrollLeft += e.deltaY; }, { passive: false });
+    }
+    
+    programaCards.forEach(card => {
+      card.addEventListener('mouseenter', () => { if (!isMobile) applyProgramaAccordion(card, true); });
+      card.addEventListener('mouseleave', () => { if (!isMobile) applyProgramaAccordion(card, false); });
+      card.addEventListener('click', () => {
+        const etapa = programaEtapas[parseInt(card.getAttribute('data-index'))];
+        if (etapa) {
+          elements.detailContent.innerHTML = `
+            <div class="image-detail-view-ratio">
+              <div class="image-text-panel-ratio">
+                <h2>Etapa ${etapa.id}: ${etapa.nombre}</h2>
+                <p>${etapa.descripcion}</p>
+              </div>
+              <div class="image-panel-ratio">
+                <img src="${etapa.img}" onerror="this.src='https://placehold.co/800x600'">
+              </div>
+            </div>
+            <div class="image-nav-buttons">
+              <button class="btn-close" id="backToPrograma">Volver al Programa</button>
+            </div>
+          `;
+          document.getElementById('backToPrograma')?.addEventListener('click', () => openProgramaDetail());
+        }
+      });
+    });
+  }
+
+  function openEstilosDetail() {
+    navigationStack = [];
+    elements.detailContent.innerHTML = `
+      <div class="detail-header"><h2>Estilos Arquitectónicos</h2></div>
+      <div class="detail-desc">Cuatro corrientes estéticas que definen la personalidad de AUREA. Cada estilo ha sido cuidadosamente desarrollado para ofrecer una experiencia única.</div>
+      <div class="estilos-carousel-wrapper" id="estilosCarouselWrapper">
+        <div class="estilos-carousel-track" id="estilosCarouselTrack">
+          ${estilosLista.map(estilo => `
+            <div class="estilo-card" data-style="${estilo.id}">
+              <img src="${estilo.img}" onerror="this.src='https://placehold.co/400x600?text=${estilo.name}'">
+              <div class="estilo-card-caption">
+                <h3>${estilo.name}</h3>
+                <p>${estilo.desc}</p>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    `;
+    
+    const estilosCarousel = document.getElementById('estilosCarouselWrapper');
+    const estiloCards = document.querySelectorAll('.estilo-card');
+    
+    function applyEstilosAccordion(card, isHovering) {
+      if (isMobile) return;
+      const cards = document.querySelectorAll('.estilo-card');
+      const index = Array.from(cards).indexOf(card);
+      cards.forEach((c, i) => {
+        c.classList.remove('push-left-estilo', 'push-right-estilo');
+        if (isHovering && i < index) c.classList.add('push-left-estilo');
+        else if (isHovering && i > index) c.classList.add('push-right-estilo');
+      });
+    }
+    
+    if (estilosCarousel) {
+      estilosCarousel.addEventListener('wheel', (e) => { e.preventDefault(); estilosCarousel.scrollLeft += e.deltaY; }, { passive: false });
+    }
+    
+    estiloCards.forEach(card => {
+      card.addEventListener('mouseenter', () => { if (!isMobile) applyEstilosAccordion(card, true); });
+      card.addEventListener('mouseleave', () => { if (!isMobile) applyEstilosAccordion(card, false); });
+      card.addEventListener('click', () => openStyleDetail(card.getAttribute('data-style'), 'intro'));
+    });
+  }
+
+  function openTecnicaDetail() {
+    navigationStack = [];
+    let currentStyle = 'neoclasico';
+    let isAnimating = false;
+    
+    function getStyleImages(style) {
+      return {
+        isometrico: `assets/images/tecnica/isometrico-${style}.png`,
+        planta: `assets/images/tecnica/planta-${style}.png`
+      };
+    }
+    
+    function renderTecnica() {
+      const images = getStyleImages(currentStyle);
+      elements.detailContent.innerHTML = `
+        <div class="detail-header"><h2>Documentación Técnica</h2></div>
+        <div class="detail-desc">Planos, isométricos y detalles constructivos que definen la excelencia de AUREA. Cada estilo arquitectónico presenta su propia documentación técnica completa.</div>
+        <div class="tecnica-layout">
+          <div class="tecnica-izquierda">
+            <div class="tecnica-estilos-carousel" id="tecnicaEstilosCarousel">
+              <div class="tecnica-estilos-track">
+                ${estilosLista.map(estilo => `
+                  <div class="tecnica-estilo-card ${estilo.id === currentStyle ? 'active' : ''}" data-style="${estilo.id}">
+                    <img src="${estilo.img}" onerror="this.src='https://placehold.co/400x600?text=${estilo.name}'">
+                    <div class="tecnica-estilo-caption">
+                      <h4>${estilo.name}</h4>
+                      <p>${estilo.desc}</p>
+                    </div>
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+          </div>
+          <div class="tecnica-derecha">
+            <div class="tecnica-scroll-container" id="tecnicaScrollContainer">
+              <div class="tecnica-scroll-content" id="tecnicaScrollContent">
+                <div class="tecnica-imagen isometrico">
+                  <h4><i class="fas fa-cube"></i> Vista Isométrica</h4>
+                  <img id="isometricoImg" src="${images.isometrico}" onerror="this.src='https://placehold.co/800x600?text=Isometrico'">
+                </div>
+                <div class="tecnica-imagen planta">
+                  <h4><i class="fas fa-drafting-compass"></i> Planta Amueblada</h4>
+                  <img id="plantaImg" src="${images.planta}" onerror="this.src='https://placehold.co/800x600?text=Planta'">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+      
+      const tecCarousel = document.getElementById('tecnicaEstilosCarousel');
+      if (tecCarousel) {
+        tecCarousel.addEventListener('wheel', (e) => { e.preventDefault(); tecCarousel.scrollLeft += e.deltaY; }, { passive: false });
+      }
+      
+      const styleCards = document.querySelectorAll('.tecnica-estilo-card');
+      styleCards.forEach(card => {
+        card.addEventListener('click', () => {
+          if (isAnimating) return;
+          const newStyle = card.getAttribute('data-style');
+          if (newStyle === currentStyle) return;
+          
+          isAnimating = true;
+          styleCards.forEach(c => c.classList.remove('active'));
+          card.classList.add('active');
+          
+          const newImages = getStyleImages(newStyle);
+          const isometricoImg = document.getElementById('isometricoImg');
+          const plantaImg = document.getElementById('plantaImg');
+          
+          if (isometricoImg) isometricoImg.src = newImages.isometrico;
+          if (plantaImg) plantaImg.src = newImages.planta;
+          
+          currentStyle = newStyle;
+          setTimeout(() => { isAnimating = false; }, 300);
+        });
+      });
+    }
+    renderTecnica();
+  }
+
+  function openContactoDetail() {
+    navigationStack = [];
+    elements.detailContent.innerHTML = `
+      <div class="detail-header"><h2>Oficina Central</h2></div>
+      <div class="detail-desc">Visítanos en nuestras oficinas o contáctanos para más información.<br><br>📍 Av. Siempre Viva 123, Piso 10<br>📞 +54 11 1234-5678<br>✉️ info@aurea.com</div>
+      <div class="detail-gallery"><img src="assets/images/contacto/oficina.jpg" onerror="this.src='https://placehold.co/800x600?text=Oficina'"><img src="assets/images/contacto/equipo.jpg" onerror="this.src='https://placehold.co/800x600?text=Equipo'"></div>
+    `;
+  }
+
+  function openDetail(id) {
+    if (!isExperienceActive) return;
+    elements.slideTitle.classList.add('hide-title');
+    elements.carouselWrapper.classList.add('hiding');
+    elements.instruction.classList.add('hide');
+    setTimeout(() => {
+      if (id === 'proyecto') openProyectoDetail();
+      else if (id === 'programa') openProgramaDetail();
+      else if (id === 'estilos') openEstilosDetail();
+      else if (id === 'tecnica') openTecnicaDetail();
+      else if (id === 'contacto') openContactoDetail();
+      elements.detailScreen.classList.add('active');
+      elements.backCorner.classList.add('visible');
+    }, 500);
+  }
+
+  function goBack() {
+    if (navigationStack.length > 0) {
+      const last = navigationStack.pop();
+      if (last.type === 'image') openStyleDetail(last.styleId, last.section);
+      else if (last.type === 'style') openEstilosDetail();
+      else closeDetail();
+    } else {
+      closeDetail();
+    }
+    showTitle();
+  }
+
+  function closeDetail() {
+    elements.detailScreen.classList.remove('active');
+    elements.carouselWrapper.classList.remove('hiding');
+    elements.slideTitle.classList.remove('hide-title');
+    elements.instruction.classList.remove('hide');
+    elements.backCorner.classList.remove('visible');
+    setTimeout(() => updateSelectedByScroll(), 100);
+  }
+
+  function showTitle() { elements.slideTitle.classList.remove('hide-title'); }
+
+  function rebuildCarousel() {
+    if (!elements.carouselTrack) return;
+    elements.carouselTrack.innerHTML = '';
+    
+    secciones.forEach((sec) => {
+      const card = document.createElement('div');
+      card.className = 'carousel-card';
+      card.setAttribute('data-id', sec.id);
+      card.setAttribute('data-title', sec.titulo);
+      
+      const img = document.createElement('img');
+      img.src = sec.thumb;
+      img.alt = sec.nombre;
+      img.loading = 'lazy';
+      img.onerror = () => { img.src = 'https://placehold.co/400x500?text=' + sec.nombre; };
+      card.appendChild(img);
+      
+      if (isMobile) {
+        const infoDiv = document.createElement('div');
+        infoDiv.className = 'card-mobile-info';
+        infoDiv.innerHTML = `<h3>${escapeHtml(sec.nombre)}</h3><p>${escapeHtml(sec.titulo)}</p>`;
+        card.appendChild(infoDiv);
+      }
+      
+      if (!isMobile) {
+        card.addEventListener('mouseenter', () => {
+          if (isExperienceActive) {
+            const title = card.getAttribute('data-title');
+            if (title && elements.currentTitle) elements.currentTitle.innerText = title;
+            applyAccordionEffect(card, true);
+            activeHoverCard = card;
+          }
+        });
+        card.addEventListener('mouseleave', () => {
+          if (isExperienceActive) {
+            const selectedCard = document.querySelector('.carousel-card.selected');
+            if (selectedCard && elements.currentTitle) {
+              const selectedTitle = selectedCard.getAttribute('data-title');
+              if (selectedTitle) elements.currentTitle.innerText = selectedTitle;
+            } else {
+              if (elements.currentTitle) elements.currentTitle.innerText = 'COLECCIÓN PRINCIPAL';
+            }
+            applyAccordionEffect(card, false);
+            activeHoverCard = null;
+          }
+        });
+      }
+      
+      card.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (!isExperienceActive) return;
+        document.querySelectorAll('.carousel-card').forEach(c => c.classList.remove('selected'));
+        card.classList.add('selected');
+        currentSelectedId = card.dataset.id;
+        if (elements.currentTitle) elements.currentTitle.innerText = card.getAttribute('data-title');
+        openDetail(card.dataset.id);
+      });
+      
+      elements.carouselTrack.appendChild(card);
+    });
+    
+    if (elements.currentTitle) elements.currentTitle.innerText = 'COLECCIÓN PRINCIPAL';
+  }
+
+  function setupScrollDetection() {
+    if (!elements.carouselWrapper) return;
+    let ticking = false;
+    elements.carouselWrapper.addEventListener('scroll', () => {
+      if (!ticking) {
+        requestAnimationFrame(() => { updateSelectedByScroll(); ticking = false; });
+        ticking = true;
+      }
+    });
+  }
+
+  function startExperience() {
+    if (isTransitioning || isExperienceActive) return;
+    isTransitioning = true;
+    elements.welcome.classList.add('hide');
+    elements.heroBg.classList.add('desenfocado');
+    elements.globalOverlay.classList.add('visible');
+    
+    setTimeout(() => {
+      elements.carouselWrapper.classList.add('visible');
+      if (isMobile && elements.contactMobile) elements.contactMobile.classList.add('visible');
+    }, 500);
+    
+    setTimeout(() => elements.slideTitle.classList.add('visible'), 900);
+    elements.instruction.classList.add('hide');
+    
+    setTimeout(() => {
+      isExperienceActive = true;
+      isTransitioning = false;
+    }, 1600);
+  }
+
+  function resetToWelcome() {
+    if (isTransitioning) return;
+    isTransitioning = true;
+    if (elements.detailScreen.classList.contains('active')) elements.detailScreen.classList.remove('active');
+    if (elements.carouselWrapper) { 
+      if (!isMobile) elements.carouselWrapper.scrollLeft = 0;
+      else elements.carouselWrapper.scrollTop = 0;
+    }
+    isExperienceActive = false;
+    elements.welcome.classList.remove('hide');
+    elements.heroBg.classList.remove('desenfocado');
+    elements.globalOverlay.classList.remove('visible');
+    elements.carouselWrapper.classList.remove('visible');
+    elements.slideTitle.classList.remove('visible');
+    elements.instruction.classList.remove('hide');
+    if (elements.contactMobile) elements.contactMobile.classList.remove('visible');
+    if (elements.currentTitle) elements.currentTitle.innerText = 'COLECCIÓN PRINCIPAL';
+    elements.backCorner.classList.remove('visible');
+    if (!isMobile && activeHoverCard) { applyAccordionEffect(activeHoverCard, false); activeHoverCard = null; }
+    setTimeout(() => { isTransitioning = false; }, 1600);
+  }
+
+  function init() {
+    if (elements.heroBg) { elements.heroBg.classList.remove('desenfocado'); }
+    rebuildCarousel();
+    setupScrollDetection();
+    if (elements.welcome) elements.welcome.addEventListener('click', startExperience);
+    if (elements.cornerLogo) elements.cornerLogo.addEventListener('click', (e) => { e.stopPropagation(); resetToWelcome(); });
+    if (elements.backCorner) elements.backCorner.addEventListener('click', () => goBack());
+    if (elements.contactMobile) elements.contactMobile.addEventListener('click', () => { if (isExperienceActive) openDetail('contacto'); });
+    if (elements.carouselWrapper && !isMobile) {
+      elements.carouselWrapper.addEventListener('wheel', (e) => {
+        if (isExperienceActive) { e.preventDefault(); elements.carouselWrapper.scrollLeft += e.deltaY; }
+      }, { passive: false });
+    }
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+})();
+</script>
+</body>
+</html>
