@@ -97,7 +97,7 @@
   }
 
   .logo-text h1 {
-    font-size: 3.8rem;
+    font-size: 5.7rem;
     font-family: 'Playfair Display', serif;
     font-weight: 700;
     background: linear-gradient(135deg, #F0D87A 0%, #D4AF37 30%, #FFF8E7 50%, #D4AF37 70%, #B8902C 100%);
@@ -110,7 +110,7 @@
   }
   .slogan {
     font-family: 'Playfair Display', serif;
-    font-size: 0.9rem;
+    font-size: 1.8rem;
     letter-spacing: 0.25em;
     color: var(--gold-luminous);
     font-weight: 500;
@@ -120,7 +120,7 @@
   }
   @keyframes shimmer { 0% { background-position: 0% 0%; } 100% { background-position: 200% 0%; } }
 
-  /* ========== TÍTULO FLOTANTE (SLICE 01) ========== */
+  /* ========== TÍTULO FLOTANTE (SLICE 01) - AUMENTADO 100% ========== */
   .slide-title-area {
     position: fixed;
     top: -100px;
@@ -137,7 +137,7 @@
   .current-slide-title {
     display: inline-block;
     font-family: 'Playfair Display', serif;
-    font-size: 0.9rem;
+    font-size: 1.8rem;
     font-weight: 500;
     letter-spacing: 0.25em;
     text-transform: uppercase;
@@ -273,10 +273,10 @@
   /* ========== MÓVIL (max-width: 768px) ========== */
   @media (max-width: 768px) {
     .logo-img { width: 100px; height: 100px; }
-    .logo-text h1 { font-size: 2.2rem; }
-    .slogan { font-size: 0.6rem; letter-spacing: 0.15em; }
+    .logo-text h1 { font-size: 3rem; }
+    .slogan { font-size: 1rem; letter-spacing: 0.15em; }
     .slide-title-area.visible { top: 3rem; }
-    .current-slide-title { font-size: 0.7rem; letter-spacing: 0.2em; }
+    .current-slide-title { font-size: 1.4rem; letter-spacing: 0.2em; }
 
     .carousel-wrapper {
       position: fixed;
@@ -1400,6 +1400,17 @@
   let scrollTimeout = null, activeHoverCard = null;
   let navigationStack = [];
 
+  // Función para obtener el nombre del estilo para los títulos de las vistas isométricas
+  function getStyleDisplayName(styleId) {
+    const names = {
+      'neoclasico': 'Neoclásica',
+      'mediterraneo': 'Mediterránea',
+      'minimalista': 'Minimalista',
+      'internacional': 'Internacional'
+    };
+    return names[styleId] || styleId;
+  }
+
   function escapeHtml(str) { return str.replace(/[&<>]/g, m => m === '&' ? '&amp;' : (m === '<' ? '&lt;' : '&gt;')); }
 
   function applyAccordionEffect(card, isHovering) {
@@ -1856,6 +1867,7 @@
     
     function renderTecnica() {
       const images = getStyleImages(currentStyle);
+      const styleDisplayName = getStyleDisplayName(currentStyle);
       elements.detailContent.innerHTML = `
         <div class="detail-header"><h2>Documentación Técnica</h2></div>
         <div class="detail-desc">Planos, isométricos y detalles constructivos que definen la excelencia de AUREA. Cada estilo arquitectónico presenta su propia documentación técnica completa.</div>
@@ -1878,11 +1890,11 @@
             <div class="tecnica-scroll-container" id="tecnicaScrollContainer">
               <div class="tecnica-scroll-content" id="tecnicaScrollContent">
                 <div class="tecnica-imagen isometrico">
-                  <h4><i class="fas fa-cube"></i> Vista Isométrica</h4>
-                  <img id="isometricoImg" src="${images.isometrico}" onerror="this.src='https://placehold.co/800x600?text=Isometrico'">
+                  <h4>Vista Isométrica ${styleDisplayName}</h4>
+                  <img id="isometricoImg" src="${images.isometrico}" onerror="this.src='https://placehold.co/800x600?text=Vista+Isometrica'">
                 </div>
                 <div class="tecnica-imagen planta">
-                  <h4><i class="fas fa-drafting-compass"></i> Planta Amueblada</h4>
+                  <h4>Planta Amueblada</h4>
                   <img id="plantaImg" src="${images.planta}" onerror="this.src='https://placehold.co/800x600?text=Planta'">
                 </div>
               </div>
@@ -1908,11 +1920,14 @@
           card.classList.add('active');
           
           const newImages = getStyleImages(newStyle);
+          const newStyleDisplayName = getStyleDisplayName(newStyle);
           const isometricoImg = document.getElementById('isometricoImg');
           const plantaImg = document.getElementById('plantaImg');
+          const isometricoTitle = document.querySelector('.tecnica-imagen.isometrico h4');
           
           if (isometricoImg) isometricoImg.src = newImages.isometrico;
           if (plantaImg) plantaImg.src = newImages.planta;
+          if (isometricoTitle) isometricoTitle.textContent = `Vista Isométrica ${newStyleDisplayName}`;
           
           currentStyle = newStyle;
           setTimeout(() => { isAnimating = false; }, 300);
