@@ -11,22 +11,26 @@
 
   :root {
     --gold: #D4AF37;
-    --gold-luminous: #E8C45A;
-    --gold-dark: #B8902C;
+    --gold-luminous: #E0C87A;
+    --gold-dark: #B8962C;
     --card-base-width: 140px;
     --card-hover-width: 280px;
     --card-height: 480px;
-    --cream-bg: #FCFAF5;     /* Fondo general muy suave */
-    --cream-paper: #FFFDF9;   /* Fondo de tarjetas, ligeramente más claro */
-    --text-primary: #5C5A55;  /* Gris cálido principal para la mayoría del texto */
-    --text-secondary: #7A7770; /* Gris más claro para textos secundarios y metadatos */
-    --text-title: #3D3A35;    /* Casi negro suave para títulos, da profundidad sin agresividad */
-    --border-light: #E8E4DB;  /* Bordes sutiles */
+    
+    /* Paleta Soft Luxury / Mood Board */
+    --bg-color: #FCFAF7;        /* Fondo general crema muy claro */
+    --card-bg: #FFFFFF;          /* Tarjetas blancas puras */
+    --text-primary: #2C2A2A;     /* Casi negro para títulos principales */
+    --text-secondary: #6B6B6B;   /* Gris suave para descripciones */
+    --text-label: #9B9B9B;       /* Gris claro para etiquetas estilo "Light Wood & Brass" */
+    --border-color: #EFECE5;     /* Borde sutil */
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.02);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.04);
+    --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.06);
   }
 
-  /* Tipografía principal unificada y suave */
   body { 
-    font-family: 'Cormorant Garamond', serif; 
+    font-family: 'Inter', sans-serif; 
     background: #0A0A0A; 
     overflow: hidden; 
     height: 100vh; 
@@ -120,9 +124,9 @@
     letter-spacing: -0.02em;
   }
   .slogan {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.6rem;
-    letter-spacing: 0.3em;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    letter-spacing: 0.25em;
     color: var(--gold-luminous);
     font-weight: 400;
     text-transform: uppercase;
@@ -148,15 +152,15 @@
   .slide-title-area.visible { top: 1.5rem; opacity: 1; visibility: visible; }
   .current-slide-title {
     display: inline-block;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.4rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
     font-weight: 400;
-    letter-spacing: 0.3em;
+    letter-spacing: 0.2em;
     text-transform: uppercase;
     color: var(--gold-luminous);
     background: rgba(0,0,0,0.4);
     backdrop-filter: blur(8px);
-    padding: 0.3rem 1.8rem;
+    padding: 0.3rem 1.5rem;
     border-radius: 40px;
   }
 
@@ -181,7 +185,7 @@
   }
   .back-corner.visible { opacity: 1; visibility: visible; pointer-events: auto; }
   .back-corner i { color: var(--gold-luminous); font-size: 0.9rem; }
-  .back-corner span { color: #E8E4DB; font-size: 0.8rem; font-family: 'Inter', sans-serif; letter-spacing: 0.05em;}
+  .back-corner span { color: #D1CCC3; font-size: 0.75rem; font-family: 'Inter', sans-serif; letter-spacing: 0.05em;}
 
   .corner-logo {
     position: fixed;
@@ -199,7 +203,7 @@
     transition: 0.3s;
   }
   .corner-logo-img { width: 28px; height: 28px; object-fit: contain; filter: brightness(0) invert(1);}
-  .corner-logo span { font-size: 0.8rem; color: var(--gold-luminous); font-weight: 400; font-family: 'Cormorant Garamond', serif; letter-spacing: 0.1em;}
+  .corner-logo span { font-size: 0.75rem; color: var(--gold-luminous); font-weight: 400; font-family: 'Inter', sans-serif; letter-spacing: 0.1em;}
 
   /* ========== ESCRITORIO ========== */
   @media (min-width: 769px) {
@@ -241,7 +245,7 @@
       cursor: pointer;
       transition: width 0.4s ease, transform 0.4s ease, filter 0.3s ease;
       filter: brightness(0.85) blur(1px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+      box-shadow: var(--shadow-md);
       position: relative;
     }
     .carousel-card::before {
@@ -269,23 +273,23 @@
     .carousel-card.selected {
       width: var(--card-hover-width);
       filter: brightness(1) blur(0px);
-      box-shadow: 0 25px 50px rgba(0,0,0,0.4);
+      box-shadow: var(--shadow-lg);
       z-index: 10;
     }
     .carousel-card.push-left { transform: translateX(-30px); }
     .carousel-card.push-right { transform: translateX(30px); }
     
     .contact-button-mobile { display: none; }
-    .instruction { bottom: 1.5rem; font-size: 0.8rem; }
+    .instruction { bottom: 1.5rem; font-size: 0.75rem; }
   }
 
   /* ========== MÓVIL ========== */
   @media (max-width: 768px) {
     .logo-img { width: 100px; height: 100px; }
     .logo-text h1 { font-size: 3rem; }
-    .slogan { font-size: 1rem; letter-spacing: 0.2em; }
+    .slogan { font-size: 0.7rem; letter-spacing: 0.2em; }
     .slide-title-area.visible { top: 3rem; }
-    .current-slide-title { font-size: 1rem; letter-spacing: 0.2em; padding: 0.2rem 1rem; }
+    .current-slide-title { font-size: 0.7rem; letter-spacing: 0.2em; padding: 0.2rem 1rem; }
 
     .carousel-wrapper {
       position: fixed;
@@ -320,7 +324,7 @@
       overflow: hidden;
       cursor: pointer;
       filter: brightness(0.85) blur(1px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      box-shadow: var(--shadow-sm);
       position: relative;
     }
     .carousel-card::before {
@@ -355,8 +359,8 @@
       border-radius: 0 0 20px 20px;
     }
     .card-mobile-info h3 { 
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 0.9rem;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8rem;
       letter-spacing: 0.1em;
       color: var(--gold-luminous);
       font-weight: 400;
@@ -364,9 +368,9 @@
       margin-bottom: 0.2rem;
     }
     .card-mobile-info p { 
-      font-size: 0.7rem; 
-      color: #D1CCC3;
-      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.65rem; 
+      color: #C4C0B8;
+      font-family: 'Inter', sans-serif;
     }
     
     .contact-button-mobile {
@@ -382,7 +386,7 @@
       justify-content: center;
       z-index: 30;
       cursor: pointer;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      box-shadow: var(--shadow-sm);
       transition: all 0.3s ease;
       opacity: 0;
       visibility: hidden;
@@ -393,14 +397,14 @@
     .instruction { bottom: 0.8rem; font-size: 0.6rem; }
   }
 
-  /* ========== DETALLE GENERAL ========== */
+  /* ========== DETALLE GENERAL - Estilo Mood Board ========== */
   .detail-screen {
     position: fixed;
     top: 0;
     right: 0;
     width: 100%;
     height: 100vh;
-    background: var(--cream-bg);
+    background: var(--bg-color);
     z-index: 100;
     transform: translateX(100%);
     transition: transform 0.5s ease;
@@ -414,20 +418,20 @@
   }
   .detail-header h2 { 
     font-family: 'Cormorant Garamond', serif; 
-    font-size: 2.8rem; 
+    font-size: 2.5rem; 
     font-weight: 400;
-    color: var(--text-title); 
-    border-bottom: 1px solid var(--gold);
+    color: var(--text-primary); 
+    border-bottom: 1px solid var(--border-color);
     display: inline-block;
     padding-bottom: 0.3rem;
     margin-bottom: 1rem;
     letter-spacing: -0.01em;
   }
   .detail-desc { 
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.1rem; 
-    line-height: 1.65; 
-    color: var(--text-primary); 
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem; 
+    line-height: 1.6; 
+    color: var(--text-secondary); 
     background: transparent;
     padding: 0;
     border-radius: 0;
@@ -435,8 +439,8 @@
     max-width: 800px;
   }
   .detail-gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 1rem; }
-  .detail-gallery img { width: 100%; height: 260px; object-fit: cover; border-radius: 8px; cursor: pointer; transition: 0.3s; box-shadow: 0 4px 12px rgba(0,0,0,0.04); }
-  .detail-gallery img:hover { transform: scale(1.01); box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
+  .detail-gallery img { width: 100%; height: 260px; object-fit: cover; border-radius: 16px; cursor: pointer; transition: 0.3s; box-shadow: var(--shadow-sm); }
+  .detail-gallery img:hover { transform: scale(1.01); box-shadow: var(--shadow-md); }
 
   .instruction {
     position: fixed;
@@ -445,10 +449,10 @@
     transform: translateX(-50%);
     z-index: 25;
     background: rgba(0,0,0,0.5);
-    color: #E8E4DB;
+    color: #D1CCC3;
     padding: 0.4rem 1.2rem;
     border-radius: 60px;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     backdrop-filter: blur(8px);
     pointer-events: none;
     white-space: nowrap;
@@ -460,20 +464,20 @@
   .instruction.hide { opacity: 0; visibility: hidden; }
 
   .btn-close {
-    background: rgba(0,0,0,0.6);
-    border: 1px solid var(--gold);
+    background: transparent;
+    border: 1px solid var(--border-color);
     padding: 0.6rem 1.8rem;
     border-radius: 40px;
-    color: var(--text-title);
-    font-weight: 500;
+    color: var(--text-primary);
+    font-weight: 400;
     cursor: pointer;
     transition: 0.3s;
     margin-top: 2rem;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
     letter-spacing: 0.05em;
   }
-  .btn-close:hover { background: var(--gold); color: #1a1a1a; transform: translateY(-2px); border-color: var(--gold);}
+  .btn-close:hover { background: var(--gold); color: white; border-color: var(--gold); transform: translateY(-2px);}
 
   /* ========== SUBNAVEGACIÓN ========== */
   .style-subnav {
@@ -483,16 +487,16 @@
     margin-bottom: 2rem;
     padding-bottom: 0.5rem;
     justify-content: center;
-    border-bottom: 1px solid var(--border-light);
+    border-bottom: 1px solid var(--border-color);
   }
   .style-subnav button {
     background: transparent;
     border: none;
     font-family: 'Inter', sans-serif;
     font-size: 0.7rem;
-    letter-spacing: 0.15em;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--text-secondary);
+    color: var(--text-label);
     padding: 0.5rem 0;
     cursor: pointer;
     transition: 0.3s;
@@ -513,10 +517,10 @@
   }
   .style-intro-text {
     flex: 2;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.15rem;
-    line-height: 1.7;
-    color: var(--text-primary);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    line-height: 1.65;
+    color: var(--text-secondary);
     background: transparent;
     padding: 0;
     border-radius: 0;
@@ -531,31 +535,31 @@
     gap: 1.5rem;
   }
   .material-card {
-    background: var(--cream-paper);
-    border-radius: 8px;
+    background: var(--card-bg);
+    border-radius: 16px;
     overflow: hidden;
     cursor: pointer;
     transition: all 0.4s ease;
-    border: 1px solid var(--border-light);
-    box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
   }
-  .material-card:hover { transform: translateY(-4px); box-shadow: 0 8px 20px rgba(0,0,0,0.05); border-color: var(--gold);}
+  .material-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: var(--gold);}
   .material-card img { width: 100%; height: 140px; object-fit: cover; }
   .material-card p { 
     padding: 0.8rem; 
     text-align: center; 
     color: var(--text-secondary); 
-    font-size: 0.9rem; 
-    font-weight: 500;
+    font-size: 0.8rem; 
+    font-weight: 400;
     font-family: 'Inter', sans-serif;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.03em;
   }
 
   @media (max-width: 768px) {
     .style-intro-wrapper { flex-direction: column; }
     .materials-grid { grid-template-columns: repeat(2, 1fr); }
     .material-card img { height: 100px; }
-    .style-intro-text { font-size: 1rem; padding-left: 1rem; }
+    .style-intro-text { font-size: 0.85rem; padding-left: 1rem; }
   }
 
   /* ========== EXTERIORES/INTERIORES ========== */
@@ -570,18 +574,18 @@
   }
   .exterior-interior-header h2 {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 2rem;
+    font-size: 1.8rem;
     font-weight: 400;
-    color: var(--text-title);
+    color: var(--text-primary);
     border-left: 2px solid var(--gold);
     padding-left: 1rem;
     margin-bottom: 0.5rem;
   }
   .exterior-interior-header p {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
     line-height: 1.6;
-    color: var(--text-secondary);
+    color: var(--text-label);
     padding-left: 1rem;
   }
   .exterior-interior-carousel {
@@ -595,7 +599,7 @@
   }
   .exterior-interior-carousel:active { cursor: grabbing; }
   .exterior-interior-carousel::-webkit-scrollbar { height: 4px; }
-  .exterior-interior-carousel::-webkit-scrollbar-track { background: var(--border-light); border-radius: 10px; }
+  .exterior-interior-carousel::-webkit-scrollbar-track { background: var(--border-color); border-radius: 10px; }
   .exterior-interior-carousel::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 10px; }
   .exterior-interior-track {
     display: flex;
@@ -609,19 +613,21 @@
     flex-shrink: 0;
     width: 280px;
     height: 400px;
-    border-radius: 12px;
+    border-radius: 16px;
     overflow: hidden;
     cursor: pointer;
     transition: all 0.4s ease;
-    filter: brightness(0.98);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+    filter: brightness(0.99);
+    box-shadow: var(--shadow-sm);
     position: relative;
+    border: 1px solid var(--border-color);
   }
   .exterior-interior-card:hover {
     width: 340px;
     filter: brightness(1);
     z-index: 10;
-    box-shadow: 0 12px 28px rgba(0,0,0,0.1);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--gold);
   }
   .exterior-interior-card img {
     width: 100%;
@@ -635,16 +641,16 @@
     bottom: 0;
     left: 0;
     right: 0;
-    background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
+    background: linear-gradient(to top, rgba(0,0,0,0.5), transparent);
     padding: 1rem;
     text-align: center;
     z-index: 2;
   }
   .exterior-interior-card .exterior-interior-caption h4 {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Inter', sans-serif;
     color: var(--gold-luminous);
-    font-size: 1rem;
-    font-weight: 500;
+    font-size: 0.9rem;
+    font-weight: 400;
     letter-spacing: 0.05em;
   }
   .exterior-interior-card.push-left-exterior { transform: translateX(-30px); }
@@ -664,7 +670,7 @@
       transform: translateX(0);
     }
     .exterior-interior-header h2 { font-size: 1.5rem; }
-    .exterior-interior-header p { font-size: 0.85rem; }
+    .exterior-interior-header p { font-size: 0.75rem; }
   }
 
   /* ========== IMAGEN DETALLE ========== */
@@ -672,7 +678,7 @@
     display: flex;
     gap: 2rem;
     min-height: 80vh;
-    background: var(--cream-paper);
+    background: var(--card-bg);
     border-radius: 0;
     overflow: hidden;
     margin: 0;
@@ -684,24 +690,24 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background: var(--cream-bg);
+    background: var(--bg-color);
     border-radius: 0;
     overflow-y: auto;
   }
   .image-text-panel-ratio h2 {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 2rem;
+    font-size: 1.8rem;
     font-weight: 400;
-    color: var(--text-title);
+    color: var(--text-primary);
     border-left: 2px solid var(--gold);
     padding-left: 1rem;
     margin-bottom: 1rem;
   }
   .image-text-panel-ratio p {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.1rem;
-    line-height: 1.7;
-    color: var(--text-primary);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    line-height: 1.65;
+    color: var(--text-secondary);
   }
   .image-panel-ratio {
     flex: 2;
@@ -710,7 +716,7 @@
     align-items: center;
     justify-content: center;
     padding: 2rem;
-    background: var(--cream-paper);
+    background: var(--card-bg);
     min-height: 80vh;
     overflow: auto;
     -webkit-overflow-scrolling: touch;
@@ -720,10 +726,10 @@
     height: auto;
     max-height: 75vh;
     object-fit: contain;
-    border-radius: 8px;
+    border-radius: 16px;
     cursor: zoom-in;
     transition: transform 0.2s ease;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+    box-shadow: var(--shadow-sm);
   }
   .image-panel-ratio img.zoomed {
     cursor: zoom-out;
@@ -761,10 +767,10 @@
       max-height: 50vh;
     }
     .image-text-panel-ratio h2 {
-      font-size: 1.5rem;
+      font-size: 1.3rem;
     }
     .image-text-panel-ratio p {
-      font-size: 1rem;
+      font-size: 0.85rem;
     }
   }
 
@@ -775,7 +781,7 @@
     flex-wrap: wrap;
     align-items: stretch;
     min-height: 80vh;
-    background: var(--cream-bg);
+    background: var(--bg-color);
     margin: 0;
     padding: 0;
   }
@@ -785,55 +791,57 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background: var(--cream-paper);
+    background: var(--card-bg);
     padding: 3rem;
+    border-radius: 24px;
+    box-shadow: var(--shadow-sm);
   }
   .proyecto-texto h2 {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 3rem;
+    font-size: 2.8rem;
     font-weight: 400;
     letter-spacing: -0.01em;
-    color: var(--text-title);
+    color: var(--text-primary);
     margin-bottom: 1rem;
-    border-bottom: 1px solid var(--gold);
+    border-bottom: 1px solid var(--border-color);
     display: inline-block;
     padding-bottom: 0.3rem;
   }
   .proyecto-texto .subtitulo {
     font-family: 'Inter', sans-serif;
     font-size: 0.7rem;
-    letter-spacing: 0.2em;
-    color: var(--text-secondary);
+    letter-spacing: 0.15em;
+    color: var(--text-label);
     text-transform: uppercase;
     margin-bottom: 2rem;
     font-weight: 400;
   }
   .proyecto-texto .descripcion {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.15rem;
-    line-height: 1.7;
-    color: var(--text-primary);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    line-height: 1.65;
+    color: var(--text-secondary);
     margin-bottom: 1.2rem;
     font-weight: 400;
   }
   .proyecto-texto .descripcion strong {
-    font-weight: 600;
-    color: var(--text-title);
+    font-weight: 500;
+    color: var(--text-primary);
   }
   .proyecto-texto .cita {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-style: italic;
-    color: var(--text-secondary);
+    color: var(--text-label);
     margin-top: 1rem;
     padding-top: 1rem;
-    border-top: 1px solid var(--border-light);
+    border-top: 1px solid var(--border-color);
     line-height: 1.6;
   }
   .proyecto-estilos-wrapper {
     flex: 1;
     min-width: 280px;
-    background: var(--cream-bg);
+    background: transparent;
     padding: 2rem;
     display: flex;
     flex-direction: column;
@@ -841,11 +849,11 @@
   }
   .proyecto-estilos-wrapper h3 {
     font-family: 'Inter', sans-serif;
-    font-size: 0.75rem;
-    letter-spacing: 0.2em;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
     text-transform: uppercase;
-    color: var(--text-secondary);
-    margin-bottom: 1.5rem;
+    color: var(--text-label);
+    margin-bottom: 1rem;
     text-align: center;
     font-weight: 400;
   }
@@ -854,29 +862,29 @@
     gap: 1.5rem;
     overflow-x: auto;
     scroll-behavior: smooth;
-    padding: 1rem 0.5rem;
+    padding: 0.5rem 0.5rem;
   }
   .proyecto-estilos-carousel::-webkit-scrollbar { height: 4px; }
-  .proyecto-estilos-carousel::-webkit-scrollbar-track { background: var(--border-light); border-radius: 10px; }
+  .proyecto-estilos-carousel::-webkit-scrollbar-track { background: var(--border-color); border-radius: 10px; }
   .proyecto-estilos-carousel::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 10px; }
   .proyecto-estilo-card {
     flex-shrink: 0;
     width: 180px;
-    height: 420px;
-    border-radius: 12px;
+    height: 400px;
+    border-radius: 16px;
     overflow: hidden;
     cursor: pointer;
     transition: all 0.4s ease;
-    filter: brightness(0.98);
+    filter: brightness(0.99);
     position: relative;
-    border: 1px solid var(--border-light);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
   }
   .proyecto-estilo-card:hover {
     width: 240px;
     filter: brightness(1);
     z-index: 10;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    box-shadow: var(--shadow-lg);
     border-color: var(--gold);
   }
   .proyecto-estilo-card img { width: 100%; height: 100%; object-fit: cover; }
@@ -885,32 +893,32 @@
     bottom: 0;
     left: 0;
     right: 0;
-    background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
+    background: linear-gradient(to top, rgba(0,0,0,0.5), transparent);
     padding: 1rem;
     text-align: center;
   }
   .proyecto-estilo-caption h4 { 
-    font-family: 'Cormorant Garamond', serif; 
+    font-family: 'Inter', sans-serif; 
     color: var(--gold-luminous); 
-    font-size: 1rem;
-    font-weight: 500;
+    font-size: 0.9rem;
+    font-weight: 400;
     letter-spacing: 0.05em;
   }
   .proyecto-estilo-caption p { 
-    font-size: 0.7rem; 
-    color: #D1CCC3;
-    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.65rem; 
+    color: #C4C0B8;
+    font-family: 'Inter', sans-serif;
   }
 
   @media (max-width: 768px) {
     .proyecto-layout { flex-direction: column; min-height: auto; }
-    .proyecto-texto { padding: 2rem; text-align: left; }
-    .proyecto-texto h2 { font-size: 2.2rem; }
-    .proyecto-texto .descripcion { font-size: 1rem; }
-    .proyecto-texto .cita { font-size: 1rem; }
-    .proyecto-estilos-wrapper { padding: 1.5rem; }
-    .proyecto-estilo-card { width: 150px; height: 320px; }
-    .proyecto-estilo-card:hover { width: 150px; transform: scale(1.02); }
+    .proyecto-texto { padding: 1.5rem; text-align: left; border-radius: 20px; }
+    .proyecto-texto h2 { font-size: 2rem; }
+    .proyecto-texto .descripcion { font-size: 0.85rem; }
+    .proyecto-texto .cita { font-size: 0.9rem; }
+    .proyecto-estilos-wrapper { padding: 1rem; }
+    .proyecto-estilo-card { width: 140px; height: 300px; }
+    .proyecto-estilo-card:hover { width: 140px; transform: scale(1.02); }
   }
 
   /* ========== PROGRAMA ========== */
@@ -930,18 +938,18 @@
   }
   .programa-header h2 {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 2.5rem;
+    font-size: 2.2rem;
     font-weight: 400;
-    color: var(--text-title);
+    color: var(--text-primary);
     margin-bottom: 0.5rem;
     border-left: 2px solid var(--gold);
     padding-left: 1rem;
   }
   .programa-header p {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.1rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
     line-height: 1.65;
-    color: var(--text-primary);
+    color: var(--text-secondary);
     padding-left: 1rem;
     max-width: 700px;
   }
@@ -956,7 +964,7 @@
   }
   .programa-horizontal-carousel:active { cursor: grabbing; }
   .programa-horizontal-carousel::-webkit-scrollbar { height: 4px; }
-  .programa-horizontal-carousel::-webkit-scrollbar-track { background: var(--border-light); border-radius: 10px; }
+  .programa-horizontal-carousel::-webkit-scrollbar-track { background: var(--border-color); border-radius: 10px; }
   .programa-horizontal-carousel::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 10px; }
 
   .programa-horizontal-track {
@@ -968,21 +976,21 @@
   .programa-horizontal-card {
     flex-shrink: 0;
     width: 200px;
-    height: 400px;
-    border-radius: 12px;
+    height: 380px;
+    border-radius: 16px;
     overflow: hidden;
     cursor: pointer;
     transition: all 0.3s ease;
-    filter: brightness(0.98);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+    filter: brightness(0.99);
+    box-shadow: var(--shadow-sm);
     position: relative;
-    border: 1px solid var(--border-light);
+    border: 1px solid var(--border-color);
   }
   .programa-horizontal-card:hover {
     width: 260px;
     filter: brightness(1);
     z-index: 10;
-    box-shadow: 0 12px 28px rgba(0,0,0,0.08);
+    box-shadow: var(--shadow-lg);
     border-color: var(--gold);
   }
   .programa-horizontal-card img {
@@ -997,22 +1005,22 @@
     bottom: 0;
     left: 0;
     right: 0;
-    background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
+    background: linear-gradient(to top, rgba(0,0,0,0.5), transparent);
     padding: 1rem;
     text-align: center;
     z-index: 2;
   }
   .programa-horizontal-card .programa-horizontal-caption h3 {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Inter', sans-serif;
     color: var(--gold-luminous);
-    font-size: 1rem;
+    font-size: 0.9rem;
     margin-bottom: 0.3rem;
-    font-weight: 500;
+    font-weight: 400;
   }
   .programa-horizontal-card .programa-horizontal-caption p {
-    font-size: 0.75rem;
-    color: #D1CCC3;
-    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.7rem;
+    color: #C4C0B8;
+    font-family: 'Inter', sans-serif;
   }
   .programa-horizontal-card.push-left-programa { transform: translateX(-15px); }
   .programa-horizontal-card.push-right-programa { transform: translateX(15px); }
@@ -1020,7 +1028,7 @@
   @media (max-width: 768px) {
     .programa-horizontal-card {
       width: 160px;
-      height: 320px;
+      height: 300px;
     }
     .programa-horizontal-card:hover {
       width: 160px;
@@ -1030,8 +1038,8 @@
     .programa-horizontal-card.push-right-programa {
       transform: translateX(0);
     }
-    .programa-header h2 { font-size: 1.8rem; }
-    .programa-header p { font-size: 0.95rem; }
+    .programa-header h2 { font-size: 1.5rem; }
+    .programa-header p { font-size: 0.8rem; }
   }
 
   /* ========== ESTILOS CARRUSEL ========== */
@@ -1047,7 +1055,7 @@
   }
   .estilos-carousel-wrapper:active { cursor: grabbing; }
   .estilos-carousel-wrapper::-webkit-scrollbar { height: 4px; }
-  .estilos-carousel-wrapper::-webkit-scrollbar-track { background: var(--border-light); border-radius: 10px; }
+  .estilos-carousel-wrapper::-webkit-scrollbar-track { background: var(--border-color); border-radius: 10px; }
   .estilos-carousel-wrapper::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 10px; }
 
   .estilos-carousel-track {
@@ -1061,21 +1069,21 @@
   .estilo-card {
     flex-shrink: 0;
     width: 240px;
-    height: 540px;
-    border-radius: 12px;
+    height: 520px;
+    border-radius: 16px;
     overflow: hidden;
     cursor: pointer;
     transition: width 0.4s ease, transform 0.4s ease, filter 0.3s ease;
-    filter: brightness(0.98);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+    filter: brightness(0.99);
+    box-shadow: var(--shadow-sm);
     position: relative;
-    border: 1px solid var(--border-light);
+    border: 1px solid var(--border-color);
   }
   .estilo-card:hover {
     width: 320px;
     filter: brightness(1);
     z-index: 10;
-    box-shadow: 0 12px 28px rgba(0,0,0,0.08);
+    box-shadow: var(--shadow-lg);
     border-color: var(--gold);
   }
   .estilo-card img {
@@ -1090,21 +1098,21 @@
     bottom: 0;
     left: 0;
     right: 0;
-    background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
+    background: linear-gradient(to top, rgba(0,0,0,0.5), transparent);
     padding: 1.5rem;
     text-align: center;
     z-index: 2;
   }
   .estilo-card-caption h3 {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Inter', sans-serif;
     color: var(--gold-luminous);
-    font-size: 1.3rem;
-    font-weight: 500;
+    font-size: 1.1rem;
+    font-weight: 400;
   }
   .estilo-card-caption p {
-    font-size: 0.8rem;
-    color: #D1CCC3;
-    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.7rem;
+    color: #C4C0B8;
+    font-family: 'Inter', sans-serif;
   }
   .estilo-card.push-left-estilo { transform: translateX(-30px); }
   .estilo-card.push-right-estilo { transform: translateX(30px); }
@@ -1112,7 +1120,7 @@
   @media (max-width: 768px) {
     .estilos-carousel-wrapper { min-height: 60vh; }
     .estilos-carousel-track { padding: 0 16px; gap: 12px; }
-    .estilo-card { width: 180px; height: 420px; }
+    .estilo-card { width: 180px; height: 400px; }
     .estilo-card:hover { width: 180px; transform: scale(1.02); }
     .estilo-card.push-left-estilo,
     .estilo-card.push-right-estilo { transform: translateX(0); }
@@ -1153,7 +1161,7 @@
   }
   .tecnica-estilos-carousel:active { cursor: grabbing; }
   .tecnica-estilos-carousel::-webkit-scrollbar { height: 4px; }
-  .tecnica-estilos-carousel::-webkit-scrollbar-track { background: var(--border-light); border-radius: 10px; }
+  .tecnica-estilos-carousel::-webkit-scrollbar-track { background: var(--border-color); border-radius: 10px; }
   .tecnica-estilos-carousel::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 10px; }
 
   .tecnica-estilos-track {
@@ -1165,34 +1173,34 @@
   .tecnica-estilo-card {
     flex-shrink: 0;
     width: 160px;
-    height: 400px;
-    border-radius: 12px;
+    height: 380px;
+    border-radius: 16px;
     overflow: hidden;
     cursor: pointer;
     transition: width 0.4s ease, transform 0.4s ease, filter 0.3s ease;
-    filter: brightness(0.98);
+    filter: brightness(0.99);
     position: relative;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.04);
-    border: 1px solid var(--border-light);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border-color);
   }
-  .tecnica-estilo-card:hover { width: 240px; filter: brightness(1); z-index: 10; box-shadow: 0 12px 28px rgba(0,0,0,0.08); border-color: var(--gold);}
-  .tecnica-estilo-card.active { width: 240px; filter: brightness(1); border: 1px solid var(--gold); box-shadow: 0 8px 20px rgba(0,0,0,0.05);}
+  .tecnica-estilo-card:hover { width: 240px; filter: brightness(1); z-index: 10; box-shadow: var(--shadow-lg); border-color: var(--gold);}
+  .tecnica-estilo-card.active { width: 240px; filter: brightness(1); border: 1px solid var(--gold); box-shadow: var(--shadow-md);}
   .tecnica-estilo-card img { width: 100%; height: 100%; object-fit: cover; }
   .tecnica-estilo-caption {
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
-    background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
+    background: linear-gradient(to top, rgba(0,0,0,0.5), transparent);
     padding: 0.8rem;
     text-align: center;
     z-index: 2;
   }
   .tecnica-estilo-caption h4 { 
     color: var(--gold-luminous); 
-    font-size: 0.9rem;
-    font-family: 'Cormorant Garamond', serif;
-    font-weight: 500;
+    font-size: 0.85rem;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
   }
 
   .tecnica-scroll-container {
@@ -1205,7 +1213,7 @@
     margin-top: 1rem;
   }
   .tecnica-scroll-container::-webkit-scrollbar { width: 4px; }
-  .tecnica-scroll-container::-webkit-scrollbar-track { background: var(--border-light); border-radius: 10px; }
+  .tecnica-scroll-container::-webkit-scrollbar-track { background: var(--border-color); border-radius: 10px; }
   .tecnica-scroll-container::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 10px; }
 
   .tecnica-scroll-content {
@@ -1216,46 +1224,47 @@
   }
 
   .tecnica-imagen {
-    background: var(--cream-paper);
-    border-radius: 12px;
+    background: var(--card-bg);
+    border-radius: 16px;
     overflow: hidden;
     padding: 1rem;
     width: 100%;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.02);
-    border: 1px solid var(--border-light);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border-color);
   }
   .tecnica-imagen h4 {
-    color: var(--text-title);
+    color: var(--text-primary);
     margin-bottom: 0.75rem;
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Inter', sans-serif;
     text-align: center;
-    font-weight: 500;
+    font-weight: 400;
     letter-spacing: 0.05em;
-    font-size: 1.1rem;
+    font-size: 0.9rem;
   }
   .tecnica-imagen img {
     width: 100%;
     height: auto;
     object-fit: contain;
-    border-radius: 4px;
+    border-radius: 8px;
   }
 
   /* ========== CONTACTO ========== */
   .info-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2rem; margin-top: 2rem; }
-  .info-card { background: var(--cream-paper); border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.02); transition: transform 0.3s ease; border: 1px solid var(--border-light);}
-  .info-card:hover { transform: translateY(-4px); box-shadow: 0 8px 20px rgba(0,0,0,0.05); border-color: var(--gold);}
+  .info-card { background: var(--card-bg); border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-sm); transition: transform 0.3s ease; border: 1px solid var(--border-color);}
+  .info-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: var(--gold);}
   .info-card img { width: 100%; height: 220px; object-fit: cover; }
   .info-card-content { padding: 1.5rem; text-align: center; }
   .info-card-content h4 { 
-    color: var(--text-title); 
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.2rem;
+    color: var(--text-primary); 
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
     font-weight: 500;
     margin-bottom: 0.5rem;
+    letter-spacing: 0.05em;
   }
   .info-card-content p {
     font-family: 'Inter', sans-serif;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     color: var(--text-secondary);
     font-weight: 300;
   }
@@ -1278,11 +1287,11 @@
 (function() {
   const isMobile = window.innerWidth <= 768;
   
-  // DATOS DE ESTILOS (Textos con tono suave)
+  // DATOS DE ESTILOS (Textos con tono suave - estilo etiquetas)
   const styleData = {
     neoclasico: {
       name: 'Neoclásico Contemporáneo',
-      introText: 'La proporción clásica, reinterpretada. Simetría, estucos suaves bajo la luz del atardecer. Materiales nobles –bronce, caliza, granito– dialogan con un jardín geométrico de boj recortado y rosales. Elegancia serena, calma con oficio.',
+      introText: 'Simetría, estucos suaves bajo la luz del atardecer. Materiales nobles –bronce, caliza, granito– dialogan con un jardín geométrico de boj recortado y rosales.',
       materials: [
         { name: 'Bronce', img: 'assets/images/estilos/neoclasico/intro/bronce.png' },
         { name: 'Caliza', img: 'assets/images/estilos/neoclasico/intro/caliza.png' },
@@ -1290,25 +1299,25 @@
         { name: 'Granito', img: 'assets/images/estilos/neoclasico/intro/granito.png' }
       ],
       exteriores: [
-        { img: 'assets/images/estilos/neoclasico/exteriores/01-vista-panoramica.png', title: 'Vista Panorámica', desc: 'El horizonte se funde con el jardín geométrico. Cipreses alineados como centinelas enmarcan la silueta de la casa. Una imagen de calma y orden atemporal.' },
-        { img: 'assets/images/estilos/neoclasico/exteriores/02-fachada-principal.png', title: 'Fachada Principal', desc: 'La simetría ordena los vanos. El acceso jerarquizado y los rosales trepadores abrazan las paredes. El camino de grava cruje bajo los pies.' },
-        { img: 'assets/images/estilos/neoclasico/exteriores/03-acceso-principal.png', title: 'Acceso Principal', desc: 'Puerta de doble hoja en madera noble. Jardineras de boj guían la mirada. Un banco de piedra invita a detenerse antes de entrar.' },
-        { img: 'assets/images/estilos/neoclasico/exteriores/04-jardin-privado.png', title: 'Jardín Privado', desc: 'Piscina de borde infinito. Deck de madera y glorieta con glicinas. El aroma a rosas flota en el aire. Un jardín para pasear, leer y vivir.' },
-        { img: 'assets/images/estilos/neoclasico/exteriores/05-contrafachada.png', title: 'Contrafachada', desc: 'Grandes ventanales invitan al exterior. La piscina se funde con el horizonte. La cochera-quincho espera los asados de fin de semana.' }
+        { img: 'assets/images/estilos/neoclasico/exteriores/01-vista-panoramica.png', title: 'Vista Panorámica', desc: 'El horizonte se funde con el jardín geométrico. Cipreses alineados como centinelas enmarcan la silueta de la casa.' },
+        { img: 'assets/images/estilos/neoclasico/exteriores/02-fachada-principal.png', title: 'Fachada Principal', desc: 'La simetría ordena los vanos. El acceso jerarquizado y los rosales trepadores abrazan las paredes.' },
+        { img: 'assets/images/estilos/neoclasico/exteriores/03-acceso-principal.png', title: 'Acceso Principal', desc: 'Puerta de doble hoja en madera noble. Jardineras de boj guían la mirada. Un banco de piedra invita a detenerse.' },
+        { img: 'assets/images/estilos/neoclasico/exteriores/04-jardin-privado.png', title: 'Jardín Privado', desc: 'Piscina de borde infinito. Deck de madera y glorieta con glicinas. El aroma a rosas flota en el aire.' },
+        { img: 'assets/images/estilos/neoclasico/exteriores/05-contrafachada.png', title: 'Contrafachada', desc: 'Grandes ventanales invitan al exterior. La piscina se funde con el horizonte. La cochera-quincho espera los asados.' }
       ],
       interiores: [
-        { img: 'assets/images/estilos/neoclasico/interiores/01-recibidor.png', title: 'Recibidor', desc: 'Doble altura y araña de bronce. Luz cenital que baña el espacio. El mármol en el piso refleja la calidez de la madera. Un recibidor que abraza.' },
-        { img: 'assets/images/estilos/neoclasico/interiores/02-sala-estar.png', title: 'Sala de Estar', desc: 'Ventanales que abrazan el paisaje. El horizonte entra, la luz se derrama. Un living flotante sobre la pampa para recibir y conversar.' },
-        { img: 'assets/images/estilos/neoclasico/interiores/03-comedor.png', title: 'Comedor', desc: 'Mesa larga para reunir. Lámpara de bronce, manteles de lino. Un comedor que invita a quedarse y celebrar.' },
-        { img: 'assets/images/estilos/neoclasico/interiores/04-dormitorio-principal.png', title: 'Dormitorio Principal', desc: 'La cama mira al jardín. Vestidor y baño abierto: ducha escocesa y lavabo doble. WC segmentado. Intimidad como amplitud.' },
-        { img: 'assets/images/estilos/neoclasico/interiores/05-sanitario.png', title: 'Baño', desc: 'Ducha escocesa que envuelve. Lluvia y chorros laterales. Piso de mármol travertino, desagüe lineal. Una ducha abierta, como entrar a la lluvia.' },
-        { img: 'assets/images/estilos/neoclasico/interiores/06-vestidor.png', title: 'Vestidor', desc: 'Walk-in closet luminoso. Estantes de madera, cajones forrados en tela. Un lugar para empezar el día con orden y belleza.' },
-        { img: 'assets/images/estilos/neoclasico/interiores/07-dormitorio.png', title: 'Dormitorio Secundario', desc: 'Dos dormitorios en suite. Misma jerarquía. Baño privado con ducha escocesa. Espacios pensados para crecer y quedarse.' }
+        { img: 'assets/images/estilos/neoclasico/interiores/01-recibidor.png', title: 'Recibidor', desc: 'Doble altura y araña de bronce. Luz cenital que baña el espacio. Un recibidor que abraza.' },
+        { img: 'assets/images/estilos/neoclasico/interiores/02-sala-estar.png', title: 'Sala de Estar', desc: 'Ventanales que abrazan el paisaje. El horizonte entra, la luz se derrama. Un living flotante sobre la pampa.' },
+        { img: 'assets/images/estilos/neoclasico/interiores/03-comedor.png', title: 'Comedor', desc: 'Mesa larga para reunir. Lámpara de bronce, manteles de lino. Un comedor que invita a quedarse.' },
+        { img: 'assets/images/estilos/neoclasico/interiores/04-dormitorio-principal.png', title: 'Dormitorio Principal', desc: 'La cama mira al jardín. Vestidor y baño abierto: ducha escocesa y lavabo doble. Intimidad como amplitud.' },
+        { img: 'assets/images/estilos/neoclasico/interiores/05-sanitario.png', title: 'Baño', desc: 'Ducha escocesa que envuelve. Piso de mármol travertino, desagüe lineal. Una ducha abierta.' },
+        { img: 'assets/images/estilos/neoclasico/interiores/06-vestidor.png', title: 'Vestidor', desc: 'Walk-in closet luminoso. Estantes de madera, cajones forrados en tela. Orden y belleza.' },
+        { img: 'assets/images/estilos/neoclasico/interiores/07-dormitorio.png', title: 'Dormitorio Secundario', desc: 'Dos dormitorios en suite. Baño privado con ducha escocesa. Espacios para crecer.' }
       ]
     },
     mediterraneo: {
       name: 'Mediterráneo Contemporáneo',
-      introText: 'Calidez que envuelve. Paredes encaladas, cerámicas artesanales, maderas que huelen a olivo. El jardín abre los brazos con olivos, buganvillas y lavanda. Un estilo que invita a descalzarse y vivir con los sentidos despiertos.',
+      introText: 'Paredes encaladas, cerámicas artesanales, maderas que huelen a olivo. El jardín abre los brazos con olivos, buganvillas y lavanda. Un estilo que invita a descalzarse.',
       materials: [
         { name: 'Cerámica', img: 'assets/images/estilos/mediterraneo/intro/ceramica.png' },
         { name: 'Madera', img: 'assets/images/estilos/mediterraneo/intro/madera.png' },
@@ -1317,24 +1326,24 @@
       ],
       exteriores: [
         { img: 'assets/images/estilos/mediterraneo/exteriores/01-vista-panoramica.png', title: 'Vista Panorámica', desc: 'Casa encalada contra el cielo. Olivos centenarios dibujan sombras. El aroma a azahar y lavanda flota en el aire.' },
-        { img: 'assets/images/estilos/mediterraneo/exteriores/02-fachada-principal.png', title: 'Fachada Principal', desc: 'Paredes blancas que reflejan la luz. Buganvilla trepando. Portal de madera tallada. Una fachada que sonríe.' },
-        { img: 'assets/images/estilos/mediterraneo/exteriores/03-acceso-principal.png', title: 'Acceso Principal', desc: 'Camino de piedra entre macetas de barro. Parra cubriendo la pérgola de entrada. Entrar aquí es entrar a un abrazo.' },
-        { img: 'assets/images/estilos/mediterraneo/exteriores/04-jardin-privado.png', title: 'Jardín Privado', desc: 'Piscina borde infinito. Deck de madera y glorieta de jazmín. Macetas de terracota con lavanda. Un jardín que late.' },
-        { img: 'assets/images/estilos/mediterraneo/exteriores/05-contrafachada.png', title: 'Contrafachada', desc: 'Ventanas que abren la casa al jardín. Piscina reflejando las nubes. Cochera-quincho para el asado del sábado.' }
+        { img: 'assets/images/estilos/mediterraneo/exteriores/02-fachada-principal.png', title: 'Fachada Principal', desc: 'Paredes blancas que reflejan la luz. Buganvilla trepando. Una fachada que sonríe.' },
+        { img: 'assets/images/estilos/mediterraneo/exteriores/03-acceso-principal.png', title: 'Acceso Principal', desc: 'Camino de piedra entre macetas de barro. Parra cubriendo la pérgola. Entrar aquí es un abrazo.' },
+        { img: 'assets/images/estilos/mediterraneo/exteriores/04-jardin-privado.png', title: 'Jardín Privado', desc: 'Piscina borde infinito. Deck de madera y glorieta de jazmín. Un jardín que late.' },
+        { img: 'assets/images/estilos/mediterraneo/exteriores/05-contrafachada.png', title: 'Contrafachada', desc: 'Ventanas que abren la casa al jardín. Piscina reflejando las nubes. Cochera-quincho para el asado.' }
       ],
       interiores: [
-        { img: 'assets/images/estilos/mediterraneo/interiores/01-recibidor.png', title: 'Recibidor', desc: 'Paredes encaladas y piso de terracota. Consola de madera antigua. Luz que entra tamizada. Un recibidor con alma de pueblo.' },
-        { img: 'assets/images/estilos/mediterraneo/interiores/02-sala-estar.png', title: 'Sala de Estar', desc: 'Ventanales abiertos de par en par. La brisa mueve las cortinas de lino. El jardín se vuelve parte de la sala.' },
-        { img: 'assets/images/estilos/mediterraneo/interiores/03-comedor.png', title: 'Comedor', desc: 'Mesa de madera rústica. Vela larga y mantel de lino. Un comedor que sabe a domingo y a sobremesa larga.' },
-        { img: 'assets/images/estilos/mediterraneo/interiores/04-dormitorio-principal.png', title: 'Dormitorio Principal', desc: 'Cama con cabecera de hierro. Vestidor y baño abierto: ducha escocesa y lavabo doble. Un refugio cálido que huele a lavanda.' },
-        { img: 'assets/images/estilos/mediterraneo/interiores/05-sanitario.png', title: 'Baño', desc: 'Ducha escocesa. Piso de piedra natural. Grifería empotrada. Un baño que es un ritual diario de bienestar.' },
-        { img: 'assets/images/estilos/mediterraneo/interiores/06-vestidor.png', title: 'Vestidor', desc: 'Estantes abiertos y cajones de mimbre. Un espejo de cuerpo entero. Elegir la ropa aquí es un placer.' },
-        { img: 'assets/images/estilos/mediterraneo/interiores/07-dormitorio.png', title: 'Dormitorio Secundario', desc: 'Dos dormitorios en suite. Para el matrimonio y los hijos. Cada uno con su ducha y su espacio para crecer.' }
+        { img: 'assets/images/estilos/mediterraneo/interiores/01-recibidor.png', title: 'Recibidor', desc: 'Paredes encaladas y piso de terracota. Luz que entra tamizada. Un recibidor con alma de pueblo.' },
+        { img: 'assets/images/estilos/mediterraneo/interiores/02-sala-estar.png', title: 'Sala de Estar', desc: 'Ventanales abiertos de par en par. La brisa mueve las cortinas de lino. El jardín entra en la sala.' },
+        { img: 'assets/images/estilos/mediterraneo/interiores/03-comedor.png', title: 'Comedor', desc: 'Mesa de madera rústica. Vela larga y mantel de lino. Un comedor que sabe a domingo.' },
+        { img: 'assets/images/estilos/mediterraneo/interiores/04-dormitorio-principal.png', title: 'Dormitorio Principal', desc: 'Cama con cabecera de hierro. Vestidor y baño abierto: ducha escocesa y lavabo doble.' },
+        { img: 'assets/images/estilos/mediterraneo/interiores/05-sanitario.png', title: 'Baño', desc: 'Ducha escocesa. Piso de piedra natural. Un baño que es un ritual diario de bienestar.' },
+        { img: 'assets/images/estilos/mediterraneo/interiores/06-vestidor.png', title: 'Vestidor', desc: 'Estantes abiertos y cajones de mimbre. Elegir la ropa aquí es un placer.' },
+        { img: 'assets/images/estilos/mediterraneo/interiores/07-dormitorio.png', title: 'Dormitorio Secundario', desc: 'Dos dormitorios en suite. Cada uno con su ducha y su espacio para crecer.' }
       ]
     },
     minimalista: {
       name: 'Minimalista Cálido',
-      introText: 'Menos es más, pero con alma. Líneas puras, espacios despejados, luz que se cuela sin obstáculos. Barro cocido, lino, maderas suaves. Para quienes encuentran la belleza en la sencillez y la calma en el orden.',
+      introText: 'Líneas puras, espacios despejados, luz que se cuela sin obstáculos. Barro cocido, lino, maderas suaves. Para quienes encuentran la belleza en la sencillez.',
       materials: [
         { name: 'Barro Cocido', img: 'assets/images/estilos/minimalista/intro/barro-cocido.png' },
         { name: 'Lino', img: 'assets/images/estilos/minimalista/intro/lino.png' },
@@ -1342,25 +1351,25 @@
         { name: 'Piedra', img: 'assets/images/estilos/minimalista/intro/piedra.png' }
       ],
       exteriores: [
-        { img: 'assets/images/estilos/minimalista/exteriores/01-vista-panoramica.png', title: 'Vista Panorámica', desc: 'Un volumen puro sobre la llanura. Líneas horizontales. Un árbol escultural y pastos que se mecen. Calma absoluta.' },
-        { img: 'assets/images/estilos/minimalista/exteriores/02-fachada-principal.png', title: 'Fachada Principal', desc: 'Plano blanco y vano horizontal. Camino de losa flotante. La luz dibuja sombras nítidas. Menos, es más.' },
-        { img: 'assets/images/estilos/minimalista/exteriores/03-acceso-principal.png', title: 'Acceso Principal', desc: 'Puerta maciza sin adornos. Una maceta de hormigón con una suculenta. El acceso es un gesto suficiente.' },
-        { img: 'assets/images/estilos/minimalista/exteriores/04-jardin-privado.png', title: 'Jardín Privado', desc: 'Piscina de borde infinito como centro. Deck de madera y pasto impecable. Un jardín para no hacer nada.' },
-        { img: 'assets/images/estilos/minimalista/exteriores/05-contrafachada.png', title: 'Contrafachada', desc: 'Ventanales corredizos borran el límite. Cochera-quincho como otra caja blanca. Una casa que es pura geometría habitable.' }
+        { img: 'assets/images/estilos/minimalista/exteriores/01-vista-panoramica.png', title: 'Vista Panorámica', desc: 'Un volumen puro sobre la llanura. Un árbol escultural y pastos que se mecen. Calma absoluta.' },
+        { img: 'assets/images/estilos/minimalista/exteriores/02-fachada-principal.png', title: 'Fachada Principal', desc: 'Plano blanco y vano horizontal. La luz dibuja sombras nítidas. Menos, es más.' },
+        { img: 'assets/images/estilos/minimalista/exteriores/03-acceso-principal.png', title: 'Acceso Principal', desc: 'Puerta maciza sin adornos. Una maceta de hormigón con una suculenta. Un gesto suficiente.' },
+        { img: 'assets/images/estilos/minimalista/exteriores/04-jardin-privado.png', title: 'Jardín Privado', desc: 'Piscina de borde infinito. Deck de madera. Un jardín para no hacer nada.' },
+        { img: 'assets/images/estilos/minimalista/exteriores/05-contrafachada.png', title: 'Contrafachada', desc: 'Ventanales corredizos borran el límite. Una casa que es pura geometría habitable.' }
       ],
       interiores: [
-        { img: 'assets/images/estilos/minimalista/interiores/01-recibidor.png', title: 'Recibidor', desc: 'Doble altura y ventanal vertical. Piso de microcemento. Una banca de madera. Nada sobra. La luz es la protagonista.' },
-        { img: 'assets/images/estilos/minimalista/interiores/02-sala-estar.png', title: 'Sala de Estar', desc: 'Ventanal de piso a techo. El jardín entra. Sofá bajo, mesa de madera clara. La belleza está en el vacío.' },
-        { img: 'assets/images/estilos/minimalista/interiores/03-comedor.png', title: 'Comedor', desc: 'Mesa de madera clara y sillas negras. Luz cenital. Comer aquí es un acto sencillo, puro y hermoso.' },
-        { img: 'assets/images/estilos/minimalista/interiores/04-dormitorio-principal.png', title: 'Dormitorio Principal', desc: 'Cama plataforma. Vestidor y baño abierto: ducha escocesa y lavabo doble. Un dormitorio que despeja la mente.' },
-        { img: 'assets/images/estilos/minimalista/interiores/05-sanitario.png', title: 'Baño', desc: 'Ducha escocesa. Piso y paredes de microcemento. Grifería empotrada. Un baño que es una meditación.' },
-        { img: 'assets/images/estilos/minimalista/interiores/06-vestidor.png', title: 'Vestidor', desc: 'Estantes abiertos y cajones ocultos. Luces LED. El orden es belleza, la organización es calma.' },
-        { img: 'assets/images/estilos/minimalista/interiores/07-dormitorio.png', title: 'Dormitorio Secundario', desc: 'Dos dormitorios en suite. Misma jerarquía. Baño privado y ventana al jardín. Calma como bandera.' }
+        { img: 'assets/images/estilos/minimalista/interiores/01-recibidor.png', title: 'Recibidor', desc: 'Doble altura y ventanal vertical. Una banca de madera. Nada sobra. La luz es protagonista.' },
+        { img: 'assets/images/estilos/minimalista/interiores/02-sala-estar.png', title: 'Sala de Estar', desc: 'Ventanal de piso a techo. Sofá bajo, mesa de madera clara. La belleza está en el vacío.' },
+        { img: 'assets/images/estilos/minimalista/interiores/03-comedor.png', title: 'Comedor', desc: 'Mesa de madera clara y sillas negras. Luz cenital. Comer aquí es un acto sencillo.' },
+        { img: 'assets/images/estilos/minimalista/interiores/04-dormitorio-principal.png', title: 'Dormitorio Principal', desc: 'Cama plataforma. Vestidor y baño abierto: ducha escocesa y lavabo doble.' },
+        { img: 'assets/images/estilos/minimalista/interiores/05-sanitario.png', title: 'Baño', desc: 'Ducha escocesa. Piso y paredes de microcemento. Un baño que es una meditación.' },
+        { img: 'assets/images/estilos/minimalista/interiores/06-vestidor.png', title: 'Vestidor', desc: 'Estantes abiertos y cajones ocultos. El orden es belleza.' },
+        { img: 'assets/images/estilos/minimalista/interiores/07-dormitorio.png', title: 'Dormitorio Secundario', desc: 'Dos dormitorios en suite. Baño privado y ventana al jardín. Calma como bandera.' }
       ]
     },
     internacional: {
       name: 'Contemporáneo Internacional',
-      introText: 'Vanguardia funcional. Grandes ventanales que borran el límite. Acero, hormigón visto, vidrio y madera. Jardines verticales y especies autóctonas. Un estilo que se abre al paisaje sin filtros. Para espíritus libres.',
+      introText: 'Grandes ventanales que borran el límite. Acero, hormigón visto, vidrio y madera. Jardines verticales y especies autóctonas. Un estilo sin filtros.',
       materials: [
         { name: 'Acero', img: 'assets/images/estilos/internacional/intro/acero.png' },
         { name: 'Hormigón', img: 'assets/images/estilos/internacional/intro/hormigon-visto.png' },
@@ -1368,45 +1377,45 @@
         { name: 'Vidrio', img: 'assets/images/estilos/internacional/intro/vidrio.png' }
       ],
       exteriores: [
-        { img: 'assets/images/estilos/internacional/exteriores/01-vista-panoramica.png', title: 'Vista Panorámica', desc: 'Una casa que flota. Planos de hormigón y muros cortina de vidrio. Jardines verticales. Pura arquitectura presente.' },
-        { img: 'assets/images/estilos/internacional/exteriores/02-fachada-principal.png', title: 'Fachada Principal', desc: 'Acceso con gran losa voladiza. Vidrio que refleja el cielo. Gramíneas altas. Una fachada audaz y contemporánea.' },
-        { img: 'assets/images/estilos/internacional/exteriores/03-acceso-principal.png', title: 'Acceso Principal', desc: 'Puerta de acero y vidrio deslizante. Jardín vertical como pulmón verde. Un tránsito entre dos mundos.' },
-        { img: 'assets/images/estilos/internacional/exteriores/04-jardin-privado.png', title: 'Terraza', desc: 'Piscina de borde infinito. Deck de ipé. Glorieta de hormigón con techo verde. La casa y el jardín dialogan.' },
-        { img: 'assets/images/estilos/internacional/exteriores/05-contrafachada.png', title: 'Jardín Vertical', desc: 'Una pared viva. Agua que escurre suavemente. Cochera-quincho de hormigón. Un quincho que es galería de arte.' }
+        { img: 'assets/images/estilos/internacional/exteriores/01-vista-panoramica.png', title: 'Vista Panorámica', desc: 'Una casa que flota. Planos de hormigón y muros cortina de vidrio. Jardines verticales.' },
+        { img: 'assets/images/estilos/internacional/exteriores/02-fachada-principal.png', title: 'Fachada Principal', desc: 'Acceso con gran losa voladiza. Vidrio que refleja el cielo. Gramíneas altas.' },
+        { img: 'assets/images/estilos/internacional/exteriores/03-acceso-principal.png', title: 'Acceso Principal', desc: 'Puerta de acero y vidrio deslizante. Jardín vertical como pulmón verde.' },
+        { img: 'assets/images/estilos/internacional/exteriores/04-jardin-privado.png', title: 'Terraza', desc: 'Piscina de borde infinito. Deck de ipé. Glorieta de hormigón con techo verde.' },
+        { img: 'assets/images/estilos/internacional/exteriores/05-contrafachada.png', title: 'Jardín Vertical', desc: 'Una pared viva. Cochera-quincho de hormigón. Un quincho que es galería de arte.' }
       ],
       interiores: [
-        { img: 'assets/images/estilos/internacional/interiores/01-recibidor.png', title: 'Recibidor', desc: 'Doble altura y muro cortina. Jardín vertical visto desde adentro. Piso de hormigón pulido. Un recibidor de energía.' },
-        { img: 'assets/images/estilos/internacional/interiores/02-sala-estar.png', title: 'Sala de Estar', desc: 'Ventanales como muros. El paisaje es el adorno. El living se abre a la terraza. Un lugar para vivir el hoy.' },
-        { img: 'assets/images/estilos/internacional/interiores/03-comedor.png', title: 'Comedor', desc: 'Mesa de acero y vidrio. Lámpara colgante escultórica. Un comedor para celebrar la vida en el presente.' },
-        { img: 'assets/images/estilos/internacional/interiores/04-dormitorio-principal.png', title: 'Dormitorio Principal', desc: 'Cama plataforma mirando al vidrio. Vestidor abierto. Baño con ducha escocesa y lavabo doble. Lujo como amplitud.' },
-        { img: 'assets/images/estilos/internacional/interiores/05-sanitario.png', title: 'Baño', desc: 'Ducha escocesa con techo de vidrio. Piso de piedra natural. Un baño que es un placer cotidiano.' },
-        { img: 'assets/images/estilos/internacional/interiores/06-vestidor.png', title: 'Vestidor', desc: 'Abierto y luminoso. Estantes de madera y acero. Vestirse aquí es un acto de autocuidado.' },
-        { img: 'assets/images/estilos/internacional/interiores/07-dormitorio.png', title: 'Dormitorio Secundario', desc: 'Dos dormitorios en suite. Misma jerarquía. Baño con ducha escocesa. Un espacio para la familia y los sueños.' }
+        { img: 'assets/images/estilos/internacional/interiores/01-recibidor.png', title: 'Recibidor', desc: 'Doble altura y muro cortina. Jardín vertical visto desde adentro. Un recibidor de energía.' },
+        { img: 'assets/images/estilos/internacional/interiores/02-sala-estar.png', title: 'Sala de Estar', desc: 'Ventanales como muros. El paisaje es el adorno. Un lugar para vivir el hoy.' },
+        { img: 'assets/images/estilos/internacional/interiores/03-comedor.png', title: 'Comedor', desc: 'Mesa de acero y vidrio. Lámpara colgante escultórica. Un comedor para celebrar.' },
+        { img: 'assets/images/estilos/internacional/interiores/04-dormitorio-principal.png', title: 'Dormitorio Principal', desc: 'Cama plataforma mirando al vidrio. Baño con ducha escocesa y lavabo doble.' },
+        { img: 'assets/images/estilos/internacional/interiores/05-sanitario.png', title: 'Baño', desc: 'Ducha escocesa con techo de vidrio. Piso de piedra natural.' },
+        { img: 'assets/images/estilos/internacional/interiores/06-vestidor.png', title: 'Vestidor', desc: 'Abierto y luminoso. Estantes de madera y acero.' },
+        { img: 'assets/images/estilos/internacional/interiores/07-dormitorio.png', title: 'Dormitorio Secundario', desc: 'Dos dormitorios en suite. Baño con ducha escocesa.' }
       ]
     }
   };
 
   const programaEtapas = [
-    { id: 1, nombre: 'La llegada al sitio', img: 'assets/images/programa/etapa-1-cocina-comedor-piscina.png', descripcion: 'Etapa 1. Un monoambiente con cocina-comedor, sanitario y lavadero. Afuera, la piscina de borde infinito, el deck y la glorieta. La cochera semicubierta protege los vehículos. Aquí empieza todo.' },
-    { id: 2, nombre: 'Los dormitorios de la noche', img: 'assets/images/programa/etapa-2-dormitorios-suite.png', descripcion: 'Etapa 2. Dos dormitorios en suite, misma jerarquía. Uno para el matrimonio, otro para los hijos. Cada uno con su baño privado y ducha escocesa. La noche es para la familia.' },
-    { id: 3, nombre: 'La fachada y el corazón social', img: 'assets/images/programa/etapa-3-sala-estar-ingreso.png', descripcion: 'Etapa 3. Acceso jerarquizado, recibidor con luz cenital, toilette para invitados. La sala de estar se abre al paisaje. Un lugar para recibir y conversar con el horizonte.' },
-    { id: 4, nombre: 'La suite principal', img: 'assets/images/programa/etapa-4-principal-vestidor.png', descripcion: 'Etapa 4. Dormitorio principal en suite con vestidor. Baño abierto: ducha escocesa y lavabo doble. WC segmentado. Un sillón para leer, una ventana al jardín. La máxima intimidad.' },
-    { id: 5, nombre: 'El quincho-cochera', img: 'assets/images/programa/etapa-5-cochera-doble.png', descripcion: 'Etapa 5. Entre semana protege los vehículos. Los fines de semana se transforma: parrilla, mesas y risas. Un quincho sin paredes donde el asado se hace ritual.' }
+    { id: 1, nombre: 'La llegada al sitio', img: 'assets/images/programa/etapa-1-cocina-comedor-piscina.png', descripcion: 'Etapa 1. Un monoambiente con cocina-comedor, sanitario y lavadero. Afuera, la piscina de borde infinito, el deck y la glorieta. La cochera semicubierta protege los vehículos.' },
+    { id: 2, nombre: 'Los dormitorios de la noche', img: 'assets/images/programa/etapa-2-dormitorios-suite.png', descripcion: 'Etapa 2. Dos dormitorios en suite, misma jerarquía. Uno para el matrimonio, otro para los hijos. Cada uno con su baño privado y ducha escocesa.' },
+    { id: 3, nombre: 'La fachada y el corazón social', img: 'assets/images/programa/etapa-3-sala-estar-ingreso.png', descripcion: 'Etapa 3. Acceso jerarquizado, recibidor con luz cenital, toilette para invitados. La sala de estar se abre al paisaje.' },
+    { id: 4, nombre: 'La suite principal', img: 'assets/images/programa/etapa-4-principal-vestidor.png', descripcion: 'Etapa 4. Dormitorio principal en suite con vestidor. Baño abierto: ducha escocesa y lavabo doble. WC segmentado.' },
+    { id: 5, nombre: 'El quincho-cochera', img: 'assets/images/programa/etapa-5-cochera-doble.png', descripcion: 'Etapa 5. Entre semana protege los vehículos. Los fines de semana se transforma: parrilla, mesas y risas. Un quincho sin paredes.' }
   ];
 
   const estilosLista = [
-    { id: 'neoclasico', name: 'Neoclásico', img: 'assets/images/proyecto/4-estilos/neoclasico.jpg', desc: 'Tradición refinada' },
-    { id: 'mediterraneo', name: 'Mediterráneo', img: 'assets/images/proyecto/4-estilos/mediterraneo.jpg', desc: 'Calidez y nobleza' },
-    { id: 'minimalista', name: 'Minimalista', img: 'assets/images/proyecto/4-estilos/minimalista.jpg', desc: 'Depuración formal' },
-    { id: 'internacional', name: 'Internacional', img: 'assets/images/proyecto/4-estilos/internacional.jpg', desc: 'Vanguardia global' }
+    { id: 'neoclasico', name: 'Neoclásico', img: 'assets/images/proyecto/4-estilos/neoclasico.jpg', desc: 'Bronze · Limestone · Stucco' },
+    { id: 'mediterraneo', name: 'Mediterráneo', img: 'assets/images/proyecto/4-estilos/mediterraneo.jpg', desc: 'Ceramic · Wood · Terracotta' },
+    { id: 'minimalista', name: 'Minimalista', img: 'assets/images/proyecto/4-estilos/minimalista.jpg', desc: 'Clay · Linen · Stone' },
+    { id: 'internacional', name: 'Internacional', img: 'assets/images/proyecto/4-estilos/internacional.jpg', desc: 'Steel · Concrete · Glass' }
   ];
 
   const secciones = [
-    { id: "proyecto", nombre: "PROYECTO", titulo: "El Proyecto", thumb: "assets/images/carrusel/proyecto.jpg" },
-    { id: "programa", nombre: "PROGRAMA", titulo: "El Programa", thumb: "assets/images/carrusel/programa.jpg" },
-    { id: "estilos", nombre: "ESTILOS", titulo: "Estilos", thumb: "assets/images/carrusel/estilos.jpg" },
-    { id: "tecnica", nombre: "TÉCNICA", titulo: "Documentación", thumb: "assets/images/carrusel/tecnica.jpg" },
-    { id: "contacto", nombre: "CONTACTO", titulo: "Contacto", thumb: "assets/images/carrusel/contacto.jpg" }
+    { id: "proyecto", nombre: "PROYECTO", titulo: "The Project", thumb: "assets/images/carrusel/proyecto.jpg" },
+    { id: "programa", nombre: "PROGRAMA", titulo: "The Program", thumb: "assets/images/carrusel/programa.jpg" },
+    { id: "estilos", nombre: "ESTILOS", titulo: "Styles", thumb: "assets/images/carrusel/estilos.jpg" },
+    { id: "tecnica", nombre: "TÉCNICA", titulo: "Technical", thumb: "assets/images/carrusel/tecnica.jpg" },
+    { id: "contacto", nombre: "CONTACTO", titulo: "Contact", thumb: "assets/images/carrusel/contacto.jpg" }
   ];
 
   const elements = {
@@ -1526,7 +1535,7 @@
         <button class="btn-close" id="navNextBtn">Siguiente <i class="fas fa-chevron-right"></i></button>
         <button class="btn-close" id="zoomResetBtn"><i class="fas fa-search-plus"></i> Reset Zoom</button>
       </div>
-      <div id="imageCounter" style="text-align:center; margin-top:0.5rem; font-size:0.8rem; color:var(--text-secondary);">${currentIndex + 1} / ${totalImages}</div>
+      <div id="imageCounter" style="text-align:center; margin-top:0.5rem; font-size:0.7rem; color:var(--text-label);">${currentIndex + 1} / ${totalImages}</div>
     `;
     
     const container = document.getElementById('imageDetailContainer');
@@ -1621,7 +1630,7 @@
     
     const submenuHtml = `
       <div class="style-subnav">
-        <button class="${section === 'intro' ? 'active' : ''}" data-section="intro">INTRODUCCIÓN</button>
+        <button class="${section === 'intro' ? 'active' : ''}" data-section="intro">INTRO</button>
         <button class="${section === 'exteriores' ? 'active' : ''}" data-section="exteriores">EXTERIORES</button>
         <button class="${section === 'interiores' ? 'active' : ''}" data-section="interiores">INTERIORES</button>
       </div>
@@ -1736,9 +1745,9 @@
       <div class="proyecto-layout">
         <div class="proyecto-texto">
           <h2>El Proyecto</h2>
-          <div class="subtitulo">AUREA · La proporción natural del habitar</div>
+          <div class="subtitulo">AUREA · The natural proportion of dwelling</div>
           <div class="descripcion"><strong>AUREA</strong> es la armonía que crece en la llanura. Un programa único que se adapta a tu presente y abraza tu futuro, respetando los volúmenes, las luces y los sonidos de la naturaleza.</div>
-          <div class="descripcion">Una propiedad unifamiliar que puede materializarse en <strong>cuatro estilos arquitectónicos</strong>. Todos comparten la misma esencia, la misma promesa de crecimiento. Cuatro personalidades para una misma casa. ¿Cuál resuena contigo?</div>
+          <div class="descripcion">Una propiedad unifamiliar que puede materializarse en <strong>cuatro estilos arquitectónicos</strong>. Todos comparten la misma esencia, la misma promesa de crecimiento.</div>
           <div class="cita">"AUREA: volúmenes que respiran, luces que acompañan, sonidos que serenan."</div>
         </div>
         <div class="proyecto-estilos-wrapper">
@@ -1892,7 +1901,7 @@
       const styleDisplayName = getStyleDisplayName(currentStyle);
       elements.detailContent.innerHTML = `
         <div class="detail-header"><h2>Documentación Técnica</h2></div>
-        <div class="detail-desc">Un mismo programa, cuatro almas diferentes. La casa crece en cinco etapas armónicas. Cada estilo tiene su propia paleta visual para que percibas sus variantes, pero el sueño es uno solo.</div>
+        <div class="detail-desc">Un mismo programa, cuatro almas diferentes. La casa crece en cinco etapas armónicas.</div>
         <div class="tecnica-layout">
           <div class="tecnica-izquierda">
             <div class="tecnica-estilos-carousel" id="tecnicaEstilosCarousel">
@@ -1912,12 +1921,12 @@
             <div class="tecnica-scroll-container" id="tecnicaScrollContainer">
               <div class="tecnica-scroll-content" id="tecnicaScrollContent">
                 <div class="tecnica-imagen isometrico">
-                  <h4>Vista Isométrica ${styleDisplayName}</h4>
-                  <img id="isometricoImg" src="${images.isometrico}" onerror="this.src='https://placehold.co/800x600?text=Vista+Isometrica'">
+                  <h4>Isometric View</h4>
+                  <img id="isometricoImg" src="${images.isometrico}" onerror="this.src='https://placehold.co/800x600?text=Isometric'">
                 </div>
                 <div class="tecnica-imagen planta">
-                  <h4>Planta Amueblada</h4>
-                  <img id="plantaImg" src="${images.planta}" onerror="this.src='https://placehold.co/800x600?text=Planta'">
+                  <h4>Floor Plan</h4>
+                  <img id="plantaImg" src="${images.planta}" onerror="this.src='https://placehold.co/800x600?text=Plan'">
                 </div>
               </div>
             </div>
@@ -1942,14 +1951,11 @@
           card.classList.add('active');
           
           const newImages = getStyleImages(newStyle);
-          const newStyleDisplayName = getStyleDisplayName(newStyle);
           const isometricoImg = document.getElementById('isometricoImg');
           const plantaImg = document.getElementById('plantaImg');
-          const isometricoTitle = document.querySelector('.tecnica-imagen.isometrico h4');
           
           if (isometricoImg) isometricoImg.src = newImages.isometrico;
           if (plantaImg) plantaImg.src = newImages.planta;
-          if (isometricoTitle) isometricoTitle.textContent = `Vista Isométrica ${newStyleDisplayName}`;
           
           currentStyle = newStyle;
           setTimeout(() => { isAnimating = false; }, 300);
@@ -1980,7 +1986,7 @@
           </div>
         </div>
       </div>
-      <div style="text-align: center; margin-top: 2rem; font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--text-secondary);">
+      <div style="text-align: center; margin-top: 2rem; font-family: 'Inter', sans-serif; font-size: 0.8rem; color: var(--text-label);">
         Construimos más que casas. Construimos un lugar al que quieras volver siempre.
       </div>
     `;
