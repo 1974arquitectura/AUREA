@@ -420,7 +420,6 @@
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    cursor: pointer;
   }
   .fullscreen-image-view img {
     height: 85vh;
@@ -457,6 +456,33 @@
     font-size: 1rem; 
     line-height: 1.5; 
     color: var(--text-secondary); 
+  }
+  .fullscreen-nav {
+    position: absolute;
+    bottom: 2rem;
+    right: 2rem;
+    display: flex;
+    gap: 1rem;
+    z-index: 10;
+  }
+  .fullscreen-nav button {
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--gold);
+    padding: 0.5rem 1rem;
+    border-radius: 40px;
+    color: white;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  .fullscreen-nav button:hover { background: var(--gold); color: #1a1a1a; }
+  .fullscreen-nav button:disabled { opacity: 0.3; cursor: not-allowed; }
+
+  @media (max-width: 768px) {
+    .fullscreen-nav { bottom: 1rem; right: 1rem; }
+    .fullscreen-nav button { padding: 0.3rem 0.8rem; font-size: 0.7rem; }
   }
 
   .exterior-interior-carousel {
@@ -941,6 +967,7 @@
     }
   }
 
+  // Función para el visor de imágenes - CON NAVEGACIÓN CON SCROLL Y GESTOS
   function showFullscreenImage(imagesArray, startIndex, title, description) {
     currentGalleryImages = imagesArray;
     currentGalleryIndex = startIndex;
@@ -951,9 +978,19 @@
       const imgElement = currentFullscreenDiv.querySelector('.fullscreen-img');
       const titleElement = currentFullscreenDiv.querySelector('.fullscreen-title');
       const descElement = currentFullscreenDiv.querySelector('.fullscreen-desc');
+      const prevBtn = currentFullscreenDiv.querySelector('.fullscreen-prev');
+      const nextBtn = currentFullscreenDiv.querySelector('.fullscreen-next');
       if (imgElement) imgElement.src = item.img;
       if (titleElement) titleElement.textContent = item.title || '';
       if (descElement) descElement.textContent = item.desc || '';
+      if (prevBtn) { 
+        prevBtn.disabled = (currentGalleryIndex === 0); 
+        prevBtn.style.opacity = (currentGalleryIndex === 0) ? '0.3' : '1'; 
+      }
+      if (nextBtn) { 
+        nextBtn.disabled = (currentGalleryIndex === currentGalleryImages.length - 1); 
+        nextBtn.style.opacity = (currentGalleryIndex === currentGalleryImages.length - 1) ? '0.3' : '1'; 
+      }
     }
     
     function goPrev() { 
@@ -981,16 +1018,29 @@
         <h2 class="fullscreen-title">${escapeHtml(title)}</h2>
         <p class="fullscreen-desc">${escapeHtml(description)}</p>
       </div>
+      <div class="fullscreen-nav">
+        <button class="fullscreen-prev" ${startIndex === 0 ? 'disabled' : ''}>◀ Anterior</button>
+        <button class="fullscreen-next" ${startIndex === imagesArray.length - 1 ? 'disabled' : ''}>Siguiente ▶</button>
+      </div>
     `;
     document.body.appendChild(currentFullscreenDiv);
     document.body.style.overflow = 'hidden';
     
-    function handleKeyDown(e) {
-      if (e.key === 'ArrowLeft') { goPrev(); }
-      else if (e.key === 'ArrowRight') { goNext(); }
-      else if (e.key === 'Escape') { closeFullscreen(); }
+    const prevBtn = currentFullscreenDiv.querySelector('.fullscreen-prev');
+    const nextBtn = currentFullscreenDiv.querySelector('.fullscreen-next');
+    if (prevBtn) prevBtn.addEventListener('click', goPrev);
+    if (nextBtn) nextBtn.addEventListener('click', goNext);
+    
+    // Navegación con scroll horizontal (rueda del mouse)
+    function handleWheel(e) {
+      if (e.deltaY > 0) {
+        goNext();
+      } else if (e.deltaY < 0) {
+        goPrev();
+      }
     }
     
+    // Navegación con gestos táctiles (swipe)
     let touchStartX = 0;
     let touchEndX = 0;
     
@@ -1001,18 +1051,33 @@
     function handleTouchEnd(e) {
       touchEndX = e.changedTouches[0].screenX;
       const swipeThreshold = 50;
-      if (touchEndX < touchStartX - swipeThreshold) { goNext(); }
-      else if (touchEndX > touchStartX + swipeThreshold) { goPrev(); }
+      if (touchEndX < touchStartX - swipeThreshold) { 
+        goNext(); 
+      } else if (touchEndX > touchStartX + swipeThreshold) { 
+        goPrev(); 
+      }
     }
     
-    document.addEventListener('keydown', handleKeyDown);
+    // Navegación con teclado (flechas)
+    function handleKeyDown(e) {
+      if (e.key === 'ArrowLeft') { goPrev(); }
+      else if (e.key === 'ArrowRight') { goNext(); }
+      else if (e.key === 'Escape') { closeFullscreen(); }
+    }
+    
+    currentFullscreenDiv.addEventListener('wheel', handleWheel);
     currentFullscreenDiv.addEventListener('touchstart', handleTouchStart);
     currentFullscreenDiv.addEventListener('touchend', handleTouchEnd);
+    document.addEventListener('keydown', handleKeyDown);
     
     currentFullscreenDiv.cleanup = () => {
+      currentFullscreenDiv.removeEventListener('wheel', handleWheel);
+      currentFullscreenDiv.removeEventListener('touchstart', handleTouchStart);
+      currentFullscreenDiv.removeEventListener('touchend', handleTouchEnd);
       document.removeEventListener('keydown', handleKeyDown);
     };
     
+    // Cerrar al hacer clic en el fondo (fuera de la imagen y botones)
     currentFullscreenDiv.addEventListener('click', (e) => { 
       if (e.target === currentFullscreenDiv) {
         closeFullscreen(); 
@@ -1425,22 +1490,6 @@
       closeDetail();
     }
     showTitle();
-  }
-
-  function showSection(type, styleId, section) {
-    if (type === 'estilos') {
-      openEstilosDetail();
-    } else if (type === 'proyecto') {
-      openProyectoDetail();
-    } else if (type === 'programa') {
-      openProgramaDetail();
-    } else if (type === 'tecnica') {
-      openTecnicaDetail();
-    } else if (type === 'contacto') {
-      openContactoDetail();
-    } else if (type === 'style' && styleId) {
-      openStyleDetail(styleId, section || 'intro');
-    }
   }
 
   function closeDetail() {
