@@ -53,9 +53,7 @@
     transition: filter 0.8s ease;
     filter: brightness(1) contrast(1.05);
   }
-  .hero-bg.desenfocado { 
-    filter: brightness(0.55) blur(6px);
-  }
+  .hero-bg.desenfocado { filter: brightness(0.55) blur(6px); }
 
   .global-overlay {
     position: fixed;
@@ -253,7 +251,6 @@
       transition: all 0.4s cubic-bezier(0.2, 0.95, 0.4, 1.05);
       border: 1px solid transparent;
     }
-    
     .carousel-card::before {
       content: '';
       position: absolute;
@@ -266,7 +263,6 @@
       pointer-events: none;
       transition: opacity 0.3s ease;
     }
-    
     .carousel-card:hover {
       width: var(--card-hover-width);
       filter: brightness(1) saturate(1.05);
@@ -274,32 +270,24 @@
       transform: scale(1);
       box-shadow: 0 25px 45px rgba(0, 0, 0, 0.5);
       z-index: 20;
-      border: 1px solid transparent;
     }
-    
     .carousel-card:hover::before { opacity: 0; }
-    
-    .carousel-card:has(~ .carousel-card:hover),
-    .carousel-card:hover ~ .carousel-card {
+    .carousel-card:has(~ .carousel-card:hover), .carousel-card:hover ~ .carousel-card {
       filter: brightness(0.55) saturate(0.7);
       opacity: 0.65;
       transform: scale(0.93);
     }
-    
     .carousel-card.selected {
       width: var(--card-hover-width);
       filter: brightness(1) saturate(1);
       opacity: 1;
       transform: scale(1);
       z-index: 20;
-      /* BORDE DORADO METALIZADO */
       border: 3px solid var(--gold);
       box-shadow: 0 25px 45px rgba(0, 0, 0, 0.5), 0 0 0 2px rgba(212, 175, 55, 0.3), 0 0 20px rgba(212, 175, 55, 0.25);
     }
-    
     .carousel-card.selected::before { opacity: 0; }
     .carousel-card img { width: 100%; height: 100%; object-fit: cover; position: relative; z-index: 0; }
-    
     .carousel-card::after {
       content: '🔍';
       position: absolute;
@@ -313,12 +301,11 @@
       pointer-events: none;
     }
     .carousel-card:hover::after { opacity: 0.8; }
-    
     .contact-button-mobile { display: none; }
     .instruction { bottom: 1.5rem; font-size: 0.7rem; }
   }
 
-  /* ==================== RESPONSIVE MÓVIL ==================== */
+  /* ==================== RESPONSIVE MÓVIL (CON FLEXIBILIDAD) ==================== */
   @media (max-width: 768px) {
     .logo-img { width: 100px; height: 100px; }
     .logo-text h1 { font-size: 3rem; }
@@ -383,13 +370,7 @@
       transform: scale(1.01);
     }
     .carousel-card.selected::before { background: rgba(0, 0, 0, 0); }
-    .carousel-card img {
-      width: 100%;
-      height: 160px;
-      object-fit: cover;
-      position: relative;
-      z-index: 0;
-    }
+    .carousel-card img { width: 100%; height: 160px; object-fit: cover; position: relative; z-index: 0; }
     .card-mobile-info {
       padding: 0.6rem;
       background: rgba(0,0,0,0.85);
@@ -430,6 +411,95 @@
     .contact-button-mobile.visible { opacity: 1; visibility: visible; pointer-events: auto; }
     .contact-button-mobile i { font-size: 1.5rem; color: #1a1a1a; }
     .instruction { bottom: 0.8rem; font-size: 0.6rem; }
+
+    /* PROYECTO MÓVIL */
+    .detail-content { padding: 1rem; padding-top: 4rem; }
+    .detail-header h2 { font-size: 2rem; }
+    .proyecto-texto-fullwidth { padding: 1.5rem; }
+    .proyecto-texto-fullwidth h2 { font-size: 2rem; }
+    .proyecto-texto-fullwidth .descripcion { font-size: 1rem; }
+    .cita-fullwidth { font-size: 1rem; }
+    .estilos-grid-four { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+    .estilo-card-info h4 { font-size: 1rem; }
+    .estilo-card-info p { font-size: 0.6rem; }
+    .estilos-section-title { font-size: 1.4rem; }
+    
+    /* PROGRAMA MÓVIL */
+    .programa-timeline { margin: 1rem 0 2rem; }
+    .timeline-icon { width: 36px; height: 36px; font-size: 0.9rem; }
+    .timeline-line { top: 18px; }
+    .summary-grid { grid-template-columns: repeat(2, 1fr); }
+    .programa-header h2 { font-size: 1.8rem; }
+    
+    /* PROGRAMA - CONTENEDOR FLEXIBLE */
+    .programa-horizontal-card {
+      width: calc(80vw - 20px);
+      max-width: 280px;
+      min-width: 240px;
+      height: auto;
+    }
+    .programa-horizontal-card:hover {
+      width: calc(80vw - 20px);
+      transform: scale(1.02);
+    }
+    .programa-horizontal-card img {
+      height: auto;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+    }
+    
+    /* ESTILOS MÓVIL */
+    .estilos-grid { grid-template-columns: 1fr; }
+    .style-intro-wrapper { flex-direction: column; }
+    .style-intro-text { font-size: 1.1rem; padding-left: 1rem; }
+    .materials-grid { grid-template-columns: repeat(2, 1fr); }
+    .material-card img { height: 80px; }
+    
+    /* EXTERIORES/INTERIORES - CONTENEDOR FLEXIBLE */
+    .exterior-interior-card {
+      width: calc(85vw - 20px);
+      max-width: 320px;
+      min-width: 260px;
+      height: auto;
+    }
+    .exterior-interior-card img {
+      height: auto;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+    }
+    .exterior-interior-card .exterior-interior-caption {
+      padding: 0.8rem;
+    }
+    .exterior-interior-card .exterior-interior-caption h4 {
+      font-size: 0.85rem;
+      white-space: normal;
+      word-break: break-word;
+    }
+    .exterior-interior-card .exterior-interior-caption p {
+      font-size: 0.7rem;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    
+    /* TÉCNICA MÓVIL */
+    .tecnica-layout { flex-direction: column; }
+    .tecnica-scroll-container { height: auto; max-height: 50vh; }
+    .tecnica-estilo-card { width: 120px; height: 280px; }
+    .tecnica-estilo-card:hover { width: 120px; transform: scale(1.02); }
+    .tecnica-estilo-card.active { width: 120px; }
+    
+    /* AJUSTE DE BORDES */
+    .estilo-card-large:hover,
+    .programa-horizontal-card:hover,
+    .estilos-grid-card:hover,
+    .exterior-interior-card:hover,
+    .info-card:hover,
+    .material-card:hover,
+    .summary-card:hover {
+      border-width: 2px;
+    }
   }
 
   /* ==================== VISOR FULLSCREEN ==================== */
@@ -515,7 +585,7 @@
   .detail-header h2 { font-family: 'Playfair Display', serif; font-size: 3rem; font-weight: 800; color: var(--text-primary); border-bottom: 2px solid var(--gold); display: inline-block; padding-bottom: 0.3rem; margin-bottom: 1rem; }
   .detail-subheader { font-family: 'Inter', sans-serif; font-size: 1rem; color: var(--text-secondary); max-width: 700px; line-height: 1.5; }
 
-  /* ==================== PROYECTO - VERSIÓN FULL WIDTH ==================== */
+  /* ==================== PROYECTO ==================== */
   .proyecto-texto-fullwidth {
     background: var(--card-bg);
     padding: 2.5rem;
@@ -524,7 +594,6 @@
     border: 1px solid var(--border-color);
     box-shadow: var(--shadow-sm);
   }
-
   .proyecto-texto-fullwidth h2 {
     font-family: 'Playfair Display', serif;
     font-size: 3rem;
@@ -535,7 +604,6 @@
     display: inline-block;
     padding-bottom: 0.3rem;
   }
-
   .proyecto-texto-fullwidth .subtitulo {
     font-family: 'Inter', sans-serif;
     font-size: 0.85rem;
@@ -545,7 +613,6 @@
     margin: 1rem 0 1.5rem 0;
     font-weight: 500;
   }
-
   .proyecto-texto-fullwidth .descripcion {
     font-family: 'Cormorant Garamond', serif;
     font-size: 1.2rem;
@@ -553,12 +620,7 @@
     color: var(--text-secondary);
     margin-bottom: 1rem;
   }
-
-  .proyecto-texto-fullwidth .descripcion strong {
-    font-weight: 700;
-    color: var(--text-primary);
-  }
-
+  .proyecto-texto-fullwidth .descripcion strong { font-weight: 700; color: var(--text-primary); }
   .cita-fullwidth {
     font-family: 'Cormorant Garamond', serif;
     font-size: 1.3rem;
@@ -570,11 +632,7 @@
     text-align: center;
   }
 
-  /* Grid de 4 estilos */
-  .proyecto-estilos-fullwidth {
-    margin-top: 1rem;
-  }
-
+  .proyecto-estilos-fullwidth { margin-top: 1rem; }
   .estilos-section-title {
     font-family: 'Playfair Display', serif;
     font-size: 1.8rem;
@@ -583,7 +641,6 @@
     margin-bottom: 0.5rem;
     letter-spacing: 0.05em;
   }
-
   .estilos-section-subtitle {
     text-align: center;
     font-family: 'Inter', sans-serif;
@@ -591,13 +648,11 @@
     color: var(--text-label);
     margin-bottom: 2rem;
   }
-
   .estilos-grid-four {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 1.5rem;
   }
-
   .estilo-card-large {
     background: var(--card-bg);
     border-radius: 20px;
@@ -607,35 +662,26 @@
     border: 1px solid var(--border-color);
     box-shadow: var(--shadow-sm);
   }
-
   .estilo-card-large:hover {
     transform: translateY(-8px);
-    /* BORDE DORADO METALIZADO */
     border: 3px solid var(--gold);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15), 0 0 0 2px rgba(212, 175, 55, 0.3), 0 0 20px rgba(212, 175, 55, 0.2);
   }
-
   .estilo-card-image {
     overflow: hidden;
     aspect-ratio: 3/4;
   }
-
   .estilo-card-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: transform 0.5s ease;
   }
-
-  .estilo-card-large:hover .estilo-card-image img {
-    transform: scale(1.05);
-  }
-
+  .estilo-card-large:hover .estilo-card-image img { transform: scale(1.05); }
   .estilo-card-info {
     padding: 1.2rem;
     text-align: center;
   }
-
   .estilo-card-info h4 {
     font-family: 'Playfair Display', serif;
     font-size: 1.2rem;
@@ -643,14 +689,12 @@
     color: var(--text-primary);
     margin-bottom: 0.3rem;
   }
-
   .estilo-card-info p {
     font-size: 0.7rem;
     color: var(--text-label);
     letter-spacing: 0.05em;
     margin-bottom: 0.8rem;
   }
-
   .explore-tag {
     display: inline-block;
     font-size: 0.7rem;
@@ -658,13 +702,12 @@
     font-weight: 500;
     transition: all 0.3s ease;
   }
-
   .estilo-card-large:hover .explore-tag {
     transform: translateX(5px);
     color: var(--gold);
   }
 
-  /* ==================== SECCIÓN PROGRAMA ==================== */
+  /* ==================== PROGRAMA ==================== */
   .programa-wrapper { width: 100%; }
   .programa-header { margin-bottom: 2rem; }
   .programa-header h2 { font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.5rem; border-left: 3px solid var(--gold); padding-left: 1rem; }
@@ -682,10 +725,10 @@
   .programa-horizontal-carousel::-webkit-scrollbar-track { background: var(--border-color); border-radius: 10px; }
   .programa-horizontal-carousel::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 10px; }
   .programa-horizontal-track { display: flex; gap: 1rem; width: max-content; }
+  
   .programa-horizontal-card {
     flex-shrink: 0;
     width: 260px;
-    height: auto;
     border-radius: 16px;
     overflow: hidden;
     cursor: pointer;
@@ -700,7 +743,6 @@
     transform: translateY(-4px) scale(1.02);
     filter: brightness(1);
     z-index: 10;
-    /* BORDE DORADO METALIZADO */
     border: 3px solid var(--gold);
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15), 0 0 0 2px rgba(212, 175, 55, 0.3), 0 0 15px rgba(212, 175, 55, 0.2);
   }
@@ -721,14 +763,13 @@
   }
   .summary-card:hover {
     transform: translateY(-4px);
-    /* BORDE DORADO METALIZADO */
     border: 2px solid var(--gold);
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(212, 175, 55, 0.2), 0 0 10px rgba(212, 175, 55, 0.15);
   }
   .summary-number { display: block; font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 800; color: var(--gold); margin-bottom: 0.5rem; }
   .summary-label { font-family: 'Inter', sans-serif; font-size: 0.85rem; color: var(--text-secondary); letter-spacing: 0.05em; }
 
-  /* ==================== SECCIÓN ESTILOS ==================== */
+  /* ==================== ESTILOS ==================== */
   .estilos-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin: 2rem 0; }
   .estilos-grid-card {
     border-radius: 24px;
@@ -741,7 +782,6 @@
   }
   .estilos-grid-card:hover {
     transform: translateY(-8px);
-    /* BORDE DORADO METALIZADO */
     border: 3px solid var(--gold);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15), 0 0 0 2px rgba(212, 175, 55, 0.3), 0 0 20px rgba(212, 175, 55, 0.2);
   }
@@ -766,14 +806,13 @@
     transition: all 0.3s ease;
   }
   .comparison-item:hover {
-    /* BORDE DORADO METALIZADO */
     border: 2px solid var(--gold);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(212, 175, 55, 0.2);
   }
   .comp-label { font-weight: 600; color: var(--text-primary); }
   .comp-value { color: var(--gold-dark); font-size: 0.85rem; }
 
-  /* ==================== ESTILOS INTERNOS (INTRO/EXTERIORES/INTERIORES) ==================== */
+  /* ==================== ESTILOS INTERNOS ==================== */
   .style-subnav { display: flex; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 2rem; padding-bottom: 0.75rem; justify-content: center; border-bottom: 1px solid var(--border-color); }
   .style-subnav button { background: transparent; border: none; font-family: 'Inter', sans-serif; font-size: 0.9rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-label); padding: 0.5rem 0; cursor: pointer; transition: 0.3s; font-weight: 400; }
   .style-subnav button.active { color: var(--gold-dark); border-bottom: 2px solid var(--gold-dark); }
@@ -791,14 +830,12 @@
   }
   .material-card:hover {
     transform: translateY(-4px);
-    /* BORDE DORADO METALIZADO */
     border: 2px solid var(--gold);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(212, 175, 55, 0.2), 0 0 10px rgba(212, 175, 55, 0.15);
   }
   .material-card img { width: 100%; height: 100px; object-fit: cover; }
   .material-card p { padding: 0.6rem; text-align: center; color: var(--text-secondary); font-size: 0.85rem; font-weight: 400; }
 
-  /* Exteriores e Interiores - responsive */
   .exterior-interior-wrapper { width: 100%; }
   .exterior-interior-header { margin-bottom: 1.5rem; }
   .exterior-interior-header h2 { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; color: var(--text-primary); border-left: 3px solid var(--gold); padding-left: 1rem; margin-bottom: 0.5rem; }
@@ -818,6 +855,7 @@
   .exterior-interior-carousel::-webkit-scrollbar-track { background: var(--border-color); border-radius: 10px; }
   .exterior-interior-carousel::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 10px; }
   .exterior-interior-track { display: flex; gap: 1rem; width: max-content; }
+  
   .exterior-interior-card { 
     flex-shrink: 0; 
     width: 280px; 
@@ -835,7 +873,6 @@
   .exterior-interior-card:hover {
     transform: scale(1.02);
     filter: brightness(1);
-    /* BORDE DORADO METALIZADO */
     border: 3px solid var(--gold);
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15), 0 0 0 2px rgba(212, 175, 55, 0.3), 0 0 15px rgba(212, 175, 55, 0.2);
   }
@@ -844,7 +881,7 @@
   .exterior-interior-card .exterior-interior-caption h4 { font-family: 'Inter', sans-serif; color: var(--gold-dark); font-size: 0.85rem; font-weight: 500; letter-spacing: 0.05em; margin-bottom: 0.2rem; white-space: normal; }
   .exterior-interior-card .exterior-interior-caption p { font-size: 0.7rem; color: var(--text-secondary); line-height: 1.3; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 
-  /* ==================== SECCIÓN TÉCNICA ==================== */
+  /* ==================== TÉCNICA ==================== */
   .tecnica-layout { display: flex; gap: 2rem; flex-wrap: wrap; min-height: 70vh; }
   .tecnica-izquierda { flex: 1; min-width: 280px; }
   .tecnica-derecha { flex: 1.5; min-width: 300px; }
@@ -869,7 +906,6 @@
   .tecnica-estilo-card.active {
     width: 180px;
     filter: brightness(1);
-    /* BORDE DORADO METALIZADO */
     border: 3px solid var(--gold);
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15), 0 0 0 2px rgba(212, 175, 55, 0.3), 0 0 15px rgba(212, 175, 55, 0.2);
   }
@@ -877,7 +913,6 @@
     width: 180px;
     filter: brightness(1);
     z-index: 10;
-    /* BORDE DORADO METALIZADO */
     border: 3px solid var(--gold);
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15), 0 0 0 2px rgba(212, 175, 55, 0.3), 0 0 15px rgba(212, 175, 55, 0.2);
   }
@@ -894,7 +929,7 @@
   .tecnica-imagen h4 { color: var(--text-primary); margin-bottom: 1rem; font-family: 'Playfair Display', serif; text-align: center; font-weight: 700; font-size: 1.1rem; }
   .tecnica-imagen img { width: 100%; height: auto; object-fit: contain; border-radius: 8px; }
 
-  /* ==================== SECCIÓN CONTACTO ==================== */
+  /* ==================== CONTACTO ==================== */
   .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin: 2rem 0; }
   .info-card {
     background: var(--card-bg);
@@ -906,7 +941,6 @@
   }
   .info-card:hover {
     transform: translateY(-5px);
-    /* BORDE DORADO METALIZADO */
     border: 3px solid var(--gold);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15), 0 0 0 2px rgba(212, 175, 55, 0.3), 0 0 15px rgba(212, 175, 55, 0.2);
   }
@@ -936,60 +970,6 @@
     font-weight: 300;
   }
   .instruction.hide { opacity: 0; visibility: hidden; }
-
-  /* ==================== RESPONSIVE MÓVIL ADICIONAL ==================== */
-  @media (max-width: 768px) {
-    .detail-content { padding: 1rem; padding-top: 4rem; }
-    .detail-header h2 { font-size: 2rem; }
-    
-    /* Proyecto */
-    .proyecto-texto-fullwidth { padding: 1.5rem; }
-    .proyecto-texto-fullwidth h2 { font-size: 2rem; }
-    .proyecto-texto-fullwidth .descripcion { font-size: 1rem; }
-    .cita-fullwidth { font-size: 1rem; }
-    .estilos-grid-four { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
-    .estilo-card-info h4 { font-size: 1rem; }
-    .estilo-card-info p { font-size: 0.6rem; }
-    .estilos-section-title { font-size: 1.4rem; }
-    
-    /* Programa */
-    .programa-timeline { margin: 1rem 0 2rem; }
-    .timeline-icon { width: 36px; height: 36px; font-size: 0.9rem; }
-    .timeline-line { top: 18px; }
-    .programa-horizontal-card { width: 260px; }
-    .programa-horizontal-card img { height: 160px; }
-    .summary-grid { grid-template-columns: repeat(2, 1fr); }
-    .programa-header h2 { font-size: 1.8rem; }
-    
-    /* Estilos */
-    .estilos-grid { grid-template-columns: 1fr; }
-    .style-intro-wrapper { flex-direction: column; }
-    .style-intro-text { font-size: 1.1rem; padding-left: 1rem; }
-    .materials-grid { grid-template-columns: repeat(2, 1fr); }
-    .material-card img { height: 80px; }
-    
-    /* Exteriores/Interiores */
-    .exterior-interior-card { width: 85vw; max-width: 320px; }
-    .exterior-interior-card img { height: auto; aspect-ratio: 4/3; }
-    
-    /* Técnica */
-    .tecnica-layout { flex-direction: column; }
-    .tecnica-scroll-container { height: auto; max-height: 50vh; }
-    .tecnica-estilo-card { width: 120px; height: 280px; }
-    .tecnica-estilo-card:hover { width: 120px; transform: scale(1.02); }
-    .tecnica-estilo-card.active { width: 120px; }
-    
-    /* Ajuste de bordes en móvil */
-    .estilo-card-large:hover,
-    .programa-horizontal-card:hover,
-    .estilos-grid-card:hover,
-    .exterior-interior-card:hover,
-    .info-card:hover,
-    .material-card:hover,
-    .summary-card:hover {
-      border-width: 2px;
-    }
-  }
 </style>
 </head>
 <body>
@@ -1140,20 +1120,20 @@
         { name: 'Granito', img: 'assets/images/estilos/neoclasico/intro/granito.png' }
       ],
       exteriores: [
-        { img: 'assets/images/estilos/neoclasico/exteriores/01-vista-panoramica.png', title: 'Vista Panorámica', desc: 'El horizonte se funde con el jardín geométrico. Cipreses alineados como centinelas enmarcan la silueta de la casa.' },
-        { img: 'assets/images/estilos/neoclasico/exteriores/02-fachada-principal.png', title: 'Fachada Principal', desc: 'La simetría ordena los vanos. El acceso jerarquizado y los rosales trepadores abrazan las paredes.' },
-        { img: 'assets/images/estilos/neoclasico/exteriores/03-acceso-principal.png', title: 'Acceso Principal', desc: 'Puerta de doble hoja en madera noble. Jardineras de boj guían la mirada.' },
-        { img: 'assets/images/estilos/neoclasico/exteriores/04-jardin-privado.png', title: 'Jardín Privado', desc: 'Piscina de borde infinito. Deck de madera y glorieta con glicinas.' },
-        { img: 'assets/images/estilos/neoclasico/exteriores/05-contrafachada.png', title: 'Contrafachada', desc: 'Grandes ventanales invitan al exterior. La piscina se funde con el horizonte.' }
+        { img: 'assets/images/estilos/neoclasico/exteriores/01-vista-panoramica.png', title: 'Vista Panorámica', desc: 'El horizonte se funde con el jardín geométrico.' },
+        { img: 'assets/images/estilos/neoclasico/exteriores/02-fachada-principal.png', title: 'Fachada Principal', desc: 'La simetría ordena los vanos.' },
+        { img: 'assets/images/estilos/neoclasico/exteriores/03-acceso-principal.png', title: 'Acceso Principal', desc: 'Puerta de doble hoja en madera noble.' },
+        { img: 'assets/images/estilos/neoclasico/exteriores/04-jardin-privado.png', title: 'Jardín Privado', desc: 'Piscina de borde infinito.' },
+        { img: 'assets/images/estilos/neoclasico/exteriores/05-contrafachada.png', title: 'Contrafachada', desc: 'Grandes ventanales invitan al exterior.' }
       ],
       interiores: [
-        { img: 'assets/images/estilos/neoclasico/interiores/01-recibidor.png', title: 'Recibidor', desc: 'Doble altura y araña de bronce. Luz cenital que baña el espacio.' },
-        { img: 'assets/images/estilos/neoclasico/interiores/02-sala-estar.png', title: 'Sala de Estar', desc: 'Ventanales que abrazan el paisaje. El horizonte entra, la luz se derrama.' },
-        { img: 'assets/images/estilos/neoclasico/interiores/03-comedor.png', title: 'Comedor', desc: 'Mesa larga para reunir. Lámpara de bronce, manteles de lino.' },
-        { img: 'assets/images/estilos/neoclasico/interiores/04-dormitorio-principal.png', title: 'Dormitorio Principal', desc: 'La cama mira al jardín. Vestidor y baño abierto.' },
-        { img: 'assets/images/estilos/neoclasico/interiores/05-sanitario.png', title: 'Baño', desc: 'Ducha escocesa que envuelve. Piso de mármol travertino.' },
-        { img: 'assets/images/estilos/neoclasico/interiores/06-vestidor.png', title: 'Vestidor', desc: 'Walk-in closet luminoso. Estantes de madera.' },
-        { img: 'assets/images/estilos/neoclasico/interiores/07-dormitorio.png', title: 'Dormitorio Secundario', desc: 'Dos dormitorios en suite. Baño privado con ducha.' }
+        { img: 'assets/images/estilos/neoclasico/interiores/01-recibidor.png', title: 'Recibidor', desc: 'Doble altura y araña de bronce.' },
+        { img: 'assets/images/estilos/neoclasico/interiores/02-sala-estar.png', title: 'Sala de Estar', desc: 'Ventanales que abrazan el paisaje.' },
+        { img: 'assets/images/estilos/neoclasico/interiores/03-comedor.png', title: 'Comedor', desc: 'Mesa larga para reunir.' },
+        { img: 'assets/images/estilos/neoclasico/interiores/04-dormitorio-principal.png', title: 'Dormitorio Principal', desc: 'La cama mira al jardín.' },
+        { img: 'assets/images/estilos/neoclasico/interiores/05-sanitario.png', title: 'Baño', desc: 'Ducha escocesa que envuelve.' },
+        { img: 'assets/images/estilos/neoclasico/interiores/06-vestidor.png', title: 'Vestidor', desc: 'Walk-in closet luminoso.' },
+        { img: 'assets/images/estilos/neoclasico/interiores/07-dormitorio.png', title: 'Dormitorio Secundario', desc: 'Dos dormitorios en suite.' }
       ]
     },
     mediterraneo: {
@@ -1166,20 +1146,20 @@
         { name: 'Terracota', img: 'assets/images/estilos/mediterraneo/intro/terracota.png' }
       ],
       exteriores: [
-        { img: 'assets/images/estilos/mediterraneo/exteriores/01-vista-panoramica.png', title: 'Vista Panorámica', desc: 'Casa encalada contra el cielo. Olivos centenarios dibujan sombras.' },
-        { img: 'assets/images/estilos/mediterraneo/exteriores/02-fachada-principal.png', title: 'Fachada Principal', desc: 'Paredes blancas que reflejan la luz. Buganvilla trepando.' },
-        { img: 'assets/images/estilos/mediterraneo/exteriores/03-acceso-principal.png', title: 'Acceso Principal', desc: 'Camino de piedra entre macetas de barro. Parra cubriendo la pérgola.' },
-        { img: 'assets/images/estilos/mediterraneo/exteriores/04-jardin-privado.png', title: 'Jardín Privado', desc: 'Piscina borde infinito. Deck de madera y glorieta de jazmín.' },
-        { img: 'assets/images/estilos/mediterraneo/exteriores/05-contrafachada.png', title: 'Contrafachada', desc: 'Ventanas que abren la casa al jardín. Piscina reflejando las nubes.' }
+        { img: 'assets/images/estilos/mediterraneo/exteriores/01-vista-panoramica.png', title: 'Vista Panorámica', desc: 'Casa encalada contra el cielo.' },
+        { img: 'assets/images/estilos/mediterraneo/exteriores/02-fachada-principal.png', title: 'Fachada Principal', desc: 'Paredes blancas que reflejan la luz.' },
+        { img: 'assets/images/estilos/mediterraneo/exteriores/03-acceso-principal.png', title: 'Acceso Principal', desc: 'Camino de piedra entre macetas.' },
+        { img: 'assets/images/estilos/mediterraneo/exteriores/04-jardin-privado.png', title: 'Jardín Privado', desc: 'Piscina borde infinito.' },
+        { img: 'assets/images/estilos/mediterraneo/exteriores/05-contrafachada.png', title: 'Contrafachada', desc: 'Ventanas que abren la casa al jardín.' }
       ],
       interiores: [
-        { img: 'assets/images/estilos/mediterraneo/interiores/01-recibidor.png', title: 'Recibidor', desc: 'Paredes encaladas y piso de terracota. Luz que entra tamizada.' },
-        { img: 'assets/images/estilos/mediterraneo/interiores/02-sala-estar.png', title: 'Sala de Estar', desc: 'Ventanales abiertos de par en par. La brisa mueve las cortinas de lino.' },
-        { img: 'assets/images/estilos/mediterraneo/interiores/03-comedor.png', title: 'Comedor', desc: 'Mesa de madera rústica. Vela larga y mantel de lino.' },
-        { img: 'assets/images/estilos/mediterraneo/interiores/04-dormitorio-principal.png', title: 'Dormitorio Principal', desc: 'Cama con cabecera de hierro. Vestidor y baño abierto.' },
-        { img: 'assets/images/estilos/mediterraneo/interiores/05-sanitario.png', title: 'Baño', desc: 'Ducha escocesa. Piso de piedra natural.' },
+        { img: 'assets/images/estilos/mediterraneo/interiores/01-recibidor.png', title: 'Recibidor', desc: 'Paredes encaladas y piso de terracota.' },
+        { img: 'assets/images/estilos/mediterraneo/interiores/02-sala-estar.png', title: 'Sala de Estar', desc: 'Ventanales abiertos de par en par.' },
+        { img: 'assets/images/estilos/mediterraneo/interiores/03-comedor.png', title: 'Comedor', desc: 'Mesa de madera rústica.' },
+        { img: 'assets/images/estilos/mediterraneo/interiores/04-dormitorio-principal.png', title: 'Dormitorio Principal', desc: 'Cama con cabecera de hierro.' },
+        { img: 'assets/images/estilos/mediterraneo/interiores/05-sanitario.png', title: 'Baño', desc: 'Ducha escocesa.' },
         { img: 'assets/images/estilos/mediterraneo/interiores/06-vestidor.png', title: 'Vestidor', desc: 'Estantes abiertos y cajones de mimbre.' },
-        { img: 'assets/images/estilos/mediterraneo/interiores/07-dormitorio.png', title: 'Dormitorio Secundario', desc: 'Dos dormitorios en suite. Baño privado.' }
+        { img: 'assets/images/estilos/mediterraneo/interiores/07-dormitorio.png', title: 'Dormitorio Secundario', desc: 'Dos dormitorios en suite.' }
       ]
     },
     minimalista: {
@@ -1192,20 +1172,20 @@
         { name: 'Piedra', img: 'assets/images/estilos/minimalista/intro/piedra.png' }
       ],
       exteriores: [
-        { img: 'assets/images/estilos/minimalista/exteriores/01-vista-panoramica.png', title: 'Vista Panorámica', desc: 'Un volumen puro sobre la llanura. Un árbol escultural y pastos.' },
-        { img: 'assets/images/estilos/minimalista/exteriores/02-fachada-principal.png', title: 'Fachada Principal', desc: 'Plano blanco y vano horizontal. La luz dibuja sombras nítidas.' },
-        { img: 'assets/images/estilos/minimalista/exteriores/03-acceso-principal.png', title: 'Acceso Principal', desc: 'Puerta maciza sin adornos. Una maceta de hormigón.' },
-        { img: 'assets/images/estilos/minimalista/exteriores/04-jardin-privado.png', title: 'Jardín Privado', desc: 'Piscina de borde infinito. Deck de madera.' },
-        { img: 'assets/images/estilos/minimalista/exteriores/05-contrafachada.png', title: 'Contrafachada', desc: 'Ventanales corredizos borran el límite.' }
+        { img: 'assets/images/estilos/minimalista/exteriores/01-vista-panoramica.png', title: 'Vista Panorámica', desc: 'Un volumen puro sobre la llanura.' },
+        { img: 'assets/images/estilos/minimalista/exteriores/02-fachada-principal.png', title: 'Fachada Principal', desc: 'Plano blanco y vano horizontal.' },
+        { img: 'assets/images/estilos/minimalista/exteriores/03-acceso-principal.png', title: 'Acceso Principal', desc: 'Puerta maciza sin adornos.' },
+        { img: 'assets/images/estilos/minimalista/exteriores/04-jardin-privado.png', title: 'Jardín Privado', desc: 'Piscina de borde infinito.' },
+        { img: 'assets/images/estilos/minimalista/exteriores/05-contrafachada.png', title: 'Contrafachada', desc: 'Ventanales corredizos.' }
       ],
       interiores: [
-        { img: 'assets/images/estilos/minimalista/interiores/01-recibidor.png', title: 'Recibidor', desc: 'Doble altura y ventanal vertical. Una banca de madera.' },
-        { img: 'assets/images/estilos/minimalista/interiores/02-sala-estar.png', title: 'Sala de Estar', desc: 'Ventanal de piso a techo. Sofá bajo, mesa de madera clara.' },
-        { img: 'assets/images/estilos/minimalista/interiores/03-comedor.png', title: 'Comedor', desc: 'Mesa de madera clara y sillas negras. Luz cenital.' },
-        { img: 'assets/images/estilos/minimalista/interiores/04-dormitorio-principal.png', title: 'Dormitorio Principal', desc: 'Cama plataforma. Vestidor y baño abierto.' },
-        { img: 'assets/images/estilos/minimalista/interiores/05-sanitario.png', title: 'Baño', desc: 'Ducha escocesa. Piso y paredes de microcemento.' },
-        { img: 'assets/images/estilos/minimalista/interiores/06-vestidor.png', title: 'Vestidor', desc: 'Estantes abiertos y cajones ocultos.' },
-        { img: 'assets/images/estilos/minimalista/interiores/07-dormitorio.png', title: 'Dormitorio Secundario', desc: 'Dos dormitorios en suite. Baño privado.' }
+        { img: 'assets/images/estilos/minimalista/interiores/01-recibidor.png', title: 'Recibidor', desc: 'Doble altura y ventanal vertical.' },
+        { img: 'assets/images/estilos/minimalista/interiores/02-sala-estar.png', title: 'Sala de Estar', desc: 'Ventanal de piso a techo.' },
+        { img: 'assets/images/estilos/minimalista/interiores/03-comedor.png', title: 'Comedor', desc: 'Mesa de madera clara.' },
+        { img: 'assets/images/estilos/minimalista/interiores/04-dormitorio-principal.png', title: 'Dormitorio Principal', desc: 'Cama plataforma.' },
+        { img: 'assets/images/estilos/minimalista/interiores/05-sanitario.png', title: 'Baño', desc: 'Ducha escocesa.' },
+        { img: 'assets/images/estilos/minimalista/interiores/06-vestidor.png', title: 'Vestidor', desc: 'Estantes abiertos.' },
+        { img: 'assets/images/estilos/minimalista/interiores/07-dormitorio.png', title: 'Dormitorio Secundario', desc: 'Dos dormitorios en suite.' }
       ]
     },
     internacional: {
@@ -1218,19 +1198,19 @@
         { name: 'Vidrio', img: 'assets/images/estilos/internacional/intro/vidrio.png' }
       ],
       exteriores: [
-        { img: 'assets/images/estilos/internacional/exteriores/01-vista-panoramica.png', title: 'Vista Panorámica', desc: 'Una casa que flota. Planos de hormigón y muros cortina de vidrio.' },
-        { img: 'assets/images/estilos/internacional/exteriores/02-fachada-principal.png', title: 'Fachada Principal', desc: 'Acceso con gran losa voladiza. Vidrio que refleja el cielo.' },
-        { img: 'assets/images/estilos/internacional/exteriores/03-acceso-principal.png', title: 'Acceso Principal', desc: 'Puerta de acero y vidrio deslizante.' },
-        { img: 'assets/images/estilos/internacional/exteriores/04-jardin-privado.png', title: 'Terraza', desc: 'Piscina de borde infinito. Deck de ipé.' },
-        { img: 'assets/images/estilos/internacional/exteriores/05-contrafachada.png', title: 'Jardín Vertical', desc: 'Una pared viva. Cochera-quincho de hormigón.' }
+        { img: 'assets/images/estilos/internacional/exteriores/01-vista-panoramica.png', title: 'Vista Panorámica', desc: 'Una casa que flota.' },
+        { img: 'assets/images/estilos/internacional/exteriores/02-fachada-principal.png', title: 'Fachada Principal', desc: 'Acceso con gran losa voladiza.' },
+        { img: 'assets/images/estilos/internacional/exteriores/03-acceso-principal.png', title: 'Acceso Principal', desc: 'Puerta de acero y vidrio.' },
+        { img: 'assets/images/estilos/internacional/exteriores/04-jardin-privado.png', title: 'Terraza', desc: 'Piscina de borde infinito.' },
+        { img: 'assets/images/estilos/internacional/exteriores/05-contrafachada.png', title: 'Jardín Vertical', desc: 'Una pared viva.' }
       ],
       interiores: [
-        { img: 'assets/images/estilos/internacional/interiores/01-recibidor.png', title: 'Recibidor', desc: 'Doble altura y muro cortina. Jardín vertical visto desde adentro.' },
-        { img: 'assets/images/estilos/internacional/interiores/02-sala-estar.png', title: 'Sala de Estar', desc: 'Ventanales como muros. El paisaje es el adorno.' },
-        { img: 'assets/images/estilos/internacional/interiores/03-comedor.png', title: 'Comedor', desc: 'Mesa de acero y vidrio. Lámpara colgante escultórica.' },
-        { img: 'assets/images/estilos/internacional/interiores/04-dormitorio-principal.png', title: 'Dormitorio Principal', desc: 'Cama plataforma mirando al vidrio.' },
-        { img: 'assets/images/estilos/internacional/interiores/05-sanitario.png', title: 'Baño', desc: 'Ducha escocesa con techo de vidrio.' },
-        { img: 'assets/images/estilos/internacional/interiores/06-vestidor.png', title: 'Vestidor', desc: 'Abierto y luminoso. Estantes de madera y acero.' },
+        { img: 'assets/images/estilos/internacional/interiores/01-recibidor.png', title: 'Recibidor', desc: 'Doble altura y muro cortina.' },
+        { img: 'assets/images/estilos/internacional/interiores/02-sala-estar.png', title: 'Sala de Estar', desc: 'Ventanales como muros.' },
+        { img: 'assets/images/estilos/internacional/interiores/03-comedor.png', title: 'Comedor', desc: 'Mesa de acero y vidrio.' },
+        { img: 'assets/images/estilos/internacional/interiores/04-dormitorio-principal.png', title: 'Dormitorio Principal', desc: 'Cama plataforma.' },
+        { img: 'assets/images/estilos/internacional/interiores/05-sanitario.png', title: 'Baño', desc: 'Ducha escocesa.' },
+        { img: 'assets/images/estilos/internacional/interiores/06-vestidor.png', title: 'Vestidor', desc: 'Abierto y luminoso.' },
         { img: 'assets/images/estilos/internacional/interiores/07-dormitorio.png', title: 'Dormitorio Secundario', desc: 'Dos dormitorios en suite.' }
       ]
     }
