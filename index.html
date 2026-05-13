@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes">
-<title>AUREA Desarrollos Inmobiliarios</title>
+<title>AUREA Desarrollos Inmobiliarios · Un proyecto, cuatro estilos, cinco etapas</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800;900&family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 <style>
@@ -25,6 +25,7 @@
     --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.02);
     --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.04);
     --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.06);
+    --shadow-xl: 0 12px 36px rgba(0, 0, 0, 0.1);
   }
 
   body { 
@@ -49,10 +50,12 @@
     background-position: center;
     background-repeat: no-repeat;
     z-index: 1;
-    transition: filter 0.6s ease;
-    filter: brightness(1) contrast(1.02);
+    transition: filter 0.8s ease;
+    filter: brightness(1) contrast(1.05);
   }
-  .hero-bg.desenfocado { filter: brightness(0.4) blur(8px); }
+  .hero-bg.desenfocado { 
+    filter: brightness(0.55) blur(6px);
+  }
 
   .global-overlay {
     position: fixed;
@@ -60,8 +63,8 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.25);
-    backdrop-filter: blur(4px);
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(3px);
     z-index: 0;
     pointer-events: none;
     opacity: 0;
@@ -72,7 +75,7 @@
   .banda-slice00 {
     position: fixed;
     inset: 0;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.6);
     z-index: 29;
     transition: opacity 0.6s ease, visibility 0.6s ease;
     pointer-events: auto;
@@ -102,7 +105,7 @@
   }
   @keyframes pulseGold {
     0% { filter: drop-shadow(0 4px 15px rgba(0,0,0,0.3)) brightness(1); }
-    50% { filter: drop-shadow(0 4px 15px rgba(0,0,0,0.4)) brightness(1.1); }
+    50% { filter: drop-shadow(0 4px 15px rgba(0,0,0,0.4)) brightness(1.08); }
     100% { filter: drop-shadow(0 4px 15px rgba(0,0,0,0.3)) brightness(1); }
   }
 
@@ -154,9 +157,6 @@
     text-transform: uppercase;
     color: var(--gold-luminous);
     background: transparent;
-    backdrop-filter: none;
-    padding: 0;
-    border-radius: 0;
     text-shadow: 1px 1px 0 rgba(0,0,0,0.3), 2px 2px 0 rgba(0,0,0,0.2);
   }
 
@@ -165,7 +165,7 @@
     top: 1rem;
     left: 1rem;
     z-index: 200;
-    background: rgba(0,0,0,0.4);
+    background: rgba(0,0,0,0.5);
     backdrop-filter: blur(8px);
     border-radius: 40px;
     padding: 0.5rem 1rem;
@@ -179,6 +179,7 @@
     pointer-events: none;
   }
   .back-corner.visible { opacity: 1; visibility: visible; pointer-events: auto; }
+  .back-corner:hover { background: rgba(0,0,0,0.7); transform: translateX(-3px); }
   .back-corner i { color: var(--gold-luminous); font-size: 0.9rem; }
   .back-corner span { color: #D1CCC3; font-size: 0.75rem; font-family: 'Inter', sans-serif; letter-spacing: 0.05em; }
 
@@ -187,7 +188,7 @@
     top: 1rem;
     right: 1rem;
     z-index: 200;
-    background: rgba(0,0,0,0.4);
+    background: rgba(0,0,0,0.5);
     backdrop-filter: blur(8px);
     border-radius: 40px;
     padding: 0.4rem 1rem;
@@ -201,10 +202,11 @@
     pointer-events: none;
   }
   .corner-logo.visible { opacity: 1; visibility: visible; pointer-events: auto; }
-  .corner-logo:hover { background: rgba(0,0,0,0.6); transform: scale(1.02); }
+  .corner-logo:hover { background: rgba(0,0,0,0.7); transform: scale(1.02); }
   .corner-logo-img { width: 32px; height: 32px; object-fit: contain; }
   .corner-logo span { font-size: 0.75rem; color: var(--gold-luminous); font-weight: 400; font-family: 'Inter', sans-serif; letter-spacing: 0.1em; }
 
+  /* ==================== CARRUSEL PRINCIPAL ==================== */
   @media (min-width: 769px) {
     .carousel-wrapper {
       position: fixed;
@@ -224,10 +226,7 @@
       transition: transform 0s ease;
     }
     .carousel-wrapper:active { cursor: grabbing; }
-    .carousel-wrapper.visible { 
-      transform: translateX(0); 
-      transition: transform 2.5s ease;
-    }
+    .carousel-wrapper.visible { transform: translateX(0); transition: transform 2.5s ease; }
     .carousel-wrapper::-webkit-scrollbar { height: 4px; }
     .carousel-wrapper::-webkit-scrollbar-track { background: rgba(255,255,255,0.2); border-radius: 10px; }
     .carousel-wrapper::-webkit-scrollbar-thumb { background: var(--gold-luminous); border-radius: 10px; }
@@ -238,6 +237,7 @@
       align-items: flex-end;
       padding: 0 calc(50vw - 70px);
     }
+    
     .carousel-card {
       flex-shrink: 0;
       width: var(--card-base-width);
@@ -245,11 +245,15 @@
       border-radius: 20px;
       overflow: hidden;
       cursor: pointer;
-      transition: width 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1), transform 0.4s ease, filter 0.3s ease;
-      filter: brightness(0.7) blur(2px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      filter: brightness(0.8) saturate(0.95);
+      opacity: 0.9;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
       position: relative;
+      transform: scale(0.96);
+      transition: all 0.4s cubic-bezier(0.2, 0.95, 0.4, 1.05);
+      border: 1px solid transparent;
     }
+    
     .carousel-card::before {
       content: '';
       position: absolute;
@@ -257,39 +261,64 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background: rgba(0, 0, 0, 0.15);
+      background: linear-gradient(135deg, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.1) 100%);
       z-index: 1;
       pointer-events: none;
-      transition: background 0.3s ease;
+      transition: opacity 0.3s ease;
     }
-    .carousel-card:hover::before,
-    .carousel-card.selected::before { background: rgba(0, 0, 0, 0); }
-    .carousel-card img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      position: relative;
-      z-index: 0;
-    }
+    
     .carousel-card:hover {
       width: var(--card-hover-width);
-      filter: brightness(1) blur(0px);
-      box-shadow: 0 25px 50px rgba(0,0,0,0.6);
-      z-index: 10;
+      filter: brightness(1) saturate(1.05);
+      opacity: 1;
+      transform: scale(1);
+      box-shadow: 0 25px 45px rgba(0, 0, 0, 0.5);
+      z-index: 20;
+      border: 1px solid transparent;
     }
+    
+    .carousel-card:hover::before { opacity: 0; }
+    
+    .carousel-card:has(~ .carousel-card:hover),
+    .carousel-card:hover ~ .carousel-card {
+      filter: brightness(0.55) saturate(0.7);
+      opacity: 0.65;
+      transform: scale(0.93);
+    }
+    
     .carousel-card.selected {
       width: var(--card-hover-width);
-      filter: brightness(1) blur(0px);
-      box-shadow: 0 25px 50px rgba(0,0,0,0.6);
-      z-index: 10;
+      filter: brightness(1) saturate(1);
+      opacity: 1;
+      transform: scale(1);
+      z-index: 20;
+      /* BORDE DORADO METALIZADO */
+      border: 3px solid var(--gold);
+      box-shadow: 0 25px 45px rgba(0, 0, 0, 0.5), 0 0 0 2px rgba(212, 175, 55, 0.3), 0 0 20px rgba(212, 175, 55, 0.25);
     }
-    .carousel-card.push-left { transform: translateX(-30px); }
-    .carousel-card.push-right { transform: translateX(30px); }
+    
+    .carousel-card.selected::before { opacity: 0; }
+    .carousel-card img { width: 100%; height: 100%; object-fit: cover; position: relative; z-index: 0; }
+    
+    .carousel-card::after {
+      content: '🔍';
+      position: absolute;
+      bottom: 12px;
+      right: 12px;
+      font-size: 1.2rem;
+      opacity: 0;
+      z-index: 2;
+      transition: opacity 0.3s ease;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+      pointer-events: none;
+    }
+    .carousel-card:hover::after { opacity: 0.8; }
     
     .contact-button-mobile { display: none; }
     .instruction { bottom: 1.5rem; font-size: 0.7rem; }
   }
 
+  /* ==================== RESPONSIVE MÓVIL ==================== */
   @media (max-width: 768px) {
     .logo-img { width: 100px; height: 100px; }
     .logo-text h1 { font-size: 3rem; }
@@ -313,10 +342,7 @@
       transform: translateX(-100%);
       transition: transform 0s ease;
     }
-    .carousel-wrapper.visible { 
-      transform: translateX(0);
-      transition: transform 2.5s ease;
-    }
+    .carousel-wrapper.visible { transform: translateX(0); transition: transform 2.5s ease; }
     .carousel-track {
       display: flex;
       flex-direction: row !important;
@@ -333,9 +359,11 @@
       border-radius: 20px;
       overflow: hidden;
       cursor: pointer;
-      filter: brightness(0.7) blur(1px);
+      filter: brightness(0.85);
+      opacity: 0.95;
       box-shadow: 0 8px 20px rgba(0,0,0,0.3);
       position: relative;
+      border: 1px solid transparent;
     }
     .carousel-card::before {
       content: '';
@@ -344,16 +372,17 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background: rgba(0, 0, 0, 0.15);
+      background: linear-gradient(135deg, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.05) 100%);
       z-index: 1;
       pointer-events: none;
     }
-    .carousel-card.selected::before { background: rgba(0, 0, 0, 0); }
     .carousel-card.selected {
-      border: 2px solid var(--gold-luminous);
-      filter: brightness(1) blur(0px);
+      border: 3px solid var(--gold);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3), 0 0 0 2px rgba(212, 175, 55, 0.3);
+      filter: brightness(1);
       transform: scale(1.01);
     }
+    .carousel-card.selected::before { background: rgba(0, 0, 0, 0); }
     .carousel-card img {
       width: 100%;
       height: 160px;
@@ -377,11 +406,7 @@
       text-transform: uppercase;
       margin-bottom: 0.2rem;
     }
-    .card-mobile-info p { 
-      font-size: 0.6rem; 
-      color: rgba(255,255,255,0.7);
-      font-family: 'Inter', sans-serif;
-    }
+    .card-mobile-info p { font-size: 0.6rem; color: rgba(255,255,255,0.7); font-family: 'Inter', sans-serif; }
     
     .contact-button-mobile {
       position: fixed;
@@ -407,6 +432,7 @@
     .instruction { bottom: 0.8rem; font-size: 0.6rem; }
   }
 
+  /* ==================== VISOR FULLSCREEN ==================== */
   .fullscreen-image-view {
     position: fixed;
     top: 0;
@@ -440,23 +466,13 @@
     pointer-events: none;
     z-index: 10;
     text-shadow: none;
-    background: rgba(249, 246, 240, 0.85);
+    background: rgba(249, 246, 240, 0.9);
     backdrop-filter: blur(8px);
     padding: 1rem;
     border-radius: 12px;
   }
-  .fullscreen-image-view .image-caption h2 { 
-    font-family: 'Playfair Display', serif; 
-    font-size: 1.8rem; 
-    font-weight: 700; 
-    margin-bottom: 0.5rem; 
-    color: var(--text-primary); 
-  }
-  .fullscreen-image-view .image-caption p { 
-    font-size: 1rem; 
-    line-height: 1.5; 
-    color: var(--text-secondary); 
-  }
+  .fullscreen-image-view .image-caption h2 { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--text-primary); }
+  .fullscreen-image-view .image-caption p { font-size: 1rem; line-height: 1.5; color: var(--text-secondary); }
   .fullscreen-nav {
     position: absolute;
     bottom: 2rem;
@@ -480,25 +496,7 @@
   .fullscreen-nav button:hover { background: var(--gold); color: #1a1a1a; }
   .fullscreen-nav button:disabled { opacity: 0.3; cursor: not-allowed; }
 
-  @media (max-width: 768px) {
-    .fullscreen-nav { bottom: 1rem; right: 1rem; }
-    .fullscreen-nav button { padding: 0.3rem 0.8rem; font-size: 0.7rem; }
-  }
-
-  .exterior-interior-carousel {
-    width: 100%;
-    overflow-x: auto;
-    overflow-y: hidden;
-    scroll-behavior: smooth;
-    padding: 0.5rem 0;
-    scrollbar-width: thin;
-    cursor: grab;
-  }
-  .exterior-interior-carousel:active { cursor: grabbing; }
-  .exterior-interior-carousel::-webkit-scrollbar { height: 4px; }
-  .exterior-interior-carousel::-webkit-scrollbar-track { background: var(--border-color); border-radius: 10px; }
-  .exterior-interior-carousel::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 10px; }
-
+  /* ==================== PANTALLA DE DETALLE ==================== */
   .detail-screen {
     position: fixed;
     top: 0;
@@ -512,30 +510,413 @@
     overflow-y: auto;
   }
   .detail-screen.active { transform: translateX(0); }
-  .detail-content { padding: 2rem; max-width: 1400px; margin: 0 auto; padding-top: 5rem; }
+  .detail-content { padding: 2rem; max-width: 1400px; margin: 0 auto; padding-top: 5rem; padding-bottom: 4rem; }
   .detail-header { margin-bottom: 2rem; }
-  .detail-header h2 { 
-    font-family: 'Playfair Display', serif; 
-    font-size: 3rem; 
-    font-weight: 800; 
-    color: var(--text-primary); 
-    border-bottom: 1px solid var(--border-color); 
-    display: inline-block; 
-    padding-bottom: 0.3rem; 
-    margin-bottom: 1rem;
-    text-shadow: 1px 1px 0 rgba(0,0,0,0.05), 2px 2px 0 rgba(0,0,0,0.03);
-  }
-  .detail-desc { 
-    font-family: 'Inter', sans-serif; 
-    font-size: 1.2rem; 
-    line-height: 1.6; 
-    color: var(--text-secondary); 
-    background: transparent; 
-    padding: 0; 
-    margin-bottom: 2rem; 
-    max-width: 800px; 
+  .detail-header h2 { font-family: 'Playfair Display', serif; font-size: 3rem; font-weight: 800; color: var(--text-primary); border-bottom: 2px solid var(--gold); display: inline-block; padding-bottom: 0.3rem; margin-bottom: 1rem; }
+  .detail-subheader { font-family: 'Inter', sans-serif; font-size: 1rem; color: var(--text-secondary); max-width: 700px; line-height: 1.5; }
+
+  /* ==================== PROYECTO - VERSIÓN FULL WIDTH ==================== */
+  .proyecto-texto-fullwidth {
+    background: var(--card-bg);
+    padding: 2.5rem;
+    border-radius: 24px;
+    margin-bottom: 3rem;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
   }
 
+  .proyecto-texto-fullwidth h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    border-bottom: 2px solid var(--gold);
+    display: inline-block;
+    padding-bottom: 0.3rem;
+  }
+
+  .proyecto-texto-fullwidth .subtitulo {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.15em;
+    color: var(--gold-dark);
+    text-transform: uppercase;
+    margin: 1rem 0 1.5rem 0;
+    font-weight: 500;
+  }
+
+  .proyecto-texto-fullwidth .descripcion {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    line-height: 1.65;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+  }
+
+  .proyecto-texto-fullwidth .descripcion strong {
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+
+  .cita-fullwidth {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    font-style: italic;
+    color: var(--gold-dark);
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+    text-align: center;
+  }
+
+  /* Grid de 4 estilos */
+  .proyecto-estilos-fullwidth {
+    margin-top: 1rem;
+  }
+
+  .estilos-section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    text-align: center;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.05em;
+  }
+
+  .estilos-section-subtitle {
+    text-align: center;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    color: var(--text-label);
+    margin-bottom: 2rem;
+  }
+
+  .estilos-grid-four {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+
+  .estilo-card-large {
+    background: var(--card-bg);
+    border-radius: 20px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .estilo-card-large:hover {
+    transform: translateY(-8px);
+    /* BORDE DORADO METALIZADO */
+    border: 3px solid var(--gold);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15), 0 0 0 2px rgba(212, 175, 55, 0.3), 0 0 20px rgba(212, 175, 55, 0.2);
+  }
+
+  .estilo-card-image {
+    overflow: hidden;
+    aspect-ratio: 3/4;
+  }
+
+  .estilo-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  .estilo-card-large:hover .estilo-card-image img {
+    transform: scale(1.05);
+  }
+
+  .estilo-card-info {
+    padding: 1.2rem;
+    text-align: center;
+  }
+
+  .estilo-card-info h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.3rem;
+  }
+
+  .estilo-card-info p {
+    font-size: 0.7rem;
+    color: var(--text-label);
+    letter-spacing: 0.05em;
+    margin-bottom: 0.8rem;
+  }
+
+  .explore-tag {
+    display: inline-block;
+    font-size: 0.7rem;
+    color: var(--gold-dark);
+    font-weight: 500;
+    transition: all 0.3s ease;
+  }
+
+  .estilo-card-large:hover .explore-tag {
+    transform: translateX(5px);
+    color: var(--gold);
+  }
+
+  /* ==================== SECCIÓN PROGRAMA ==================== */
+  .programa-wrapper { width: 100%; }
+  .programa-header { margin-bottom: 2rem; }
+  .programa-header h2 { font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.5rem; border-left: 3px solid var(--gold); padding-left: 1rem; }
+  .programa-header p { font-family: 'Inter', sans-serif; font-size: 1rem; line-height: 1.65; color: var(--text-secondary); padding-left: 1rem; max-width: 700px; }
+
+  .programa-timeline { display: flex; justify-content: space-between; margin: 2rem 0 3rem; position: relative; padding: 0 1rem; }
+  .timeline-node { position: relative; display: flex; flex-direction: column; align-items: center; flex: 1; }
+  .timeline-icon { width: 48px; height: 48px; background: var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #1a1a1a; font-size: 1.2rem; z-index: 2; transition: all 0.3s ease; }
+  .timeline-node:hover .timeline-icon { transform: scale(1.1); background: var(--gold-luminous); }
+  .timeline-line { position: absolute; top: 24px; left: 50%; width: 100%; height: 2px; background: linear-gradient(90deg, var(--gold), var(--border-color)); z-index: 1; }
+  .timeline-node:last-child .timeline-line { display: none; }
+
+  .programa-horizontal-carousel { width: 100%; overflow-x: auto; overflow-y: hidden; scroll-behavior: smooth; padding: 0.5rem 0; margin: 1.5rem 0; }
+  .programa-horizontal-carousel::-webkit-scrollbar { height: 4px; }
+  .programa-horizontal-carousel::-webkit-scrollbar-track { background: var(--border-color); border-radius: 10px; }
+  .programa-horizontal-carousel::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 10px; }
+  .programa-horizontal-track { display: flex; gap: 1rem; width: max-content; }
+  .programa-horizontal-card {
+    flex-shrink: 0;
+    width: 260px;
+    height: auto;
+    border-radius: 16px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    filter: brightness(0.98);
+    box-shadow: var(--shadow-sm);
+    position: relative;
+    border: 1px solid var(--border-color);
+    background: var(--card-bg);
+  }
+  .programa-horizontal-card:hover {
+    transform: translateY(-4px) scale(1.02);
+    filter: brightness(1);
+    z-index: 10;
+    /* BORDE DORADO METALIZADO */
+    border: 3px solid var(--gold);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15), 0 0 0 2px rgba(212, 175, 55, 0.3), 0 0 15px rgba(212, 175, 55, 0.2);
+  }
+  .programa-horizontal-card img { width: 100%; height: 180px; object-fit: cover; }
+  .programa-horizontal-card .programa-horizontal-caption { padding: 1rem; background: var(--card-bg); }
+  .programa-horizontal-card .programa-horizontal-caption h3 { font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.4rem; }
+  .programa-horizontal-card .programa-horizontal-caption p { font-size: 0.7rem; color: var(--text-secondary); line-height: 1.4; }
+
+  .programa-summary { margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border-color); }
+  .summary-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.5rem; margin-top: 1.5rem; }
+  .summary-card {
+    background: var(--card-bg);
+    border-radius: 20px;
+    padding: 1.5rem;
+    text-align: center;
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+  }
+  .summary-card:hover {
+    transform: translateY(-4px);
+    /* BORDE DORADO METALIZADO */
+    border: 2px solid var(--gold);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(212, 175, 55, 0.2), 0 0 10px rgba(212, 175, 55, 0.15);
+  }
+  .summary-number { display: block; font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 800; color: var(--gold); margin-bottom: 0.5rem; }
+  .summary-label { font-family: 'Inter', sans-serif; font-size: 0.85rem; color: var(--text-secondary); letter-spacing: 0.05em; }
+
+  /* ==================== SECCIÓN ESTILOS ==================== */
+  .estilos-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin: 2rem 0; }
+  .estilos-grid-card {
+    border-radius: 24px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    background: var(--card-bg);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border-color);
+  }
+  .estilos-grid-card:hover {
+    transform: translateY(-8px);
+    /* BORDE DORADO METALIZADO */
+    border: 3px solid var(--gold);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15), 0 0 0 2px rgba(212, 175, 55, 0.3), 0 0 20px rgba(212, 175, 55, 0.2);
+  }
+  .estilos-grid-card img { width: 100%; aspect-ratio: 3/4; object-fit: cover; transition: transform 0.5s ease; }
+  .estilos-grid-card:hover img { transform: scale(1.03); }
+  .estilos-card-content { padding: 1.5rem; text-align: center; }
+  .estilos-card-content h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; margin-bottom: 0.5rem; color: var(--text-primary); }
+  .estilos-card-content .tagline { font-family: 'Inter', sans-serif; font-size: 0.75rem; letter-spacing: 0.1em; color: var(--gold-dark); margin-bottom: 0.75rem; text-transform: uppercase; }
+  .estilos-card-content .materials { font-size: 0.75rem; color: var(--text-label); margin-bottom: 1rem; }
+  .explore-btn { background: transparent; border: 1px solid var(--gold); padding: 0.5rem 1rem; border-radius: 40px; font-size: 0.75rem; cursor: pointer; transition: all 0.3s ease; color: var(--text-primary); }
+  .explore-btn:hover { background: var(--gold); color: #1a1a1a; transform: translateY(-2px); }
+
+  .comparison-section { margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border-color); }
+  .comparison-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1.5rem; }
+  .comparison-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.75rem 1rem;
+    background: var(--card-bg);
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+  }
+  .comparison-item:hover {
+    /* BORDE DORADO METALIZADO */
+    border: 2px solid var(--gold);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(212, 175, 55, 0.2);
+  }
+  .comp-label { font-weight: 600; color: var(--text-primary); }
+  .comp-value { color: var(--gold-dark); font-size: 0.85rem; }
+
+  /* ==================== ESTILOS INTERNOS (INTRO/EXTERIORES/INTERIORES) ==================== */
+  .style-subnav { display: flex; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 2rem; padding-bottom: 0.75rem; justify-content: center; border-bottom: 1px solid var(--border-color); }
+  .style-subnav button { background: transparent; border: none; font-family: 'Inter', sans-serif; font-size: 0.9rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-label); padding: 0.5rem 0; cursor: pointer; transition: 0.3s; font-weight: 400; }
+  .style-subnav button.active { color: var(--gold-dark); border-bottom: 2px solid var(--gold-dark); }
+  .style-subnav button:hover { color: var(--gold-dark); }
+  .style-intro-wrapper { display: flex; gap: 3rem; flex-wrap: wrap; align-items: flex-start; }
+  .style-intro-text { flex: 1; font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; line-height: 1.7; color: var(--text-secondary); background: transparent; border-left: 3px solid var(--gold); padding-left: 1.5rem; }
+  .materials-grid { flex: 1; display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+  .material-card {
+    background: var(--card-bg);
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    border: 1px solid var(--border-color);
+  }
+  .material-card:hover {
+    transform: translateY(-4px);
+    /* BORDE DORADO METALIZADO */
+    border: 2px solid var(--gold);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(212, 175, 55, 0.2), 0 0 10px rgba(212, 175, 55, 0.15);
+  }
+  .material-card img { width: 100%; height: 100px; object-fit: cover; }
+  .material-card p { padding: 0.6rem; text-align: center; color: var(--text-secondary); font-size: 0.85rem; font-weight: 400; }
+
+  /* Exteriores e Interiores - responsive */
+  .exterior-interior-wrapper { width: 100%; }
+  .exterior-interior-header { margin-bottom: 1.5rem; }
+  .exterior-interior-header h2 { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; color: var(--text-primary); border-left: 3px solid var(--gold); padding-left: 1rem; margin-bottom: 0.5rem; }
+  .exterior-interior-header p { font-family: 'Inter', sans-serif; font-size: 0.9rem; color: var(--text-label); padding-left: 1rem; }
+  
+  .exterior-interior-carousel { 
+    width: 100%; 
+    overflow-x: auto; 
+    overflow-y: hidden; 
+    scroll-behavior: smooth; 
+    padding: 0.5rem 0; 
+    cursor: grab;
+    scroll-snap-type: x mandatory;
+  }
+  .exterior-interior-carousel:active { cursor: grabbing; }
+  .exterior-interior-carousel::-webkit-scrollbar { height: 4px; }
+  .exterior-interior-carousel::-webkit-scrollbar-track { background: var(--border-color); border-radius: 10px; }
+  .exterior-interior-carousel::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 10px; }
+  .exterior-interior-track { display: flex; gap: 1rem; width: max-content; }
+  .exterior-interior-card { 
+    flex-shrink: 0; 
+    width: 280px; 
+    border-radius: 16px; 
+    overflow: hidden; 
+    cursor: pointer; 
+    transition: all 0.3s ease; 
+    filter: brightness(0.98); 
+    box-shadow: var(--shadow-sm); 
+    position: relative; 
+    border: 1px solid var(--border-color); 
+    background: var(--card-bg);
+    scroll-snap-align: start;
+  }
+  .exterior-interior-card:hover {
+    transform: scale(1.02);
+    filter: brightness(1);
+    /* BORDE DORADO METALIZADO */
+    border: 3px solid var(--gold);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15), 0 0 0 2px rgba(212, 175, 55, 0.3), 0 0 15px rgba(212, 175, 55, 0.2);
+  }
+  .exterior-interior-card img { width: 100%; height: 240px; object-fit: cover; }
+  .exterior-interior-card .exterior-interior-caption { padding: 0.8rem; text-align: center; background: var(--card-bg); }
+  .exterior-interior-card .exterior-interior-caption h4 { font-family: 'Inter', sans-serif; color: var(--gold-dark); font-size: 0.85rem; font-weight: 500; letter-spacing: 0.05em; margin-bottom: 0.2rem; white-space: normal; }
+  .exterior-interior-card .exterior-interior-caption p { font-size: 0.7rem; color: var(--text-secondary); line-height: 1.3; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+
+  /* ==================== SECCIÓN TÉCNICA ==================== */
+  .tecnica-layout { display: flex; gap: 2rem; flex-wrap: wrap; min-height: 70vh; }
+  .tecnica-izquierda { flex: 1; min-width: 280px; }
+  .tecnica-derecha { flex: 1.5; min-width: 300px; }
+  .tecnica-estilos-carousel { width: 100%; overflow-x: auto; scroll-behavior: smooth; margin: 1rem 0; }
+  .tecnica-estilos-carousel::-webkit-scrollbar { height: 4px; }
+  .tecnica-estilos-carousel::-webkit-scrollbar-track { background: var(--border-color); border-radius: 10px; }
+  .tecnica-estilos-carousel::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 10px; }
+  .tecnica-estilos-track { display: flex; gap: 1rem; width: max-content; }
+  .tecnica-estilo-card {
+    flex-shrink: 0;
+    width: 140px;
+    height: 320px;
+    border-radius: 16px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    filter: brightness(0.98);
+    position: relative;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border-color);
+  }
+  .tecnica-estilo-card.active {
+    width: 180px;
+    filter: brightness(1);
+    /* BORDE DORADO METALIZADO */
+    border: 3px solid var(--gold);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15), 0 0 0 2px rgba(212, 175, 55, 0.3), 0 0 15px rgba(212, 175, 55, 0.2);
+  }
+  .tecnica-estilo-card:hover {
+    width: 180px;
+    filter: brightness(1);
+    z-index: 10;
+    /* BORDE DORADO METALIZADO */
+    border: 3px solid var(--gold);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15), 0 0 0 2px rgba(212, 175, 55, 0.3), 0 0 15px rgba(212, 175, 55, 0.2);
+  }
+  .tecnica-estilo-card img { width: 100%; height: 100%; object-fit: cover; }
+  .tecnica-estilo-caption { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.6), transparent); padding: 0.8rem; text-align: center; }
+  .tecnica-estilo-caption h4 { color: var(--gold-luminous); font-size: 0.75rem; font-family: 'Inter', sans-serif; font-weight: 400; }
+
+  .tecnica-scroll-container { height: 70vh; overflow-y: auto; scroll-behavior: smooth; background: transparent; padding-right: 0.5rem; }
+  .tecnica-scroll-container::-webkit-scrollbar { width: 4px; }
+  .tecnica-scroll-container::-webkit-scrollbar-track { background: var(--border-color); border-radius: 10px; }
+  .tecnica-scroll-container::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 10px; }
+  .tecnica-scroll-content { display: flex; flex-direction: column; gap: 1.5rem; }
+  .tecnica-imagen { background: var(--card-bg); border-radius: 16px; overflow: hidden; padding: 1rem; box-shadow: var(--shadow-sm); border: 1px solid var(--border-color); }
+  .tecnica-imagen h4 { color: var(--text-primary); margin-bottom: 1rem; font-family: 'Playfair Display', serif; text-align: center; font-weight: 700; font-size: 1.1rem; }
+  .tecnica-imagen img { width: 100%; height: auto; object-fit: contain; border-radius: 8px; }
+
+  /* ==================== SECCIÓN CONTACTO ==================== */
+  .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin: 2rem 0; }
+  .info-card {
+    background: var(--card-bg);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s ease;
+    border: 1px solid var(--border-color);
+  }
+  .info-card:hover {
+    transform: translateY(-5px);
+    /* BORDE DORADO METALIZADO */
+    border: 3px solid var(--gold);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15), 0 0 0 2px rgba(212, 175, 55, 0.3), 0 0 15px rgba(212, 175, 55, 0.2);
+  }
+  .info-card img { width: 100%; height: 220px; object-fit: cover; }
+  .info-card-content { padding: 1.8rem; text-align: center; }
+  .info-card-content h4 { color: var(--text-primary); font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; margin-bottom: 0.75rem; }
+  .info-card-content p { font-family: 'Inter', sans-serif; font-size: 1rem; color: var(--text-secondary); font-weight: 400; }
+  .contact-footer-text { text-align: center; margin-top: 2rem; padding: 2rem; font-family: 'Inter', sans-serif; font-size: 1rem; color: var(--text-label); border-top: 1px solid var(--border-color); }
+
+  /* ==================== UTILIDADES ==================== */
   .instruction {
     position: fixed;
     bottom: 1.5rem;
@@ -556,331 +937,59 @@
   }
   .instruction.hide { opacity: 0; visibility: hidden; }
 
-  .style-subnav {
-    display: flex;
-    gap: 1.5rem;
-    flex-wrap: wrap;
-    margin-bottom: 2rem;
-    padding-bottom: 0.75rem;
-    justify-content: center;
-    border-bottom: 1px solid var(--border-color);
-  }
-  .style-subnav button {
-    background: transparent;
-    border: none;
-    font-family: 'Inter', sans-serif;
-    font-size: 0.9rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--text-label);
-    padding: 0.5rem 0;
-    cursor: pointer;
-    transition: 0.3s;
-    font-weight: 400;
-  }
-  .style-subnav button.active { 
-    color: var(--gold-dark); 
-    border-bottom: 2px solid var(--gold-dark);
-  }
-  .style-subnav button:hover { color: var(--gold-dark); }
-
-  .style-content {
-    min-height: 60vh;
-  }
-
-  .style-intro-wrapper {
-    display: flex;
-    gap: 3rem;
-    flex-wrap: wrap;
-    align-items: flex-start;
-  }
-  .style-intro-text {
-    flex: 1;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.3rem;
-    line-height: 1.7;
-    color: var(--text-secondary);
-    background: transparent;
-    padding: 0;
-    border-radius: 0;
-    border-left: 2px solid var(--gold);
-    padding-left: 1.5rem;
-    font-style: normal;
-  }
-  .materials-grid {
-    flex: 1;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
-  }
-  .material-card {
-    background: var(--card-bg);
-    border-radius: 12px;
-    overflow: hidden;
-    cursor: pointer;
-    transition: all 0.4s ease;
-    border: 1px solid var(--border-color);
-    box-shadow: var(--shadow-sm);
-  }
-  .material-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: var(--gold); }
-  .material-card img { width: 100%; height: 100px; object-fit: cover; }
-  .material-card p { 
-    padding: 0.6rem; 
-    text-align: center; 
-    color: var(--text-secondary); 
-    font-size: 0.9rem; 
-    font-weight: 400;
-    font-family: 'Inter', sans-serif;
-    letter-spacing: 0.05em;
-  }
-
+  /* ==================== RESPONSIVE MÓVIL ADICIONAL ==================== */
   @media (max-width: 768px) {
+    .detail-content { padding: 1rem; padding-top: 4rem; }
+    .detail-header h2 { font-size: 2rem; }
+    
+    /* Proyecto */
+    .proyecto-texto-fullwidth { padding: 1.5rem; }
+    .proyecto-texto-fullwidth h2 { font-size: 2rem; }
+    .proyecto-texto-fullwidth .descripcion { font-size: 1rem; }
+    .cita-fullwidth { font-size: 1rem; }
+    .estilos-grid-four { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+    .estilo-card-info h4 { font-size: 1rem; }
+    .estilo-card-info p { font-size: 0.6rem; }
+    .estilos-section-title { font-size: 1.4rem; }
+    
+    /* Programa */
+    .programa-timeline { margin: 1rem 0 2rem; }
+    .timeline-icon { width: 36px; height: 36px; font-size: 0.9rem; }
+    .timeline-line { top: 18px; }
+    .programa-horizontal-card { width: 260px; }
+    .programa-horizontal-card img { height: 160px; }
+    .summary-grid { grid-template-columns: repeat(2, 1fr); }
+    .programa-header h2 { font-size: 1.8rem; }
+    
+    /* Estilos */
+    .estilos-grid { grid-template-columns: 1fr; }
     .style-intro-wrapper { flex-direction: column; }
+    .style-intro-text { font-size: 1.1rem; padding-left: 1rem; }
     .materials-grid { grid-template-columns: repeat(2, 1fr); }
     .material-card img { height: 80px; }
-    .style-intro-text { font-size: 1.1rem; padding-left: 1rem; }
-    .detail-header h2 { font-size: 2rem; }
-    .detail-desc { font-size: 1rem; }
+    
+    /* Exteriores/Interiores */
+    .exterior-interior-card { width: 85vw; max-width: 320px; }
+    .exterior-interior-card img { height: auto; aspect-ratio: 4/3; }
+    
+    /* Técnica */
+    .tecnica-layout { flex-direction: column; }
+    .tecnica-scroll-container { height: auto; max-height: 50vh; }
+    .tecnica-estilo-card { width: 120px; height: 280px; }
+    .tecnica-estilo-card:hover { width: 120px; transform: scale(1.02); }
+    .tecnica-estilo-card.active { width: 120px; }
+    
+    /* Ajuste de bordes en móvil */
+    .estilo-card-large:hover,
+    .programa-horizontal-card:hover,
+    .estilos-grid-card:hover,
+    .exterior-interior-card:hover,
+    .info-card:hover,
+    .material-card:hover,
+    .summary-card:hover {
+      border-width: 2px;
+    }
   }
-
-  .exterior-interior-wrapper {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-  }
-  .exterior-interior-header {
-    margin-bottom: 1.5rem;
-  }
-  .exterior-interior-header h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 2rem;
-    font-weight: 700;
-    color: var(--text-primary);
-    border-left: 2px solid var(--gold);
-    padding-left: 1rem;
-    margin-bottom: 0.25rem;
-    text-shadow: 1px 1px 0 rgba(0,0,0,0.05);
-  }
-  .exterior-interior-header p {
-    font-family: 'Inter', sans-serif;
-    font-size: 1rem;
-    line-height: 1.5;
-    color: var(--text-label);
-    padding-left: 1rem;
-  }
-  .exterior-interior-track {
-    display: flex;
-    gap: 1rem;
-    width: max-content;
-  }
-  .exterior-interior-card {
-    flex-shrink: 0;
-    width: 200px;
-    height: 280px;
-    border-radius: 12px;
-    overflow: hidden;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    filter: brightness(0.98);
-    box-shadow: var(--shadow-sm);
-    position: relative;
-    border: 1px solid var(--border-color);
-  }
-  .exterior-interior-card:hover { transform: scale(1.02); filter: brightness(1); box-shadow: var(--shadow-md); border-color: var(--gold); }
-  .exterior-interior-card img { width: 100%; height: 100%; object-fit: cover; }
-  .exterior-interior-card .exterior-interior-caption { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.6), transparent); padding: 0.8rem; text-align: center; }
-  .exterior-interior-card .exterior-interior-caption h4 { font-family: 'Inter', sans-serif; color: var(--gold-luminous); font-size: 0.85rem; font-weight: 400; }
-
-  @media (max-width: 768px) {
-    .exterior-interior-card { width: 160px; height: 240px; }
-    .exterior-interior-card .exterior-interior-caption h4 { font-size: 0.7rem; }
-    .exterior-interior-header h2 { font-size: 1.5rem; }
-    .exterior-interior-header p { font-size: 0.85rem; }
-  }
-
-  .proyecto-layout { display: flex; gap: 3rem; flex-wrap: wrap; align-items: stretch; min-height: 80vh; background: var(--bg-color); margin: 0; padding: 0; }
-  .proyecto-texto { flex: 1; min-width: 300px; display: flex; flex-direction: column; justify-content: center; background: var(--card-bg); padding: 3rem; border-radius: 24px; box-shadow: var(--shadow-sm); }
-  .proyecto-texto h2 { 
-    font-family: 'Playfair Display', serif; 
-    font-size: 3rem; 
-    font-weight: 800; 
-    letter-spacing: -0.01em; 
-    color: var(--text-primary); 
-    margin-bottom: 1rem; 
-    border-bottom: 1px solid var(--border-color); 
-    display: inline-block; 
-    padding-bottom: 0.3rem;
-    text-shadow: 1px 1px 0 rgba(0,0,0,0.05);
-  }
-  .proyecto-texto .subtitulo { 
-    font-family: 'Inter', sans-serif; 
-    font-size: 0.9rem; 
-    letter-spacing: 0.15em; 
-    color: var(--text-label); 
-    text-transform: uppercase; 
-    margin-bottom: 2rem; 
-    font-weight: 400; 
-  }
-  .proyecto-texto .descripcion { 
-    font-family: 'Cormorant Garamond', serif; 
-    font-size: 1.2rem; 
-    line-height: 1.65; 
-    color: var(--text-secondary); 
-    margin-bottom: 1.2rem; 
-    font-weight: 400; 
-  }
-  .proyecto-texto .descripcion strong { font-weight: 700; color: var(--text-primary); }
-  .proyecto-texto .cita { 
-    font-family: 'Cormorant Garamond', serif; 
-    font-size: 1.2rem; 
-    font-style: italic; 
-    color: var(--text-label); 
-    margin-top: 1rem; 
-    padding-top: 1rem; 
-    border-top: 1px solid var(--border-color); 
-    line-height: 1.6; 
-  }
-  .proyecto-estilos-wrapper { flex: 1; min-width: 280px; background: transparent; padding: 2rem; display: flex; flex-direction: column; justify-content: center; }
-  .proyecto-estilos-wrapper h3 { 
-    font-family: 'Inter', sans-serif; 
-    font-size: 0.9rem; 
-    letter-spacing: 0.15em; 
-    text-transform: uppercase; 
-    color: var(--text-label); 
-    margin-bottom: 1rem; 
-    text-align: center; 
-    font-weight: 400; 
-  }
-  .proyecto-estilos-carousel { display: flex; gap: 1.5rem; overflow-x: auto; scroll-behavior: smooth; padding: 0.5rem 0.5rem; }
-  .proyecto-estilos-carousel::-webkit-scrollbar { height: 4px; }
-  .proyecto-estilos-carousel::-webkit-scrollbar-track { background: var(--border-color); border-radius: 10px; }
-  .proyecto-estilos-carousel::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 10px; }
-  .proyecto-estilo-card { flex-shrink: 0; width: 160px; height: 360px; border-radius: 12px; overflow: hidden; cursor: pointer; transition: all 0.4s ease; filter: brightness(0.99); position: relative; border: 1px solid var(--border-color); box-shadow: var(--shadow-sm); }
-  .proyecto-estilo-card:hover { width: 200px; filter: brightness(1); z-index: 10; box-shadow: var(--shadow-lg); border-color: var(--gold); }
-  .proyecto-estilo-card img { width: 100%; height: 100%; object-fit: cover; }
-  .proyecto-estilo-caption { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.5), transparent); padding: 0.8rem; text-align: center; }
-  .proyecto-estilo-caption h4 { font-family: 'Inter', sans-serif; color: var(--gold-luminous); font-size: 0.85rem; font-weight: 400; letter-spacing: 0.05em; }
-  .proyecto-estilo-caption p { font-size: 0.7rem; color: #C4C0B8; font-family: 'Inter', sans-serif; }
-
-  @media (max-width: 768px) { 
-    .proyecto-layout { flex-direction: column; min-height: auto; } 
-    .proyecto-texto { padding: 1.5rem; } 
-    .proyecto-texto h2 { font-size: 2rem; } 
-    .proyecto-texto .descripcion { font-size: 1rem; } 
-    .proyecto-texto .cita { font-size: 1rem; } 
-    .proyecto-estilos-wrapper { padding: 1rem; } 
-    .proyecto-estilo-card { width: 140px; height: 280px; } 
-    .proyecto-estilo-card:hover { width: 140px; transform: scale(1.02); } 
-  }
-
-  .programa-wrapper { height: auto; display: flex; flex-direction: column; background: transparent; }
-  .programa-header { background: transparent; margin-bottom: 2rem; }
-  .programa-header h2 { 
-    font-family: 'Playfair Display', serif; 
-    font-size: 2.5rem; 
-    font-weight: 700; 
-    color: var(--text-primary); 
-    margin-bottom: 0.5rem; 
-    border-left: 2px solid var(--gold); 
-    padding-left: 1rem;
-    text-shadow: 1px 1px 0 rgba(0,0,0,0.05);
-  }
-  .programa-header p { 
-    font-family: 'Inter', sans-serif; 
-    font-size: 1rem; 
-    line-height: 1.65; 
-    color: var(--text-secondary); 
-    padding-left: 1rem; 
-    max-width: 700px; 
-  }
-  .programa-horizontal-carousel { width: 100%; overflow-x: auto; overflow-y: hidden; scroll-behavior: smooth; padding: 0.5rem 0; }
-  .programa-horizontal-carousel::-webkit-scrollbar { height: 4px; }
-  .programa-horizontal-carousel::-webkit-scrollbar-track { background: var(--border-color); border-radius: 10px; }
-  .programa-horizontal-carousel::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 10px; }
-  .programa-horizontal-track { display: flex; gap: 1rem; width: max-content; }
-  .programa-horizontal-card { flex-shrink: 0; width: 180px; height: 340px; border-radius: 12px; overflow: hidden; cursor: pointer; transition: all 0.3s ease; filter: brightness(0.99); box-shadow: var(--shadow-sm); position: relative; border: 1px solid var(--border-color); }
-  .programa-horizontal-card:hover { width: 220px; filter: brightness(1); z-index: 10; box-shadow: var(--shadow-lg); border-color: var(--gold); }
-  .programa-horizontal-card img { width: 100%; height: 100%; object-fit: cover; position: relative; z-index: 0; }
-  .programa-horizontal-card .programa-horizontal-caption { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.5), transparent); padding: 0.8rem; text-align: center; z-index: 2; }
-  .programa-horizontal-card .programa-horizontal-caption h3 { font-family: 'Inter', sans-serif; color: var(--gold-luminous); font-size: 0.85rem; margin-bottom: 0.2rem; font-weight: 400; }
-
-  @media (max-width: 768px) { 
-    .programa-horizontal-card { width: 150px; height: 260px; } 
-    .programa-horizontal-card:hover { width: 150px; transform: scale(1.02); } 
-    .programa-header h2 { font-size: 2rem; } 
-    .programa-header p { font-size: 0.9rem; } 
-  }
-
-  .tecnica-layout { display: flex; gap: 2rem; flex-wrap: wrap; min-height: 70vh; }
-  .tecnica-izquierda { flex: 1; min-width: 280px; display: flex; flex-direction: column; overflow: hidden; }
-  .tecnica-derecha { flex: 1; min-width: 300px; display: flex; flex-direction: column; }
-  @media (max-width: 768px) { .tecnica-layout { flex-direction: column; min-height: auto; } .tecnica-izquierda { min-height: 40vh; } }
-
-  .tecnica-estilos-carousel { flex: 1; overflow-x: auto; overflow-y: visible; scroll-behavior: smooth; margin-top: 1rem; padding: 0.5rem; }
-  .tecnica-estilos-carousel::-webkit-scrollbar { height: 4px; }
-  .tecnica-estilos-carousel::-webkit-scrollbar-track { background: var(--border-color); border-radius: 10px; }
-  .tecnica-estilos-carousel::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 10px; }
-  .tecnica-estilos-track { display: flex; gap: 1rem; width: max-content; }
-  .tecnica-estilo-card { flex-shrink: 0; width: 140px; height: 340px; border-radius: 12px; overflow: hidden; cursor: pointer; transition: all 0.4s ease; filter: brightness(0.99); position: relative; box-shadow: var(--shadow-sm); border: 1px solid var(--border-color); }
-  .tecnica-estilo-card:hover { width: 200px; filter: brightness(1); z-index: 10; box-shadow: var(--shadow-lg); border-color: var(--gold); }
-  .tecnica-estilo-card.active { width: 200px; filter: brightness(1); border: 1px solid var(--gold); box-shadow: var(--shadow-md); }
-  .tecnica-estilo-card img { width: 100%; height: 100%; object-fit: cover; }
-  .tecnica-estilo-caption { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.5), transparent); padding: 0.8rem; text-align: center; z-index: 2; }
-  .tecnica-estilo-caption h4 { color: var(--gold-luminous); font-size: 0.8rem; font-family: 'Inter', sans-serif; font-weight: 400; }
-
-  .tecnica-scroll-container { flex: 1; overflow-y: auto; overflow-x: hidden; scroll-behavior: smooth; background: transparent; margin-top: 1rem; }
-  .tecnica-scroll-container::-webkit-scrollbar { width: 4px; }
-  .tecnica-scroll-container::-webkit-scrollbar-track { background: var(--border-color); border-radius: 10px; }
-  .tecnica-scroll-container::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 10px; }
-  .tecnica-scroll-content { display: flex; flex-direction: column; gap: 1rem; padding: 0.5rem; }
-  .tecnica-imagen { background: var(--card-bg); border-radius: 12px; overflow: hidden; padding: 1rem; width: 100%; box-shadow: var(--shadow-sm); border: 1px solid var(--border-color); }
-  .tecnica-imagen h4 { 
-    color: var(--text-primary); 
-    margin-bottom: 0.75rem; 
-    font-family: 'Playfair Display', serif; 
-    text-align: center; 
-    font-weight: 700; 
-    letter-spacing: 0.05em; 
-    font-size: 1.1rem;
-    text-shadow: 1px 1px 0 rgba(0,0,0,0.05);
-  }
-  .tecnica-imagen img { width: 100%; height: auto; object-fit: contain; border-radius: 8px; }
-
-  .info-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2rem; margin-top: 2rem; }
-  .info-card { background: var(--card-bg); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow-sm); transition: transform 0.3s ease; border: 1px solid var(--border-color); }
-  .info-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: var(--gold); }
-  .info-card img { width: 100%; height: 200px; object-fit: cover; }
-  .info-card-content { padding: 1.5rem; text-align: center; }
-  .info-card-content h4 { 
-    color: var(--text-primary); 
-    font-family: 'Playfair Display', serif; 
-    font-size: 1.3rem; 
-    font-weight: 700; 
-    margin-bottom: 0.5rem; 
-    letter-spacing: 0.05em;
-    text-shadow: 1px 1px 0 rgba(0,0,0,0.05);
-  }
-  .info-card-content p { 
-    font-family: 'Inter', sans-serif; 
-    font-size: 1rem; 
-    color: var(--text-secondary); 
-    font-weight: 400; 
-  }
-
-  .btn-close {
-    background: transparent;
-    border: 1px solid var(--border-color);
-    padding: 0.6rem 1.8rem;
-    border-radius: 40px;
-    color: var(--text-primary);
-    font-weight: 400;
-    cursor: pointer;
-    transition: 0.3s;
-    margin-top: 2rem;
-    font-family: 'Inter', sans-serif;
-    font-size: 0.85rem;
-  }
-  .btn-close:hover { background: var(--gold); color: white; border-color: var(--gold); transform: translateY(-2px); }
 </style>
 </head>
 <body>
@@ -924,39 +1033,10 @@
   let activeHoverCard = null;
   let navigationStack = [];
   let currentFullscreenDiv = null;
-
   let currentGalleryImages = [];
   let currentGalleryIndex = 0;
 
   function escapeHtml(str) { return str.replace(/[&<>]/g, m => m === '&' ? '&amp;' : (m === '<' ? '&lt;' : '&gt;')); }
-
-  function applyAccordionEffect(card, isHovering) {
-    if (isMobile) return;
-    const cards = document.querySelectorAll('.carousel-card');
-    const index = Array.from(cards).indexOf(card);
-    cards.forEach((c, i) => {
-      c.classList.remove('push-left', 'push-right');
-      if (isHovering && i < index) c.classList.add('push-left');
-      else if (isHovering && i > index) c.classList.add('push-right');
-    });
-  }
-
-  function resetCarouselCardsToOriginal() {
-    const cards = document.querySelectorAll('.carousel-card');
-    cards.forEach(card => {
-      card.classList.remove('selected');
-      if (!isMobile) {
-        card.style.width = '';
-        card.style.filter = '';
-      }
-    });
-    if (elements.currentTitle) elements.currentTitle.innerText = '';
-    if (!isMobile && activeHoverCard) {
-      applyAccordionEffect(activeHoverCard, false);
-      activeHoverCard = null;
-    }
-    currentSelectedId = null;
-  }
 
   function closeFullscreen() {
     if (currentFullscreenDiv) { 
@@ -967,7 +1047,6 @@
     }
   }
 
-  // Función para el visor de imágenes - CON NAVEGACIÓN CON SCROLL Y GESTOS
   function showFullscreenImage(imagesArray, startIndex, title, description) {
     currentGalleryImages = imagesArray;
     currentGalleryIndex = startIndex;
@@ -993,19 +1072,8 @@
       }
     }
     
-    function goPrev() { 
-      if (currentGalleryIndex > 0) { 
-        currentGalleryIndex--; 
-        updateFullscreenContent(); 
-      } 
-    }
-    
-    function goNext() { 
-      if (currentGalleryIndex < currentGalleryImages.length - 1) { 
-        currentGalleryIndex++; 
-        updateFullscreenContent(); 
-      } 
-    }
+    function goPrev() { if (currentGalleryIndex > 0) { currentGalleryIndex--; updateFullscreenContent(); } }
+    function goNext() { if (currentGalleryIndex < currentGalleryImages.length - 1) { currentGalleryIndex++; updateFullscreenContent(); } }
     
     if (currentFullscreenDiv) closeFullscreen();
     
@@ -1031,44 +1099,26 @@
     if (prevBtn) prevBtn.addEventListener('click', goPrev);
     if (nextBtn) nextBtn.addEventListener('click', goNext);
     
-    // Navegación con scroll horizontal (rueda del mouse)
-    function handleWheel(e) {
-      if (e.deltaY > 0) {
-        goNext();
-      } else if (e.deltaY < 0) {
-        goPrev();
-      }
-    }
-    
-    // Navegación con gestos táctiles (swipe)
+    function handleWheel(e) { if (e.deltaY > 0) goNext(); else if (e.deltaY < 0) goPrev(); }
     let touchStartX = 0;
-    let touchEndX = 0;
-    
-    function handleTouchStart(e) {
-      touchStartX = e.changedTouches[0].screenX;
-    }
-    
+    function handleTouchStart(e) { touchStartX = e.changedTouches[0].screenX; }
     function handleTouchEnd(e) {
-      touchEndX = e.changedTouches[0].screenX;
+      const touchEndX = e.changedTouches[0].screenX;
       const swipeThreshold = 50;
-      if (touchEndX < touchStartX - swipeThreshold) { 
-        goNext(); 
-      } else if (touchEndX > touchStartX + swipeThreshold) { 
-        goPrev(); 
-      }
+      if (touchEndX < touchStartX - swipeThreshold) goNext();
+      else if (touchEndX > touchStartX + swipeThreshold) goPrev();
     }
-    
-    // Navegación con teclado (flechas)
     function handleKeyDown(e) {
-      if (e.key === 'ArrowLeft') { goPrev(); }
-      else if (e.key === 'ArrowRight') { goNext(); }
-      else if (e.key === 'Escape') { closeFullscreen(); }
+      if (e.key === 'ArrowLeft') goPrev();
+      else if (e.key === 'ArrowRight') goNext();
+      else if (e.key === 'Escape') closeFullscreen();
     }
     
     currentFullscreenDiv.addEventListener('wheel', handleWheel);
     currentFullscreenDiv.addEventListener('touchstart', handleTouchStart);
     currentFullscreenDiv.addEventListener('touchend', handleTouchEnd);
     document.addEventListener('keydown', handleKeyDown);
+    currentFullscreenDiv.addEventListener('click', (e) => { if (e.target === currentFullscreenDiv) closeFullscreen(); });
     
     currentFullscreenDiv.cleanup = () => {
       currentFullscreenDiv.removeEventListener('wheel', handleWheel);
@@ -1076,13 +1126,6 @@
       currentFullscreenDiv.removeEventListener('touchend', handleTouchEnd);
       document.removeEventListener('keydown', handleKeyDown);
     };
-    
-    // Cerrar al hacer clic en el fondo (fuera de la imagen y botones)
-    currentFullscreenDiv.addEventListener('click', (e) => { 
-      if (e.target === currentFullscreenDiv) {
-        closeFullscreen(); 
-      } 
-    });
   }
 
   // DATOS DE ESTILOS
@@ -1099,23 +1142,23 @@
       exteriores: [
         { img: 'assets/images/estilos/neoclasico/exteriores/01-vista-panoramica.png', title: 'Vista Panorámica', desc: 'El horizonte se funde con el jardín geométrico. Cipreses alineados como centinelas enmarcan la silueta de la casa.' },
         { img: 'assets/images/estilos/neoclasico/exteriores/02-fachada-principal.png', title: 'Fachada Principal', desc: 'La simetría ordena los vanos. El acceso jerarquizado y los rosales trepadores abrazan las paredes.' },
-        { img: 'assets/images/estilos/neoclasico/exteriores/03-acceso-principal.png', title: 'Acceso Principal', desc: 'Puerta de doble hoja en madera noble. Jardineras de boj guían la mirada. Un banco de piedra invita a detenerse.' },
-        { img: 'assets/images/estilos/neoclasico/exteriores/04-jardin-privado.png', title: 'Jardín Privado', desc: 'Piscina de borde infinito. Deck de madera y glorieta con glicinas. El aroma a rosas flota en el aire.' },
-        { img: 'assets/images/estilos/neoclasico/exteriores/05-contrafachada.png', title: 'Contrafachada', desc: 'Grandes ventanales invitan al exterior. La piscina se funde con el horizonte. La cochera-quincho espera los asados.' }
+        { img: 'assets/images/estilos/neoclasico/exteriores/03-acceso-principal.png', title: 'Acceso Principal', desc: 'Puerta de doble hoja en madera noble. Jardineras de boj guían la mirada.' },
+        { img: 'assets/images/estilos/neoclasico/exteriores/04-jardin-privado.png', title: 'Jardín Privado', desc: 'Piscina de borde infinito. Deck de madera y glorieta con glicinas.' },
+        { img: 'assets/images/estilos/neoclasico/exteriores/05-contrafachada.png', title: 'Contrafachada', desc: 'Grandes ventanales invitan al exterior. La piscina se funde con el horizonte.' }
       ],
       interiores: [
-        { img: 'assets/images/estilos/neoclasico/interiores/01-recibidor.png', title: 'Recibidor', desc: 'Doble altura y araña de bronce. Luz cenital que baña el espacio. Un recibidor que abraza.' },
-        { img: 'assets/images/estilos/neoclasico/interiores/02-sala-estar.png', title: 'Sala de Estar', desc: 'Ventanales que abrazan el paisaje. El horizonte entra, la luz se derrama. Un living flotante sobre la pampa.' },
-        { img: 'assets/images/estilos/neoclasico/interiores/03-comedor.png', title: 'Comedor', desc: 'Mesa larga para reunir. Lámpara de bronce, manteles de lino. Un comedor que invita a quedarse.' },
-        { img: 'assets/images/estilos/neoclasico/interiores/04-dormitorio-principal.png', title: 'Dormitorio Principal', desc: 'La cama mira al jardín. Vestidor y baño abierto: ducha escocesa y lavabo doble. Intimidad como amplitud.' },
-        { img: 'assets/images/estilos/neoclasico/interiores/05-sanitario.png', title: 'Baño', desc: 'Ducha escocesa que envuelve. Piso de mármol travertino, desagüe lineal. Una ducha abierta.' },
-        { img: 'assets/images/estilos/neoclasico/interiores/06-vestidor.png', title: 'Vestidor', desc: 'Walk-in closet luminoso. Estantes de madera, cajones forrados en tela. Orden y belleza.' },
-        { img: 'assets/images/estilos/neoclasico/interiores/07-dormitorio.png', title: 'Dormitorio Secundario', desc: 'Dos dormitorios en suite. Baño privado con ducha escocesa. Espacios para crecer.' }
+        { img: 'assets/images/estilos/neoclasico/interiores/01-recibidor.png', title: 'Recibidor', desc: 'Doble altura y araña de bronce. Luz cenital que baña el espacio.' },
+        { img: 'assets/images/estilos/neoclasico/interiores/02-sala-estar.png', title: 'Sala de Estar', desc: 'Ventanales que abrazan el paisaje. El horizonte entra, la luz se derrama.' },
+        { img: 'assets/images/estilos/neoclasico/interiores/03-comedor.png', title: 'Comedor', desc: 'Mesa larga para reunir. Lámpara de bronce, manteles de lino.' },
+        { img: 'assets/images/estilos/neoclasico/interiores/04-dormitorio-principal.png', title: 'Dormitorio Principal', desc: 'La cama mira al jardín. Vestidor y baño abierto.' },
+        { img: 'assets/images/estilos/neoclasico/interiores/05-sanitario.png', title: 'Baño', desc: 'Ducha escocesa que envuelve. Piso de mármol travertino.' },
+        { img: 'assets/images/estilos/neoclasico/interiores/06-vestidor.png', title: 'Vestidor', desc: 'Walk-in closet luminoso. Estantes de madera.' },
+        { img: 'assets/images/estilos/neoclasico/interiores/07-dormitorio.png', title: 'Dormitorio Secundario', desc: 'Dos dormitorios en suite. Baño privado con ducha.' }
       ]
     },
     mediterraneo: {
       name: 'Mediterráneo Contemporáneo',
-      introText: 'Calidez que envuelve. Paredes encaladas que guardan la frescura del verano, cerámicas artesanales, maderas que huelen a olivo. El jardín abre los brazos con olivos, buganvillas y lavanda. La vida fluye hacia afuera, hacia la mesa larga bajo la parra, hacia la piscina de borde infinito. Un estilo que invita a descalzarse, a compartir, a vivir con los sentidos despiertos.',
+      introText: 'Calidez que envuelve. Paredes encaladas que guardan la frescura del verano, cerámicas artesanales, maderas que huelen a olivo. El jardín abre los brazos con olivos, buganvillas y lavanda. La vida fluye hacia afuera, hacia la mesa larga bajo la parra. Un estilo que invita a descalzarse, a compartir, a vivir con los sentidos despiertos.',
       materials: [
         { name: 'Cerámica', img: 'assets/images/estilos/mediterraneo/intro/ceramica.png' },
         { name: 'Madera', img: 'assets/images/estilos/mediterraneo/intro/madera.png' },
@@ -1123,20 +1166,20 @@
         { name: 'Terracota', img: 'assets/images/estilos/mediterraneo/intro/terracota.png' }
       ],
       exteriores: [
-        { img: 'assets/images/estilos/mediterraneo/exteriores/01-vista-panoramica.png', title: 'Vista Panorámica', desc: 'Casa encalada contra el cielo. Olivos centenarios dibujan sombras. El aroma a azahar y lavanda flota en el aire.' },
-        { img: 'assets/images/estilos/mediterraneo/exteriores/02-fachada-principal.png', title: 'Fachada Principal', desc: 'Paredes blancas que reflejan la luz. Buganvilla trepando. Una fachada que sonríe.' },
-        { img: 'assets/images/estilos/mediterraneo/exteriores/03-acceso-principal.png', title: 'Acceso Principal', desc: 'Camino de piedra entre macetas de barro. Parra cubriendo la pérgola. Entrar aquí es un abrazo.' },
-        { img: 'assets/images/estilos/mediterraneo/exteriores/04-jardin-privado.png', title: 'Jardín Privado', desc: 'Piscina borde infinito. Deck de madera y glorieta de jazmín. Un jardín que late.' },
-        { img: 'assets/images/estilos/mediterraneo/exteriores/05-contrafachada.png', title: 'Contrafachada', desc: 'Ventanas que abren la casa al jardín. Piscina reflejando las nubes. Cochera-quincho para el asado.' }
+        { img: 'assets/images/estilos/mediterraneo/exteriores/01-vista-panoramica.png', title: 'Vista Panorámica', desc: 'Casa encalada contra el cielo. Olivos centenarios dibujan sombras.' },
+        { img: 'assets/images/estilos/mediterraneo/exteriores/02-fachada-principal.png', title: 'Fachada Principal', desc: 'Paredes blancas que reflejan la luz. Buganvilla trepando.' },
+        { img: 'assets/images/estilos/mediterraneo/exteriores/03-acceso-principal.png', title: 'Acceso Principal', desc: 'Camino de piedra entre macetas de barro. Parra cubriendo la pérgola.' },
+        { img: 'assets/images/estilos/mediterraneo/exteriores/04-jardin-privado.png', title: 'Jardín Privado', desc: 'Piscina borde infinito. Deck de madera y glorieta de jazmín.' },
+        { img: 'assets/images/estilos/mediterraneo/exteriores/05-contrafachada.png', title: 'Contrafachada', desc: 'Ventanas que abren la casa al jardín. Piscina reflejando las nubes.' }
       ],
       interiores: [
-        { img: 'assets/images/estilos/mediterraneo/interiores/01-recibidor.png', title: 'Recibidor', desc: 'Paredes encaladas y piso de terracota. Luz que entra tamizada. Un recibidor con alma de pueblo.' },
-        { img: 'assets/images/estilos/mediterraneo/interiores/02-sala-estar.png', title: 'Sala de Estar', desc: 'Ventanales abiertos de par en par. La brisa mueve las cortinas de lino. El jardín entra en la sala.' },
-        { img: 'assets/images/estilos/mediterraneo/interiores/03-comedor.png', title: 'Comedor', desc: 'Mesa de madera rústica. Vela larga y mantel de lino. Un comedor que sabe a domingo.' },
-        { img: 'assets/images/estilos/mediterraneo/interiores/04-dormitorio-principal.png', title: 'Dormitorio Principal', desc: 'Cama con cabecera de hierro. Vestidor y baño abierto: ducha escocesa y lavabo doble.' },
-        { img: 'assets/images/estilos/mediterraneo/interiores/05-sanitario.png', title: 'Baño', desc: 'Ducha escocesa. Piso de piedra natural. Un baño que es un ritual diario de bienestar.' },
-        { img: 'assets/images/estilos/mediterraneo/interiores/06-vestidor.png', title: 'Vestidor', desc: 'Estantes abiertos y cajones de mimbre. Elegir la ropa aquí es un placer.' },
-        { img: 'assets/images/estilos/mediterraneo/interiores/07-dormitorio.png', title: 'Dormitorio Secundario', desc: 'Dos dormitorios en suite. Cada uno con su ducha y su espacio para crecer.' }
+        { img: 'assets/images/estilos/mediterraneo/interiores/01-recibidor.png', title: 'Recibidor', desc: 'Paredes encaladas y piso de terracota. Luz que entra tamizada.' },
+        { img: 'assets/images/estilos/mediterraneo/interiores/02-sala-estar.png', title: 'Sala de Estar', desc: 'Ventanales abiertos de par en par. La brisa mueve las cortinas de lino.' },
+        { img: 'assets/images/estilos/mediterraneo/interiores/03-comedor.png', title: 'Comedor', desc: 'Mesa de madera rústica. Vela larga y mantel de lino.' },
+        { img: 'assets/images/estilos/mediterraneo/interiores/04-dormitorio-principal.png', title: 'Dormitorio Principal', desc: 'Cama con cabecera de hierro. Vestidor y baño abierto.' },
+        { img: 'assets/images/estilos/mediterraneo/interiores/05-sanitario.png', title: 'Baño', desc: 'Ducha escocesa. Piso de piedra natural.' },
+        { img: 'assets/images/estilos/mediterraneo/interiores/06-vestidor.png', title: 'Vestidor', desc: 'Estantes abiertos y cajones de mimbre.' },
+        { img: 'assets/images/estilos/mediterraneo/interiores/07-dormitorio.png', title: 'Dormitorio Secundario', desc: 'Dos dormitorios en suite. Baño privado.' }
       ]
     },
     minimalista: {
@@ -1149,20 +1192,20 @@
         { name: 'Piedra', img: 'assets/images/estilos/minimalista/intro/piedra.png' }
       ],
       exteriores: [
-        { img: 'assets/images/estilos/minimalista/exteriores/01-vista-panoramica.png', title: 'Vista Panorámica', desc: 'Un volumen puro sobre la llanura. Un árbol escultural y pastos que se mecen. Calma absoluta.' },
-        { img: 'assets/images/estilos/minimalista/exteriores/02-fachada-principal.png', title: 'Fachada Principal', desc: 'Plano blanco y vano horizontal. La luz dibuja sombras nítidas. Menos, es más.' },
-        { img: 'assets/images/estilos/minimalista/exteriores/03-acceso-principal.png', title: 'Acceso Principal', desc: 'Puerta maciza sin adornos. Una maceta de hormigón con una suculenta. Un gesto suficiente.' },
-        { img: 'assets/images/estilos/minimalista/exteriores/04-jardin-privado.png', title: 'Jardín Privado', desc: 'Piscina de borde infinito. Deck de madera. Un jardín para no hacer nada.' },
-        { img: 'assets/images/estilos/minimalista/exteriores/05-contrafachada.png', title: 'Contrafachada', desc: 'Ventanales corredizos borran el límite. Una casa que es pura geometría habitable.' }
+        { img: 'assets/images/estilos/minimalista/exteriores/01-vista-panoramica.png', title: 'Vista Panorámica', desc: 'Un volumen puro sobre la llanura. Un árbol escultural y pastos.' },
+        { img: 'assets/images/estilos/minimalista/exteriores/02-fachada-principal.png', title: 'Fachada Principal', desc: 'Plano blanco y vano horizontal. La luz dibuja sombras nítidas.' },
+        { img: 'assets/images/estilos/minimalista/exteriores/03-acceso-principal.png', title: 'Acceso Principal', desc: 'Puerta maciza sin adornos. Una maceta de hormigón.' },
+        { img: 'assets/images/estilos/minimalista/exteriores/04-jardin-privado.png', title: 'Jardín Privado', desc: 'Piscina de borde infinito. Deck de madera.' },
+        { img: 'assets/images/estilos/minimalista/exteriores/05-contrafachada.png', title: 'Contrafachada', desc: 'Ventanales corredizos borran el límite.' }
       ],
       interiores: [
-        { img: 'assets/images/estilos/minimalista/interiores/01-recibidor.png', title: 'Recibidor', desc: 'Doble altura y ventanal vertical. Una banca de madera. Nada sobra. La luz es protagonista.' },
-        { img: 'assets/images/estilos/minimalista/interiores/02-sala-estar.png', title: 'Sala de Estar', desc: 'Ventanal de piso a techo. Sofá bajo, mesa de madera clara. La belleza está en el vacío.' },
-        { img: 'assets/images/estilos/minimalista/interiores/03-comedor.png', title: 'Comedor', desc: 'Mesa de madera clara y sillas negras. Luz cenital. Comer aquí es un acto sencillo.' },
-        { img: 'assets/images/estilos/minimalista/interiores/04-dormitorio-principal.png', title: 'Dormitorio Principal', desc: 'Cama plataforma. Vestidor y baño abierto: ducha escocesa y lavabo doble.' },
-        { img: 'assets/images/estilos/minimalista/interiores/05-sanitario.png', title: 'Baño', desc: 'Ducha escocesa. Piso y paredes de microcemento. Un baño que es una meditación.' },
-        { img: 'assets/images/estilos/minimalista/interiores/06-vestidor.png', title: 'Vestidor', desc: 'Estantes abiertos y cajones ocultos. El orden es belleza.' },
-        { img: 'assets/images/estilos/minimalista/interiores/07-dormitorio.png', title: 'Dormitorio Secundario', desc: 'Dos dormitorios en suite. Baño privado y ventana al jardín. Calma como bandera.' }
+        { img: 'assets/images/estilos/minimalista/interiores/01-recibidor.png', title: 'Recibidor', desc: 'Doble altura y ventanal vertical. Una banca de madera.' },
+        { img: 'assets/images/estilos/minimalista/interiores/02-sala-estar.png', title: 'Sala de Estar', desc: 'Ventanal de piso a techo. Sofá bajo, mesa de madera clara.' },
+        { img: 'assets/images/estilos/minimalista/interiores/03-comedor.png', title: 'Comedor', desc: 'Mesa de madera clara y sillas negras. Luz cenital.' },
+        { img: 'assets/images/estilos/minimalista/interiores/04-dormitorio-principal.png', title: 'Dormitorio Principal', desc: 'Cama plataforma. Vestidor y baño abierto.' },
+        { img: 'assets/images/estilos/minimalista/interiores/05-sanitario.png', title: 'Baño', desc: 'Ducha escocesa. Piso y paredes de microcemento.' },
+        { img: 'assets/images/estilos/minimalista/interiores/06-vestidor.png', title: 'Vestidor', desc: 'Estantes abiertos y cajones ocultos.' },
+        { img: 'assets/images/estilos/minimalista/interiores/07-dormitorio.png', title: 'Dormitorio Secundario', desc: 'Dos dormitorios en suite. Baño privado.' }
       ]
     },
     internacional: {
@@ -1175,20 +1218,20 @@
         { name: 'Vidrio', img: 'assets/images/estilos/internacional/intro/vidrio.png' }
       ],
       exteriores: [
-        { img: 'assets/images/estilos/internacional/exteriores/01-vista-panoramica.png', title: 'Vista Panorámica', desc: 'Una casa que flota. Planos de hormigón y muros cortina de vidrio. Jardines verticales.' },
-        { img: 'assets/images/estilos/internacional/exteriores/02-fachada-principal.png', title: 'Fachada Principal', desc: 'Acceso con gran losa voladiza. Vidrio que refleja el cielo. Gramíneas altas.' },
-        { img: 'assets/images/estilos/internacional/exteriores/03-acceso-principal.png', title: 'Acceso Principal', desc: 'Puerta de acero y vidrio deslizante. Jardín vertical como pulmón verde.' },
-        { img: 'assets/images/estilos/internacional/exteriores/04-jardin-privado.png', title: 'Terraza', desc: 'Piscina de borde infinito. Deck de ipé. Glorieta de hormigón con techo verde.' },
-        { img: 'assets/images/estilos/internacional/exteriores/05-contrafachada.png', title: 'Jardín Vertical', desc: 'Una pared viva. Cochera-quincho de hormigón. Un quincho que es galería de arte.' }
+        { img: 'assets/images/estilos/internacional/exteriores/01-vista-panoramica.png', title: 'Vista Panorámica', desc: 'Una casa que flota. Planos de hormigón y muros cortina de vidrio.' },
+        { img: 'assets/images/estilos/internacional/exteriores/02-fachada-principal.png', title: 'Fachada Principal', desc: 'Acceso con gran losa voladiza. Vidrio que refleja el cielo.' },
+        { img: 'assets/images/estilos/internacional/exteriores/03-acceso-principal.png', title: 'Acceso Principal', desc: 'Puerta de acero y vidrio deslizante.' },
+        { img: 'assets/images/estilos/internacional/exteriores/04-jardin-privado.png', title: 'Terraza', desc: 'Piscina de borde infinito. Deck de ipé.' },
+        { img: 'assets/images/estilos/internacional/exteriores/05-contrafachada.png', title: 'Jardín Vertical', desc: 'Una pared viva. Cochera-quincho de hormigón.' }
       ],
       interiores: [
-        { img: 'assets/images/estilos/internacional/interiores/01-recibidor.png', title: 'Recibidor', desc: 'Doble altura y muro cortina. Jardín vertical visto desde adentro. Un recibidor de energía.' },
-        { img: 'assets/images/estilos/internacional/interiores/02-sala-estar.png', title: 'Sala de Estar', desc: 'Ventanales como muros. El paisaje es el adorno. Un lugar para vivir el hoy.' },
-        { img: 'assets/images/estilos/internacional/interiores/03-comedor.png', title: 'Comedor', desc: 'Mesa de acero y vidrio. Lámpara colgante escultórica. Un comedor para celebrar.' },
-        { img: 'assets/images/estilos/internacional/interiores/04-dormitorio-principal.png', title: 'Dormitorio Principal', desc: 'Cama plataforma mirando al vidrio. Baño con ducha escocesa y lavabo doble.' },
-        { img: 'assets/images/estilos/internacional/interiores/05-sanitario.png', title: 'Baño', desc: 'Ducha escocesa con techo de vidrio. Piso de piedra natural.' },
+        { img: 'assets/images/estilos/internacional/interiores/01-recibidor.png', title: 'Recibidor', desc: 'Doble altura y muro cortina. Jardín vertical visto desde adentro.' },
+        { img: 'assets/images/estilos/internacional/interiores/02-sala-estar.png', title: 'Sala de Estar', desc: 'Ventanales como muros. El paisaje es el adorno.' },
+        { img: 'assets/images/estilos/internacional/interiores/03-comedor.png', title: 'Comedor', desc: 'Mesa de acero y vidrio. Lámpara colgante escultórica.' },
+        { img: 'assets/images/estilos/internacional/interiores/04-dormitorio-principal.png', title: 'Dormitorio Principal', desc: 'Cama plataforma mirando al vidrio.' },
+        { img: 'assets/images/estilos/internacional/interiores/05-sanitario.png', title: 'Baño', desc: 'Ducha escocesa con techo de vidrio.' },
         { img: 'assets/images/estilos/internacional/interiores/06-vestidor.png', title: 'Vestidor', desc: 'Abierto y luminoso. Estantes de madera y acero.' },
-        { img: 'assets/images/estilos/internacional/interiores/07-dormitorio.png', title: 'Dormitorio Secundario', desc: 'Dos dormitorios en suite. Baño con ducha escocesa.' }
+        { img: 'assets/images/estilos/internacional/interiores/07-dormitorio.png', title: 'Dormitorio Secundario', desc: 'Dos dormitorios en suite.' }
       ]
     }
   };
@@ -1196,27 +1239,18 @@
   let currentStyleId = null;
   let currentSection = 'intro';
 
-  // Función para mostrar cualquier sección (unificada)
   function showSection(type, styleId, section) {
-    if (type === 'estilos') {
-      openEstilosDetail();
-    } else if (type === 'proyecto') {
-      openProyectoDetail();
-    } else if (type === 'programa') {
-      openProgramaDetail();
-    } else if (type === 'tecnica') {
-      openTecnicaDetail();
-    } else if (type === 'contacto') {
-      openContactoDetail();
-    } else if (type === 'style' && styleId) {
-      openStyleDetail(styleId, section || 'intro');
-    }
+    if (type === 'estilos') openEstilosDetail();
+    else if (type === 'proyecto') openProyectoDetail();
+    else if (type === 'programa') openProgramaDetail();
+    else if (type === 'tecnica') openTecnicaDetail();
+    else if (type === 'contacto') openContactoDetail();
+    else if (type === 'style' && styleId) openStyleDetail(styleId, section || 'intro');
   }
 
   function openStyleDetail(styleId, section = 'intro') {
     currentStyleId = styleId;
     currentSection = section;
-    
     const style = styleData[styleId];
     if (!style) return;
     
@@ -1229,60 +1263,35 @@
     `;
     
     let content = '';
-    
     if (section === 'intro') {
       content = `
         <div class="style-content">
           <div class="style-intro-wrapper">
             <div class="style-intro-text">${style.introText}</div>
             <div class="materials-grid">
-              ${style.materials.map((m, idx) => `
-                <div class="material-card" data-index="${idx}">
-                  <img src="${m.img}" onerror="this.src='https://placehold.co/400x300?text=${m.name}'">
-                  <p>${m.name}</p>
-                </div>
-              `).join('')}
-            </div>
-          </div>
-        </div>
-      `;
-    } else if (section === 'exteriores') {
-      const imagesArray = style.exteriores;
-      content = `
-        <div class="exterior-interior-wrapper">
-          <div class="exterior-interior-header">
-            <h2>Exteriores</h2>
-            <p>Espacios donde la casa respira y se conecta con el paisaje de llanura. Desliza lateralmente para ver más imágenes.</p>
-          </div>
-          <div class="exterior-interior-carousel" id="exteriorCarousel">
-            <div class="exterior-interior-track" id="exteriorTrack">
-              ${imagesArray.map((item, idx) => `
-                <div class="exterior-interior-card" data-index="${idx}" data-title="${item.title}" data-desc="${item.desc}" data-img="${item.img}" data-fullscreen="true">
-                  <img src="${item.img}" onerror="this.src='https://placehold.co/600x800?text=${item.title}'">
-                  <div class="exterior-interior-caption">
-                    <h4>${item.title}</h4>
-                  </div>
-                </div>
-              `).join('')}
+              ${style.materials.map((m, idx) => `<div class="material-card" data-index="${idx}"><img src="${m.img}" onerror="this.src='https://placehold.co/400x300?text=${m.name}'"><p>${m.name}</p></div>`).join('')}
             </div>
           </div>
         </div>
       `;
     } else {
-      const imagesArray = style.interiores;
+      const imagesArray = section === 'exteriores' ? style.exteriores : style.interiores;
+      const titleSection = section === 'exteriores' ? 'Exteriores' : 'Interiores';
+      const descSection = section === 'exteriores' ? 'Espacios donde la casa respira y se conecta con el paisaje.' : 'Espacios pensados para el bienestar, donde la luz y los materiales crean armonía.';
       content = `
         <div class="exterior-interior-wrapper">
           <div class="exterior-interior-header">
-            <h2>Interiores</h2>
-            <p>Espacios pensados para el bienestar, donde la luz y los materiales crecen en armonía. Desliza lateralmente para ver más imágenes.</p>
+            <h2>${titleSection}</h2>
+            <p>${descSection} Desliza lateralmente para ver más imágenes.</p>
           </div>
-          <div class="exterior-interior-carousel" id="interiorCarousel">
-            <div class="exterior-interior-track" id="interiorTrack">
+          <div class="exterior-interior-carousel" id="styleCarousel">
+            <div class="exterior-interior-track" id="styleTrack">
               ${imagesArray.map((item, idx) => `
-                <div class="exterior-interior-card" data-index="${idx}" data-title="${item.title}" data-desc="${item.desc}" data-img="${item.img}" data-fullscreen="true">
+                <div class="exterior-interior-card" data-index="${idx}" data-title="${item.title}" data-desc="${item.desc}" data-img="${item.img}">
                   <img src="${item.img}" onerror="this.src='https://placehold.co/600x800?text=${item.title}'">
                   <div class="exterior-interior-caption">
                     <h4>${item.title}</h4>
+                    <p>${item.desc.substring(0, 80)}...</p>
                   </div>
                 </div>
               `).join('')}
@@ -1292,12 +1301,7 @@
       `;
     }
     
-    elements.detailContent.innerHTML = `
-      <div class="detail-header"><h2>${escapeHtml(style.name)}</h2></div>
-      ${submenuHtml}
-      ${content}
-    `;
-    
+    elements.detailContent.innerHTML = `<div class="detail-header"><h2>${escapeHtml(style.name)}</h2></div>${submenuHtml}${content}`;
     elements.backCorner.classList.add('visible');
     
     document.querySelectorAll('.style-subnav button').forEach(btn => {
@@ -1308,7 +1312,7 @@
       });
     });
     
-    const imagesArray = section === 'exteriores' ? style.exteriores : (section === 'interiores' ? style.interiores : []);
+    const imagesArray = (section === 'exteriores' ? style.exteriores : (section === 'interiores' ? style.interiores : []));
     document.querySelectorAll('.exterior-interior-card').forEach((el, idx) => {
       el.addEventListener('click', (e) => {
         e.stopPropagation();
@@ -1321,14 +1325,8 @@
     });
     
     setTimeout(() => {
-      const carouselId = section === 'exteriores' ? 'exteriorCarousel' : 'interiorCarousel';
-      const carousel = document.getElementById(carouselId);
-      if (carousel) {
-        carousel.addEventListener('wheel', (e) => { 
-          e.preventDefault(); 
-          carousel.scrollLeft += e.deltaY; 
-        }, { passive: false });
-      }
+      const carousel = document.getElementById('styleCarousel');
+      if (carousel) carousel.addEventListener('wheel', (e) => { e.preventDefault(); carousel.scrollLeft += e.deltaY; }, { passive: false });
     }, 100);
   }
 
@@ -1340,51 +1338,160 @@
   }
 
   function openProyectoDetail() {
-    elements.detailContent.innerHTML = `<div class="proyecto-layout"><div class="proyecto-texto"><h2>El Proyecto</h2><div class="subtitulo">AUREA · La proporción natural del habitar</div><div class="descripcion"><strong>AUREA</strong> es la armonía que crece en la llanura. Un programa único que se adapta a tu presente y abraza tu futuro, respetando los volúmenes, las luces y los sonidos de la naturaleza.</div><div class="descripcion">Una propiedad unifamiliar que puede materializarse en <strong>cuatro estilos arquitectónicos</strong>. Todos comparten la misma esencia, la misma promesa de crecimiento.</div><div class="cita">"AUREA: volúmenes que respiran, luces que acompañan, sonidos que serenan."</div></div><div class="proyecto-estilos-wrapper"><h3>ESTILOS</h3><div class="proyecto-estilos-carousel" id="proyectoEstilosCarousel"><div class="proyecto-estilo-card" data-style="neoclasico"><img src="assets/images/proyecto/4-estilos/neoclasico.jpg" onerror="this.src='https://placehold.co/400x600?text=Neocl%C3%A1sico'"><div class="proyecto-estilo-caption"><h4>Neoclásico</h4><p>Bronce · Caliza · Estuco</p></div></div><div class="proyecto-estilo-card" data-style="mediterraneo"><img src="assets/images/proyecto/4-estilos/mediterraneo.jpg" onerror="this.src='https://placehold.co/400x600?text=Mediterr%C3%A1neo'"><div class="proyecto-estilo-caption"><h4>Mediterráneo</h4><p>Cerámica · Madera · Terracota</p></div></div><div class="proyecto-estilo-card" data-style="minimalista"><img src="assets/images/proyecto/4-estilos/minimalista.jpg" onerror="this.src='https://placehold.co/400x600?text=Minimalista'"><div class="proyecto-estilo-caption"><h4>Minimalista</h4><p>Barro · Lino · Piedra</p></div></div><div class="proyecto-estilo-card" data-style="internacional"><img src="assets/images/proyecto/4-estilos/internacional.jpg" onerror="this.src='https://placehold.co/400x600?text=Internacional'"><div class="proyecto-estilo-caption"><h4>Internacional</h4><p>Acero · Hormigón · Vidrio</p></div></div></div></div></div>`;
-    const carousel = document.getElementById('proyectoEstilosCarousel');
-    if (carousel) carousel.addEventListener('wheel', (e) => { e.preventDefault(); carousel.scrollLeft += e.deltaY; }, { passive: false });
-    document.querySelectorAll('.proyecto-estilo-card').forEach(el => {
-      el.addEventListener('click', () => {
-        const styleId = el.getAttribute('data-style');
-        navigateToStyleFromProject(styleId);
-      });
+    elements.detailContent.innerHTML = `
+      <div class="proyecto-texto-fullwidth">
+        <h2>El Proyecto</h2>
+        <div class="subtitulo">AUREA · Un solo proyecto, cuatro miradas, cinco etapas</div>
+        <div class="descripcion"><strong>AUREA</strong> es un proyecto arquitectónico único. Una misma estructura, una misma implantación en la llanura, un mismo programa pensado para crecer contigo. Lo que cambia es la piel, el carácter, la atmósfera. <strong>Cuatro estilos, cuatro formas de habitar un mismo espacio.</strong></div>
+        <div class="descripcion">El proyecto se organiza en <strong>cinco etapas constructivas</strong> que respetan el crecimiento natural de una familia. Desde el núcleo inicial hasta la casa completa, cada etapa es habitable y armónica por sí misma.</div>
+        <div class="cita-fullwidth">"AUREA: la misma arquitectura, diferentes almas. Crece en etapas, vive en estilos."</div>
+      </div>
+      <div class="proyecto-estilos-fullwidth">
+        <h3 class="estilos-section-title">LOS CUATRO ESTILOS</h3>
+        <p class="estilos-section-subtitle">Un mismo proyecto · Cuatro personalidades arquitectónicas</p>
+        <div class="estilos-grid-four" id="proyectoEstilosGrid">
+          <div class="estilo-card-large" data-style="neoclasico">
+            <div class="estilo-card-image">
+              <img src="assets/images/proyecto/4-estilos/neoclasico.jpg" onerror="this.src='https://placehold.co/400x500?text=Neocl%C3%A1sico'">
+            </div>
+            <div class="estilo-card-info">
+              <h4>Neoclásico</h4>
+              <p>Bronce · Caliza · Estuco</p>
+              <span class="explore-tag">Explorar <i class="fas fa-arrow-right"></i></span>
+            </div>
+          </div>
+          <div class="estilo-card-large" data-style="mediterraneo">
+            <div class="estilo-card-image">
+              <img src="assets/images/proyecto/4-estilos/mediterraneo.jpg" onerror="this.src='https://placehold.co/400x500?text=Mediterr%C3%A1neo'">
+            </div>
+            <div class="estilo-card-info">
+              <h4>Mediterráneo</h4>
+              <p>Cerámica · Madera · Terracota</p>
+              <span class="explore-tag">Explorar <i class="fas fa-arrow-right"></i></span>
+            </div>
+          </div>
+          <div class="estilo-card-large" data-style="minimalista">
+            <div class="estilo-card-image">
+              <img src="assets/images/proyecto/4-estilos/minimalista.jpg" onerror="this.src='https://placehold.co/400x500?text=Minimalista'">
+            </div>
+            <div class="estilo-card-info">
+              <h4>Minimalista</h4>
+              <p>Barro · Lino · Piedra</p>
+              <span class="explore-tag">Explorar <i class="fas fa-arrow-right"></i></span>
+            </div>
+          </div>
+          <div class="estilo-card-large" data-style="internacional">
+            <div class="estilo-card-image">
+              <img src="assets/images/proyecto/4-estilos/internacional.jpg" onerror="this.src='https://placehold.co/400x500?text=Internacional'">
+            </div>
+            <div class="estilo-card-info">
+              <h4>Internacional</h4>
+              <p>Acero · Hormigón · Vidrio</p>
+              <span class="explore-tag">Explorar <i class="fas fa-arrow-right"></i></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+    
+    document.querySelectorAll('.estilo-card-large').forEach(el => {
+      el.addEventListener('click', () => navigateToStyleFromProject(el.getAttribute('data-style')));
     });
+    
     elements.backCorner.classList.add('visible');
   }
 
   function openProgramaDetail() {
     const etapas = [
-      { id: 1, nombre: 'La llegada al sitio', img: 'assets/images/programa/etapa-1-cocina-comedor-piscina.png', desc: 'Etapa 1. Un monoambiente con cocina-comedor, sanitario y lavadero. Afuera, la piscina de borde infinito, el deck y la glorieta. La cochera semicubierta protege los vehículos.' },
-      { id: 2, nombre: 'Los dormitorios de la noche', img: 'assets/images/programa/etapa-2-dormitorios-suite.png', desc: 'Etapa 2. Dos dormitorios en suite, misma jerarquía. Uno para el matrimonio, otro para los hijos. Cada uno con su baño privado y ducha escocesa.' },
-      { id: 3, nombre: 'La fachada y el corazón social', img: 'assets/images/programa/etapa-3-sala-estar-ingreso.png', desc: 'Etapa 3. Acceso jerarquizado, recibidor con luz cenital, toilette para invitados. La sala de estar se abre al paisaje.' },
-      { id: 4, nombre: 'La suite principal', img: 'assets/images/programa/etapa-4-principal-vestidor.png', desc: 'Etapa 4. Dormitorio principal en suite con vestidor. Baño abierto: ducha escocesa y lavabo doble. WC segmentado.' },
-      { id: 5, nombre: 'El quincho-cochera', img: 'assets/images/programa/etapa-5-cochera-doble.png', desc: 'Etapa 5. Entre semana protege los vehículos. Los fines de semana se transforma: parrilla, mesas y risas. Un quincho sin paredes.' }
+      { id: 1, nombre: 'Etapa 1 · La llegada al sitio', img: 'assets/images/programa/etapa-1-cocina-comedor-piscina.png', desc: 'El núcleo inicial. Un monoambiente con cocina-comedor, sanitario y lavadero. Afuera, la piscina de borde infinito, el deck y la glorieta. La casa comienza a habitarse desde el primer día.', icono: 'fa-home' },
+      { id: 2, nombre: 'Etapa 2 · Los dormitorios de la noche', img: 'assets/images/programa/etapa-2-dormitorios-suite.png', desc: 'Dos dormitorios en suite, misma jerarquía. Cada uno con su baño privado y ducha escocesa. La intimidad llega.', icono: 'fa-bed' },
+      { id: 3, nombre: 'Etapa 3 · La fachada y el corazón social', img: 'assets/images/programa/etapa-3-sala-estar-ingreso.png', desc: 'La casa adquiere su carácter. Acceso jerarquizado, recibidor con luz cenital. La sala de estar se abre al paisaje.', icono: 'fa-door-open' },
+      { id: 4, nombre: 'Etapa 4 · La suite principal', img: 'assets/images/programa/etapa-4-principal-vestidor.png', desc: 'El refugio de los padres. Dormitorio principal en suite con vestidor. Baño abierto: ducha escocesa y lavabo doble.', icono: 'fa-crown' },
+      { id: 5, nombre: 'Etapa 5 · El quincho-cochera', img: 'assets/images/programa/etapa-5-cochera-doble.png', desc: 'La celebración. Entre semana protege los vehículos. Los fines de semana: parrilla, mesas y risas. Un quincho sin paredes.', icono: 'fa-car' }
     ];
-    elements.detailContent.innerHTML = `<div class="programa-wrapper"><div class="programa-header"><h2>El Programa Arquitectónico</h2><p>AUREA crece contigo. Como la naturaleza, en etapas armónicas, respetando la proporción de cada momento.</p></div><div class="programa-horizontal-carousel" id="programaHorizontalCarousel"><div class="programa-horizontal-track" id="programaHorizontalTrack">${etapas.map(etapa => `<div class="programa-horizontal-card" data-nombre="${etapa.nombre}" data-desc="${etapa.desc}" data-img="${etapa.img}"><img src="${etapa.img}" onerror="this.src='https://placehold.co/400x500?text=${etapa.nombre}'"><div class="programa-horizontal-caption"><h3>${etapa.nombre}</h3></div></div>`).join('')}</div></div></div>`;
+    
+    elements.detailContent.innerHTML = `
+      <div class="programa-wrapper">
+        <div class="programa-header">
+          <h2>El Programa Arquitectónico</h2>
+          <p><strong>Cinco etapas</strong> para un mismo proyecto. AUREA crece contigo, como la naturaleza, en etapas armónicas. Cada etapa es habitable por sí misma, permitiendo una inversión progresiva sin renunciar al disfrute inmediato.</p>
+        </div>
+        <div class="programa-timeline">
+          ${etapas.map((etapa, idx) => `<div class="timeline-node" data-step="${idx + 1}"><div class="timeline-icon"><i class="fas ${etapa.icono}"></i></div><div class="timeline-line"></div></div>`).join('')}
+        </div>
+        <div class="programa-horizontal-carousel" id="programaHorizontalCarousel">
+          <div class="programa-horizontal-track" id="programaHorizontalTrack">
+            ${etapas.map(etapa => `
+              <div class="programa-horizontal-card" data-nombre="${etapa.nombre}" data-desc="${etapa.desc}" data-img="${etapa.img}">
+                <img src="${etapa.img}" onerror="this.src='https://placehold.co/400x500?text=${etapa.nombre}'">
+                <div class="programa-horizontal-caption">
+                  <h3>${etapa.nombre}</h3>
+                  <p>${etapa.desc.substring(0, 80)}...</p>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+        <div class="programa-summary">
+          <h3 class="section-title">Resumen del Programa</h3>
+          <div class="summary-grid">
+            <div class="summary-card"><span class="summary-number">5</span><span class="summary-label">Etapas constructivas</span></div>
+            <div class="summary-card"><span class="summary-number">180-320</span><span class="summary-label">m² cubiertos</span></div>
+            <div class="summary-card"><span class="summary-number">3-5</span><span class="summary-label">Dormitorios</span></div>
+            <div class="summary-card"><span class="summary-number">2-4</span><span class="summary-label">Baños completos</span></div>
+          </div>
+          <p style="text-align: center; margin-top: 1.5rem; font-size: 0.85rem; color: var(--text-label);">
+            <i class="fas fa-info-circle"></i> Todas las etapas están diseñadas para ser construidas de manera independiente y progresiva
+          </p>
+        </div>
+      </div>
+    `;
+    
     const programaCarousel = document.getElementById('programaHorizontalCarousel');
     if (programaCarousel) programaCarousel.addEventListener('wheel', (e) => { e.preventDefault(); programaCarousel.scrollLeft += e.deltaY; }, { passive: false });
+    
     document.querySelectorAll('.programa-horizontal-card').forEach(card => {
       card.addEventListener('click', () => {
         const nombre = card.getAttribute('data-nombre') || '';
         const desc = card.getAttribute('data-desc') || '';
         const img = card.getAttribute('data-img') || '';
-        showFullscreenImage([{ img: img, title: nombre, desc: desc }], 0, nombre, desc);
+        showFullscreenImage([{ img, title: nombre, desc }], 0, nombre, desc);
       });
     });
+    
     elements.backCorner.classList.add('visible');
   }
 
   function openEstilosDetail() {
-    elements.detailContent.innerHTML = `<div class="detail-header"><h2>Estilos Arquitectónicos</h2></div><div class="detail-desc">Cuatro personalidades para una misma esencia. Cada estilo mantiene la misma promesa de crecimiento armónico.</div><div class="proyecto-estilos-carousel" id="estilosCarousel" style="display: flex; gap: 1.5rem; overflow-x: auto; padding: 1rem;"><div class="proyecto-estilo-card" data-style="neoclasico"><img src="assets/images/proyecto/4-estilos/neoclasico.jpg" onerror="this.src='https://placehold.co/400x600?text=Neocl%C3%A1sico'"><div class="proyecto-estilo-caption"><h4>Neoclásico</h4><p>Bronce · Caliza · Estuco</p></div></div><div class="proyecto-estilo-card" data-style="mediterraneo"><img src="assets/images/proyecto/4-estilos/mediterraneo.jpg" onerror="this.src='https://placehold.co/400x600?text=Mediterr%C3%A1neo'"><div class="proyecto-estilo-caption"><h4>Mediterráneo</h4><p>Cerámica · Madera · Terracota</p></div></div><div class="proyecto-estilo-card" data-style="minimalista"><img src="assets/images/proyecto/4-estilos/minimalista.jpg" onerror="this.src='https://placehold.co/400x600?text=Minimalista'"><div class="proyecto-estilo-caption"><h4>Minimalista</h4><p>Barro · Lino · Piedra</p></div></div><div class="proyecto-estilo-card" data-style="internacional"><img src="assets/images/proyecto/4-estilos/internacional.jpg" onerror="this.src='https://placehold.co/400x600?text=Internacional'"><div class="proyecto-estilo-caption"><h4>Internacional</h4><p>Acero · Hormigón · Vidrio</p></div></div></div>`;
-    const carousel = document.getElementById('estilosCarousel');
-    if (carousel) carousel.addEventListener('wheel', (e) => { e.preventDefault(); carousel.scrollLeft += e.deltaY; }, { passive: false });
-    document.querySelectorAll('.proyecto-estilo-card').forEach(el => {
+    elements.detailContent.innerHTML = `
+      <div class="detail-header">
+        <h2>Estilos Arquitectónicos</h2>
+        <p class="detail-subheader">Cuatro personalidades para una misma esencia. Cada estilo mantiene la promesa de crecimiento armónico.</p>
+      </div>
+      <div class="estilos-grid" id="estilosGrid">
+        <div class="estilos-grid-card" data-style="neoclasico"><img src="assets/images/proyecto/4-estilos/neoclasico.jpg" onerror="this.src='https://placehold.co/600x800?text=Neocl%C3%A1sico'"><div class="estilos-card-content"><h3>Neoclásico</h3><p class="tagline">La proporción clásica</p><p class="materials">Bronce · Caliza · Estuco</p><button class="explore-btn">Explorar <i class="fas fa-arrow-right"></i></button></div></div>
+        <div class="estilos-grid-card" data-style="mediterraneo"><img src="assets/images/proyecto/4-estilos/mediterraneo.jpg" onerror="this.src='https://placehold.co/600x800?text=Mediterr%C3%A1neo'"><div class="estilos-card-content"><h3>Mediterráneo</h3><p class="tagline">Calidez que envuelve</p><p class="materials">Cerámica · Madera · Terracota</p><button class="explore-btn">Explorar <i class="fas fa-arrow-right"></i></button></div></div>
+        <div class="estilos-grid-card" data-style="minimalista"><img src="assets/images/proyecto/4-estilos/minimalista.jpg" onerror="this.src='https://placehold.co/600x800?text=Minimalista'"><div class="estilos-card-content"><h3>Minimalista</h3><p class="tagline">Líneas puras</p><p class="materials">Barro · Lino · Piedra</p><button class="explore-btn">Explorar <i class="fas fa-arrow-right"></i></button></div></div>
+        <div class="estilos-grid-card" data-style="internacional"><img src="assets/images/proyecto/4-estilos/internacional.jpg" onerror="this.src='https://placehold.co/600x800?text=Internacional'"><div class="estilos-card-content"><h3>Internacional</h3><p class="tagline">Vanguardia funcional</p><p class="materials">Acero · Hormigón · Vidrio</p><button class="explore-btn">Explorar <i class="fas fa-arrow-right"></i></button></div></div>
+      </div>
+      <div class="comparison-section">
+        <h3 class="section-title">Comparativa de Estilos</h3>
+        <div class="comparison-grid">
+          <div class="comparison-item"><span class="comp-label">Materialidad</span><span class="comp-value">Natural vs Industrial</span></div>
+          <div class="comparison-item"><span class="comp-label">Paleta cromática</span><span class="comp-value">Neutros cálidos / Fríos</span></div>
+          <div class="comparison-item"><span class="comp-label">Texturas</span><span class="comp-value">Rústicas / Pulidas</span></div>
+          <div class="comparison-item"><span class="comp-label">Luz</span><span class="comp-value">Tamizada / Abierta</span></div>
+        </div>
+      </div>
+    `;
+    
+    document.querySelectorAll('.estilos-grid-card').forEach(el => {
       el.addEventListener('click', () => {
         const styleId = el.getAttribute('data-style');
-        navigationStack.push({ type: 'style', styleId: styleId, section: 'intro' });
-        openStyleDetail(styleId, 'intro');
+        navigateToStyleFromProject(styleId);
       });
     });
+    
     elements.backCorner.classList.add('visible');
   }
 
@@ -1407,22 +1514,45 @@
     function renderTecnica() {
       const images = getStyleImages(currentStyle);
       const styleDisplayName = getStyleDisplayName(currentStyle);
-      elements.detailContent.innerHTML = `<div class="detail-header"><h2>Documentación Técnica</h2></div><div class="detail-desc">Un mismo programa, cuatro almas diferentes. La casa crece en cinco etapas armónicas.</div><div class="tecnica-layout"><div class="tecnica-izquierda"><div class="tecnica-estilos-carousel" id="tecnicaEstilosCarousel"><div class="tecnica-estilos-track"><div class="tecnica-estilo-card active" data-style="neoclasico"><img src="assets/images/proyecto/4-estilos/neoclasico.jpg" onerror="this.src='https://placehold.co/400x600?text=Neocl%C3%A1sico'"><div class="tecnica-estilo-caption"><h4>Neoclásico</h4></div></div><div class="tecnica-estilo-card" data-style="mediterraneo"><img src="assets/images/proyecto/4-estilos/mediterraneo.jpg" onerror="this.src='https://placehold.co/400x600?text=Mediterr%C3%A1neo'"><div class="tecnica-estilo-caption"><h4>Mediterráneo</h4></div></div><div class="tecnica-estilo-card" data-style="minimalista"><img src="assets/images/proyecto/4-estilos/minimalista.jpg" onerror="this.src='https://placehold.co/400x600?text=Minimalista'"><div class="tecnica-estilo-caption"><h4>Minimalista</h4></div></div><div class="tecnica-estilo-card" data-style="internacional"><img src="assets/images/proyecto/4-estilos/internacional.jpg" onerror="this.src='https://placehold.co/400x600?text=Internacional'"><div class="tecnica-estilo-caption"><h4>Internacional</h4></div></div></div></div></div><div class="tecnica-derecha"><div class="tecnica-scroll-container"><div class="tecnica-scroll-content"><div class="tecnica-imagen isometrico"><h4>Vista Isométrica ${styleDisplayName}</h4><img id="isometricoImg" src="${images.isometrico}" onerror="this.src='https://placehold.co/800x600?text=Vista+Isometrica'"></div><div class="tecnica-imagen planta"><h4>Planta Amueblada</h4><img id="plantaImg" src="${images.planta}" onerror="this.src='https://placehold.co/800x600?text=Planta'"></div></div></div></div></div>`;
+      elements.detailContent.innerHTML = `
+        <div class="detail-header"><h2>Documentación Técnica</h2><p class="detail-subheader">Un mismo programa, cuatro almas diferentes. La casa crece en cinco etapas armónicas.</p></div>
+        <div class="tecnica-layout">
+          <div class="tecnica-izquierda">
+            <div class="tecnica-estilos-carousel" id="tecnicaEstilosCarousel">
+              <div class="tecnica-estilos-track">
+                <div class="tecnica-estilo-card ${currentStyle === 'neoclasico' ? 'active' : ''}" data-style="neoclasico"><img src="assets/images/proyecto/4-estilos/neoclasico.jpg" onerror="this.src='https://placehold.co/400x600?text=Neoclásico'"><div class="tecnica-estilo-caption"><h4>Neoclásico</h4></div></div>
+                <div class="tecnica-estilo-card ${currentStyle === 'mediterraneo' ? 'active' : ''}" data-style="mediterraneo"><img src="assets/images/proyecto/4-estilos/mediterraneo.jpg" onerror="this.src='https://placehold.co/400x600?text=Mediterráneo'"><div class="tecnica-estilo-caption"><h4>Mediterráneo</h4></div></div>
+                <div class="tecnica-estilo-card ${currentStyle === 'minimalista' ? 'active' : ''}" data-style="minimalista"><img src="assets/images/proyecto/4-estilos/minimalista.jpg" onerror="this.src='https://placehold.co/400x600?text=Minimalista'"><div class="tecnica-estilo-caption"><h4>Minimalista</h4></div></div>
+                <div class="tecnica-estilo-card ${currentStyle === 'internacional' ? 'active' : ''}" data-style="internacional"><img src="assets/images/proyecto/4-estilos/internacional.jpg" onerror="this.src='https://placehold.co/400x600?text=Internacional'"><div class="tecnica-estilo-caption"><h4>Internacional</h4></div></div>
+              </div>
+            </div>
+          </div>
+          <div class="tecnica-derecha">
+            <div class="tecnica-scroll-container">
+              <div class="tecnica-scroll-content">
+                <div class="tecnica-imagen"><h4>Vista Isométrica ${styleDisplayName}</h4><img id="isometricoImg" src="${images.isometrico}" onerror="this.src='https://placehold.co/800x600?text=Vista+Isometrica'"></div>
+                <div class="tecnica-imagen"><h4>Planta Amueblada</h4><img id="plantaImg" src="${images.planta}" onerror="this.src='https://placehold.co/800x600?text=Planta'"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+      
       const tecCarousel = document.getElementById('tecnicaEstilosCarousel');
       if (tecCarousel) tecCarousel.addEventListener('wheel', (e) => { e.preventDefault(); tecCarousel.scrollLeft += e.deltaY; }, { passive: false });
-      const styleCards = document.querySelectorAll('.tecnica-estilo-card');
-      styleCards.forEach(card => {
+      
+      document.querySelectorAll('.tecnica-estilo-card').forEach(card => {
         card.addEventListener('click', () => {
           if (isAnimating) return;
           const newStyle = card.getAttribute('data-style');
           if (newStyle === currentStyle) return;
           isAnimating = true;
-          styleCards.forEach(c => c.classList.remove('active'));
+          document.querySelectorAll('.tecnica-estilo-card').forEach(c => c.classList.remove('active'));
           card.classList.add('active');
           const newImages = getStyleImages(newStyle);
           const newStyleDisplayName = getStyleDisplayName(newStyle);
           const isometricoImg = document.getElementById('isometricoImg');
-          const isometricoTitle = document.querySelector('.tecnica-imagen.isometrico h4');
+          const isometricoTitle = document.querySelector('.tecnica-imagen:first-child h4');
           if (isometricoImg) isometricoImg.src = newImages.isometrico;
           if (isometricoTitle) isometricoTitle.textContent = `Vista Isométrica ${newStyleDisplayName}`;
           currentStyle = newStyle;
@@ -1435,7 +1565,14 @@
   }
 
   function openContactoDetail() {
-    elements.detailContent.innerHTML = `<div class="detail-header"><h2>Contacto</h2></div><div class="detail-desc">¿Soñamos juntos? Contanos cuál de los cuatro estilos resuena con tu forma de vivir.</div><div class="info-grid"><div class="info-card"><img src="assets/images/contacto/oficina.jpg" onerror="this.src='https://placehold.co/800x600?text=Email'"><div class="info-card-content"><h4>Email</h4><p>info@aureadesarrollosinmobiliarios.com</p></div></div><div class="info-card"><img src="assets/images/contacto/equipo.jpg" onerror="this.src='https://placehold.co/800x600?text=Teléfono'"><div class="info-card-content"><h4>Teléfono</h4><p>02954 829221</p></div></div></div><div style="text-align: center; margin-top: 2rem; font-family: 'Inter', sans-serif; font-size: 1rem; color: var(--text-label);">Construimos más que casas. Construimos un lugar al que quieras volver siempre.</div>`;
+    elements.detailContent.innerHTML = `
+      <div class="detail-header"><h2>Contacto</h2><p class="detail-subheader">¿Soñamos juntos? Contanos cuál de los cuatro estilos resuena con tu forma de vivir.</p></div>
+      <div class="info-grid">
+        <div class="info-card"><img src="assets/images/contacto/oficina.jpg" onerror="this.src='https://placehold.co/800x600?text=Email'"><div class="info-card-content"><h4>Email</h4><p>info@aureadesarrollosinmobiliarios.com</p></div></div>
+        <div class="info-card"><img src="assets/images/contacto/equipo.jpg" onerror="this.src='https://placehold.co/800x600?text=Teléfono'"><div class="info-card-content"><h4>Teléfono</h4><p>02954 829221</p></div></div>
+      </div>
+      <div class="contact-footer-text">Construimos más que casas. Construimos un lugar al que quieras volver siempre.</div>
+    `;
     elements.backCorner.classList.add('visible');
   }
 
@@ -1445,51 +1582,22 @@
     elements.carouselWrapper.classList.add('hiding');
     elements.instruction.classList.add('hide');
     setTimeout(() => {
-      if (id === 'proyecto') {
-        navigationStack.push({ type: 'proyecto' });
-        openProyectoDetail();
-      } else if (id === 'programa') {
-        navigationStack.push({ type: 'programa' });
-        openProgramaDetail();
-      } else if (id === 'estilos') {
-        navigationStack.push({ type: 'estilos' });
-        openEstilosDetail();
-      } else if (id === 'tecnica') {
-        navigationStack.push({ type: 'tecnica' });
-        openTecnicaDetail();
-      } else if (id === 'contacto') {
-        navigationStack.push({ type: 'contacto' });
-        openContactoDetail();
-      }
+      if (id === 'proyecto') { navigationStack.push({ type: 'proyecto' }); openProyectoDetail(); }
+      else if (id === 'programa') { navigationStack.push({ type: 'programa' }); openProgramaDetail(); }
+      else if (id === 'estilos') { navigationStack.push({ type: 'estilos' }); openEstilosDetail(); }
+      else if (id === 'tecnica') { navigationStack.push({ type: 'tecnica' }); openTecnicaDetail(); }
+      else if (id === 'contacto') { navigationStack.push({ type: 'contacto' }); openContactoDetail(); }
       elements.detailScreen.classList.add('active');
     }, 500);
   }
 
   function goBack() {
-    // Primero, si hay un fullscreen abierto, cerrarlo
-    if (currentFullscreenDiv) { 
-      closeFullscreen();
-      return; 
-    }
-    
-    // Verificar si hay historial de navegación
+    if (currentFullscreenDiv) { closeFullscreen(); return; }
     if (navigationStack.length > 0) {
-      // Remover el estado actual
       navigationStack.pop();
-      
-      // Si después de pop no hay más elementos, cerrar el detalle (volver al carrusel)
-      if (navigationStack.length === 0) {
-        closeDetail();
-      } else {
-        // Volver al último estado del historial
-        const last = navigationStack[navigationStack.length - 1];
-        showSection(last.type, last.styleId, last.section);
-      }
-    } else {
-      // No hay historial, cerrar el detalle
-      closeDetail();
-    }
-    showTitle();
+      if (navigationStack.length === 0) closeDetail();
+      else { const last = navigationStack[navigationStack.length - 1]; showSection(last.type, last.styleId, last.section); }
+    } else { closeDetail(); }
   }
 
   function closeDetail() {
@@ -1498,11 +1606,7 @@
     elements.slideTitle.classList.remove('hide-title');
     elements.instruction.classList.remove('hide');
     elements.backCorner.classList.remove('visible');
-    resetCarouselCardsToOriginal();
-    setTimeout(() => updateSelectedByScroll(), 100);
   }
-
-  function showTitle() { elements.slideTitle.classList.remove('hide-title'); }
 
   function rebuildCarousel() {
     if (!elements.carouselTrack) return;
@@ -1526,22 +1630,13 @@
       }
       if (!isMobile) {
         card.addEventListener('mouseenter', () => {
-          if (isExperienceActive) {
-            const title = card.getAttribute('data-title');
-            if (title && elements.currentTitle) {
-              elements.currentTitle.innerText = title;
-            }
-            applyAccordionEffect(card, true);
-            activeHoverCard = card;
+          if (isExperienceActive && elements.currentTitle && !elements.detailScreen.classList.contains('active')) {
+            elements.currentTitle.innerText = card.getAttribute('data-title');
           }
         });
         card.addEventListener('mouseleave', () => {
-          if (isExperienceActive) {
-            if (elements.currentTitle) {
-              elements.currentTitle.innerText = '';
-            }
-            applyAccordionEffect(card, false);
-            activeHoverCard = null;
+          if (isExperienceActive && elements.currentTitle && !elements.detailScreen.classList.contains('active')) {
+            elements.currentTitle.innerText = '';
           }
         });
       }
@@ -1550,50 +1645,11 @@
         if (!isExperienceActive) return;
         document.querySelectorAll('.carousel-card').forEach(c => c.classList.remove('selected'));
         card.classList.add('selected');
-        currentSelectedId = card.dataset.id;
         if (elements.currentTitle) elements.currentTitle.innerText = card.getAttribute('data-title');
         openDetail(card.dataset.id);
       });
       elements.carouselTrack.appendChild(card);
     });
-    if (elements.currentTitle) elements.currentTitle.innerText = '';
-  }
-
-  function setupScrollDetection() {
-    if (!elements.carouselWrapper) return;
-    let ticking = false;
-    elements.carouselWrapper.addEventListener('scroll', () => {
-      if (!ticking) { requestAnimationFrame(() => { updateSelectedByScroll(); ticking = false; }); ticking = true; }
-    });
-  }
-
-  function updateSelectedByScroll() {
-    if (!elements.carouselWrapper || !isExperienceActive) return;
-    const cards = document.querySelectorAll('.carousel-card');
-    if (cards.length === 0) return;
-    let bestCard = null, bestDist = Infinity;
-    if (!isMobile) {
-      const center = elements.carouselWrapper.scrollLeft + elements.carouselWrapper.clientWidth / 2;
-      cards.forEach(card => {
-        const rect = card.getBoundingClientRect();
-        const dist = Math.abs((rect.left + rect.width / 2) - center);
-        if (dist < bestDist) { bestDist = dist; bestCard = card; }
-      });
-      if (bestCard && !bestCard.classList.contains('selected')) {
-        cards.forEach(c => c.classList.remove('selected'));
-        bestCard.classList.add('selected');
-        const id = bestCard.getAttribute('data-id');
-        if (id) {
-          currentSelectedId = id;
-          const sec = secciones.find(s => s.id === id);
-          if (sec && elements.currentTitle && !activeHoverCard) {
-            elements.currentTitle.innerText = sec.titulo;
-          }
-        }
-      } else if (!bestCard && elements.currentTitle && !activeHoverCard) {
-        elements.currentTitle.innerText = '';
-      }
-    }
   }
 
   function startExperience() {
@@ -1617,10 +1673,7 @@
     isTransitioning = true;
     if (currentFullscreenDiv) closeFullscreen();
     if (elements.detailScreen.classList.contains('active')) elements.detailScreen.classList.remove('active');
-    if (elements.carouselWrapper) { 
-      if (!isMobile) elements.carouselWrapper.scrollLeft = 0; 
-      else elements.carouselWrapper.scrollTop = 0;
-    }
+    if (elements.carouselWrapper) { if (!isMobile) elements.carouselWrapper.scrollLeft = 0; else elements.carouselWrapper.scrollTop = 0; }
     isExperienceActive = false;
     navigationStack = [];
     elements.welcome.classList.remove('hide');
@@ -1633,16 +1686,12 @@
     elements.cornerLogo.classList.remove('visible');
     elements.backCorner.classList.remove('visible');
     if (elements.currentTitle) elements.currentTitle.innerText = '';
-    resetCarouselCardsToOriginal();
-    if (!isMobile && activeHoverCard) { applyAccordionEffect(activeHoverCard, false); activeHoverCard = null; }
-    void elements.carouselWrapper.offsetWidth;
     setTimeout(() => { isTransitioning = false; }, 100);
   }
 
   function init() {
     if (elements.heroBg) elements.heroBg.classList.remove('desenfocado');
     rebuildCarousel();
-    setupScrollDetection();
     if (elements.welcome) elements.welcome.addEventListener('click', startExperience);
     if (elements.cornerLogo) elements.cornerLogo.addEventListener('click', (e) => { e.stopPropagation(); resetToWelcome(); });
     if (elements.backCorner) elements.backCorner.addEventListener('click', () => goBack());
