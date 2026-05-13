@@ -305,7 +305,7 @@
     .instruction { bottom: 1.5rem; font-size: 0.7rem; }
   }
 
-  /* ==================== RESPONSIVE MÓVIL (CON FLEXIBILIDAD) ==================== */
+  /* ==================== RESPONSIVE MÓVIL ==================== */
   @media (max-width: 768px) {
     .logo-img { width: 100px; height: 100px; }
     .logo-text h1 { font-size: 3rem; }
@@ -370,7 +370,13 @@
       transform: scale(1.01);
     }
     .carousel-card.selected::before { background: rgba(0, 0, 0, 0); }
-    .carousel-card img { width: 100%; height: 160px; object-fit: cover; position: relative; z-index: 0; }
+    .carousel-card img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      position: relative;
+      z-index: 0;
+    }
     .card-mobile-info {
       padding: 0.6rem;
       background: rgba(0,0,0,0.85);
@@ -1108,11 +1114,11 @@
     };
   }
 
-  // DATOS DE ESTILOS
+  // DATOS DE ESTILOS (simplificados pero completos)
   const styleData = {
     neoclasico: {
       name: 'Neoclásico Contemporáneo',
-      introText: 'La proporción clásica, reinterpretada. Simetría en los vanos, cornisas que ordenan las fachadas, estucos suaves bajo la luz del atardecer. Los materiales nobles –bronce, caliza, granito– dialogan con un jardín geométrico de boj recortado y rosales. La elegancia está en los vacíos, en el ritmo de los vanos, en la serenidad que transmiten las proporciones. Un estilo para quienes buscan calma con oficio.',
+      introText: 'La proporción clásica, reinterpretada. Simetría en los vanos, cornisas que ordenan las fachadas, estucos suaves bajo la luz del atardecer. Los materiales nobles –bronce, caliza, granito– dialogan con un jardín geométrico de boj recortado y rosales.',
       materials: [
         { name: 'Bronce', img: 'assets/images/estilos/neoclasico/intro/bronce.png' },
         { name: 'Caliza', img: 'assets/images/estilos/neoclasico/intro/caliza.png' },
@@ -1138,7 +1144,7 @@
     },
     mediterraneo: {
       name: 'Mediterráneo Contemporáneo',
-      introText: 'Calidez que envuelve. Paredes encaladas que guardan la frescura del verano, cerámicas artesanales, maderas que huelen a olivo. El jardín abre los brazos con olivos, buganvillas y lavanda. La vida fluye hacia afuera, hacia la mesa larga bajo la parra. Un estilo que invita a descalzarse, a compartir, a vivir con los sentidos despiertos.',
+      introText: 'Calidez que envuelve. Paredes encaladas que guardan la frescura del verano, cerámicas artesanales, maderas que huelen a olivo. El jardín abre los brazos con olivos, buganvillas y lavanda.',
       materials: [
         { name: 'Cerámica', img: 'assets/images/estilos/mediterraneo/intro/ceramica.png' },
         { name: 'Madera', img: 'assets/images/estilos/mediterraneo/intro/madera.png' },
@@ -1164,7 +1170,7 @@
     },
     minimalista: {
       name: 'Minimalista Cálido',
-      introText: 'Líneas puras, espacios despejados, luz que se cuela sin obstáculos. Barro cocido, lino, maderas suaves, piedra que guarda el sol. Un solo árbol escultural, pastos que se mecen, grava blanca como río seco. Para quienes encuentran la belleza en la sencillez y la calma en el orden.',
+      introText: 'Líneas puras, espacios despejados, luz que se cuela sin obstáculos. Barro cocido, lino, maderas suaves, piedra que guarda el sol. Un solo árbol escultural, pastos que se mecen.',
       materials: [
         { name: 'Barro Cocido', img: 'assets/images/estilos/minimalista/intro/barro-cocido.png' },
         { name: 'Lino', img: 'assets/images/estilos/minimalista/intro/lino.png' },
@@ -1190,7 +1196,7 @@
     },
     internacional: {
       name: 'Contemporáneo Internacional',
-      introText: 'Vanguardia funcional. Grandes ventanales que borran el límite entre adentro y afuera. Acero, hormigón visto, vidrio y madera. Jardines verticales, gramíneas altas, especies autóctonas de la llanura. Un estilo que respira, que se abre al paisaje sin filtros. Para espíritus libres que aman el presente.',
+      introText: 'Vanguardia funcional. Grandes ventanales que borran el límite entre adentro y afuera. Acero, hormigón visto, vidrio y madera. Jardines verticales, gramíneas altas.',
       materials: [
         { name: 'Acero', img: 'assets/images/estilos/internacional/intro/acero.png' },
         { name: 'Hormigón', img: 'assets/images/estilos/internacional/intro/hormigon-visto.png' },
@@ -1383,18 +1389,18 @@
 
   function openProgramaDetail() {
     const etapas = [
-      { id: 1, nombre: 'Etapa 1 · La llegada al sitio', img: 'assets/images/programa/etapa-1-cocina-comedor-piscina.png', desc: 'El núcleo inicial. Un monoambiente con cocina-comedor, sanitario y lavadero. Afuera, la piscina de borde infinito, el deck y la glorieta. La casa comienza a habitarse desde el primer día.', icono: 'fa-home' },
-      { id: 2, nombre: 'Etapa 2 · Los dormitorios de la noche', img: 'assets/images/programa/etapa-2-dormitorios-suite.png', desc: 'Dos dormitorios en suite, misma jerarquía. Cada uno con su baño privado y ducha escocesa. La intimidad llega.', icono: 'fa-bed' },
-      { id: 3, nombre: 'Etapa 3 · La fachada y el corazón social', img: 'assets/images/programa/etapa-3-sala-estar-ingreso.png', desc: 'La casa adquiere su carácter. Acceso jerarquizado, recibidor con luz cenital. La sala de estar se abre al paisaje.', icono: 'fa-door-open' },
-      { id: 4, nombre: 'Etapa 4 · La suite principal', img: 'assets/images/programa/etapa-4-principal-vestidor.png', desc: 'El refugio de los padres. Dormitorio principal en suite con vestidor. Baño abierto: ducha escocesa y lavabo doble.', icono: 'fa-crown' },
-      { id: 5, nombre: 'Etapa 5 · El quincho-cochera', img: 'assets/images/programa/etapa-5-cochera-doble.png', desc: 'La celebración. Entre semana protege los vehículos. Los fines de semana: parrilla, mesas y risas. Un quincho sin paredes.', icono: 'fa-car' }
+      { id: 1, nombre: 'Etapa 1 · La llegada al sitio', img: 'assets/images/programa/etapa-1-cocina-comedor-piscina.png', desc: 'El núcleo inicial. Un monoambiente con cocina-comedor, sanitario y lavadero. Afuera, la piscina de borde infinito, el deck y la glorieta.', icono: 'fa-home' },
+      { id: 2, nombre: 'Etapa 2 · Los dormitorios de la noche', img: 'assets/images/programa/etapa-2-dormitorios-suite.png', desc: 'Dos dormitorios en suite, misma jerarquía. Cada uno con su baño privado y ducha escocesa.', icono: 'fa-bed' },
+      { id: 3, nombre: 'Etapa 3 · La fachada y el corazón social', img: 'assets/images/programa/etapa-3-sala-estar-ingreso.png', desc: 'La casa adquiere su carácter. Acceso jerarquizado, recibidor con luz cenital.', icono: 'fa-door-open' },
+      { id: 4, nombre: 'Etapa 4 · La suite principal', img: 'assets/images/programa/etapa-4-principal-vestidor.png', desc: 'El refugio de los padres. Dormitorio principal en suite con vestidor.', icono: 'fa-crown' },
+      { id: 5, nombre: 'Etapa 5 · El quincho-cochera', img: 'assets/images/programa/etapa-5-cochera-doble.png', desc: 'La celebración. Entre semana protege los vehículos. Los fines de semana: parrilla, mesas y risas.', icono: 'fa-car' }
     ];
     
     elements.detailContent.innerHTML = `
       <div class="programa-wrapper">
         <div class="programa-header">
           <h2>El Programa Arquitectónico</h2>
-          <p><strong>Cinco etapas</strong> para un mismo proyecto. AUREA crece contigo, como la naturaleza, en etapas armónicas. Cada etapa es habitable por sí misma, permitiendo una inversión progresiva sin renunciar al disfrute inmediato.</p>
+          <p><strong>Cinco etapas</strong> para un mismo proyecto. AUREA crece contigo, como la naturaleza, en etapas armónicas. Cada etapa es habitable por sí misma.</p>
         </div>
         <div class="programa-timeline">
           ${etapas.map((etapa, idx) => `<div class="timeline-node" data-step="${idx + 1}"><div class="timeline-icon"><i class="fas ${etapa.icono}"></i></div><div class="timeline-line"></div></div>`).join('')}
